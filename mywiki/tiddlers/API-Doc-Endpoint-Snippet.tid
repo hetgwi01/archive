@@ -1,7 +1,8 @@
 created: 20260701002122589
-modified: 20260701012806479
+modified: 20260701222901253
 tags: Snippet
 title: API-Doc-Endpoint-Snippet
+type: text/vnd.tiddlywiki
 
 ! API 문서 스니펫 모음
 
@@ -18,6 +19,8 @@ title: API-Doc-Endpoint-Snippet
 
 !! 1. 엔드포인트 카드 (엔드포인트 하나당 반복)
 
+팝업 `$reveal`은 반드시 `api-body` `$reveal` 바깥, `api-card` div 안에 배치하세요.
+
 <pre>
 &lt;div class="api-card"&gt;
 &lt;$reveal state="$_:/state/api-PROJECT-ID" type="match" text="yes" default="no" tag="div"&gt;
@@ -26,81 +29,80 @@ title: API-Doc-Endpoint-Snippet
 &lt;span class="api-path"&gt;/YOUR/PATH&lt;/span&gt;
 &lt;span class="api-summary-text"&gt;요약 설명&lt;/span&gt;
 &lt;span class="api-chevron open"&gt;▶&lt;/span&gt;
-&lt;/$button&gt;
-&lt;/$reveal&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;
 &lt;$reveal state="$_:/state/api-PROJECT-ID" type="nomatch" text="yes" default="no" tag="div"&gt;
 &lt;$button class="api-summary-btn" set="$_:/state/api-PROJECT-ID" setTo="yes"&gt;
 &lt;span class="api-method api-METHOD"&gt;METHOD&lt;/span&gt;
 &lt;span class="api-path"&gt;/YOUR/PATH&lt;/span&gt;
 &lt;span class="api-summary-text"&gt;요약 설명&lt;/span&gt;
 &lt;span class="api-chevron"&gt;▶&lt;/span&gt;
-&lt;/$button&gt;
-&lt;/$reveal&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;
 &lt;$reveal state="$_:/state/api-PROJECT-ID" type="match" text="yes" default="no" class="api-body" tag="div"&gt;
-
 &lt;p&gt;&lt;strong&gt;설명&lt;/strong&gt;&lt;br&gt;설명을 여기에&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;In&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Required&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;파라미터명&lt;/td&gt;&lt;td&gt;path/query/header&lt;/td&gt;&lt;td&gt;타입&lt;/td&gt;&lt;td&gt;✓&lt;/td&gt;&lt;td&gt;설명&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-
 &lt;p&gt;&lt;strong&gt;Request Body&lt;/strong&gt; (&lt;code&gt;application/json&lt;/code&gt;)&lt;/p&gt;
+&lt;$button class="api-schema-link"&gt;&lt;$action-setfield $tiddler="$_:/state/req-PROJECT-ID" text="yes"/&gt;→ SchemaName&lt;/$button&gt;
 &lt;pre&gt;&lt;code&gt;{
-  "field": "type"
+  "field": "value"
 }&lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;&lt;strong&gt;Responses&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="api-resp-group"&gt;
-&lt;span class="api-resp resp-2xx"&gt;200&lt;/span&gt; 설명&lt;br&gt;
-&lt;span class="api-resp resp-4xx"&gt;400&lt;/span&gt; 설명
-&lt;/div&gt;
-
-&lt;/$reveal&gt;
-&lt;/div&gt;
-</pre>
-
----
-
-!! 2. 스키마 토글 (응답/요청 스키마 보여줄 때)
-
-<pre>
-&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="match" text="yes" default="no" tag="div"&gt;
-&lt;$button class="api-schema-link" set="$_:/state/schema-SCHEMA-ID" setTo="no"&gt;→ SchemaName ▾&lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="nomatch" text="yes" default="no" tag="div"&gt;
-&lt;$button class="api-schema-link" set="$_:/state/schema-SCHEMA-ID" setTo="yes"&gt;→ SchemaName ▸&lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="match" text="yes" default="no" class="api-schema-body" tag="div"&gt;
+&lt;span class="api-resp resp-2xx"&gt;200&lt;/span&gt; 설명
+&lt;$button class="api-schema-link"&gt;&lt;$action-setfield $tiddler="$_:/state/resp-PROJECT-ID-200" text="yes"/&gt;→ RespSchemaName&lt;/$button&gt;
 &lt;pre&gt;&lt;code&gt;{
-  "field": "type"
+  "field": "value"
 }&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;span class="api-resp resp-4xx"&gt;400&lt;/span&gt; 설명&lt;br&gt;
+&lt;/div&gt;
 &lt;/$reveal&gt;
+&lt;!-- 팝업들은 api-body 바깥, api-card 안에 --&gt;
+&lt;$reveal state="$_:/state/req-PROJECT-ID" type="match" text="yes" default="no" tag="div"&gt;
+&lt;div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;"&gt;
+&lt;div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$_:/state/req-PROJECT-ID','text',null,'no')"&gt;&lt;/div&gt;
+&lt;div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);"&gt;
+&lt;div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;"&gt;
+&lt;span style="font-weight:bold;color:#d4d4d4;font-family:monospace;"&gt;SchemaName&lt;/span&gt;
+&lt;$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;"&gt;
+&lt;$action-setfield $tiddler="$_:/state/req-PROJECT-ID" text="no"/&gt;✕&lt;/$button&gt;
+&lt;/div&gt;
+&lt;div class="schema-body"&gt;&lt;&lt;renderSchema dataTiddler:"Project:PROJECTNAME-API-Schemas-Data" schemaName:"SchemaName"&gt;&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/resp-PROJECT-ID-200" type="match" text="yes" default="no" tag="div"&gt;
+&lt;div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;"&gt;
+&lt;div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$_:/state/resp-PROJECT-ID-200','text',null,'no')"&gt;&lt;/div&gt;
+&lt;div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);"&gt;
+&lt;div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;"&gt;
+&lt;span style="font-weight:bold;color:#d4d4d4;font-family:monospace;"&gt;RespSchemaName&lt;/span&gt;
+&lt;$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;"&gt;
+&lt;$action-setfield $tiddler="$_:/state/resp-PROJECT-ID-200" text="no"/&gt;✕&lt;/$button&gt;
+&lt;/div&gt;
+&lt;div class="schema-body"&gt;&lt;&lt;renderSchema dataTiddler:"Project:PROJECTNAME-API-Schemas-Data" schemaName:"RespSchemaName"&gt;&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
 </pre>
 
 ---
 
-!! 3. 툴바 (그룹 페이지 상단)
+!! 2. 툴바 (그룹 페이지 상단)
 
 <pre>
 &lt;div class="api-toolbar"&gt;
 &lt;$button class="api-toolbar-btn"&gt;
 &lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-1" text="yes"/&gt;
 &lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-2" text="yes"/&gt;
-모두 펼치기
-&lt;/$button&gt;
+모두 펼치기&lt;/$button&gt;
 &lt;$button class="api-toolbar-btn"&gt;
 &lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-1" text="no"/&gt;
 &lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-2" text="no"/&gt;
-모두 접기
-&lt;/$button&gt;
+모두 접기&lt;/$button&gt;
 &lt;/div&gt;
 </pre>
 
 ---
 
-!! 4. 뒤로가기 링크
+!! 3. 뒤로가기 링크
 
 <pre>
 &lt;div class="api-back-link"&gt;[_[← API 목차로 돌아가기|Project:프로젝트명-API-Doc]_]&lt;/div&gt;
@@ -108,7 +110,7 @@ title: API-Doc-Endpoint-Snippet
 
 ---
 
-!! 5. 그룹 페이지 기본 구조
+!! 4. 그룹 페이지 기본 구조
 
 <pre>
 ! 그룹명
@@ -124,12 +126,20 @@ title: API-Doc-Endpoint-Snippet
 
 ---
 
-!! 6. 교체 키워드 목록
+!! 5. 교체 키워드 목록
 
 |키워드 |설명 |예시 |h
 |`PROJECT-ID` |위키 전체에서 유일한 ID |`daiso-image-1` |
 |`METHOD` |HTTP 메서드 소문자 |`get` `post` `delete` `put` `patch` |
 |`/YOUR/PATH` |API 경로 |`/api/v2/books/{bookId}` |
-|`SCHEMA-ID` |스키마 고유 ID |`BookRespDTO` |
-|`SchemaName` |스키마 표시명 |`BookRespDTO` |
-|`프로젝트명` |목차 티들러 이름 |`daiso-book` |
+|`SchemaName` |Request Body 스키마명 |`CategoryModifyReqDTO` |
+|`RespSchemaName` |Response 스키마명 |`BookRespDTO` |
+|`PROJECTNAME` |스키마 데이터 티들러 프로젝트명 |`daiso-book` |
+
+---
+
+!! 6. 주의사항
+
+* 팝업 `$reveal`은 반드시 `api-body` `$reveal` 바깥에 배치
+* 코드블록 안에 `<TAG>` 형태 값은 꺽쇠 없이 `binary`, `string` 등으로 표기
+* `renderSchema` 매크로는 `Project:PROJECTNAME-API-Schemas-Data` JSON 티들러에서 스키마를 읽어옴

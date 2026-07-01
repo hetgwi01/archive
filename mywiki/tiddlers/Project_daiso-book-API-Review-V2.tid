@@ -1,7 +1,7 @@
 created: 20260630124436790
-modified: 20260630124442682
+modified: 20260701120518243
 title: Project:daiso-book-API-Review-V2
-type: 
+type: text/vnd.tiddlywiki
 
 ! Review V2
 
@@ -16,225 +16,249 @@ type:
 <$action-setfield $tiddler="$:/state/api-daiso-review-3" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-4" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-5" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-ReviewRespDTO" text="yes"/>
-모두 펼치기
-</$button>
+모두 펼치기</$button>
 <$button class="api-toolbar-btn">
 <$action-setfield $tiddler="$:/state/api-daiso-review-1" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-2" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-3" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-4" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-review-5" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-ReviewRespDTO" text="no"/>
-모두 접기
-</$button>
+모두 접기</$button>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-review-1" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-1" setTo="no">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/reviews/{reviewId}</span>
-<span class="api-summary-text">리뷰 상세 조회</span>
+<span class="api-method api-post">post</span>
+<span class="api-path">/api/reviews</span>
+<span class="api-summary-text">리뷰 등록</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-1" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-1" setTo="yes">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/reviews/{reviewId}</span>
-<span class="api-summary-text">리뷰 상세 조회</span>
+<span class="api-method api-post">post</span>
+<span class="api-path">/api/reviews</span>
+<span class="api-summary-text">리뷰 등록</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-1" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>리뷰 ID를 통해 특정 리뷰의 상세 정보를 조회합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>reviewId</td><td>path</td><td>integer($int64)</td><td>✓</td><td>리뷰 고유 ID</td></tr>
-</table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
-</div>
-
-<$reveal state="$:/state/schema-ReviewRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-ReviewRespDTO" setTo="no">→ ReviewRespDTO ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-ReviewRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-ReviewRespDTO" setTo="yes">→ ReviewRespDTO ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-ReviewRespDTO" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<p><strong>설명</strong><br>도서 리뷰를 등록하고 포인트 적립을 요청합니다. 이미지 최대 3장까지 지원합니다.</p>
+<p><strong>Request Body</strong> (<code>multipart/form-data</code>)</p>
 <pre><code>{
-  "id": "integer($int64)",
-  "bookId": "integer($int64)",
-  "bookTitle": "string",
-  "userId": "integer($int64)",
-  "content": "string",
-  "rating": "integer($int32)",
-  "createdAt": "string($date-time)",
-  "modifiedAt": "string($date-time)",
-  "reviewImages": ["ImageRespDTO"]
+  "metadata": "string (JSON)"
+  "image0": "binary"
+  "image1": "binary"
+  "image2": "binary"
 }</code></pre>
-</$reveal>
-
-</$reveal>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 리뷰 등록 성공<br>
+<span class="api-resp resp-4xx">400</span> 잘못된 요청 파라미터<br>
+<span class="api-resp resp-4xx">404</span> 도서를 찾을 수 없음<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-review-2" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-2" setTo="no">
-<span class="api-method api-put">PUT</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/{reviewId}</span>
-<span class="api-summary-text">리뷰 수정</span>
+<span class="api-summary-text">리뷰 상세 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-2" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-2" setTo="yes">
-<span class="api-method api-put">PUT</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/{reviewId}</span>
-<span class="api-summary-text">리뷰 수정</span>
+<span class="api-summary-text">리뷰 상세 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-2" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>기존에 작성한 리뷰 내용 및 이미지를 수정합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>reviewId</td><td>path</td><td>integer($int64)</td><td>✓</td><td>수정할 리뷰 ID</td></tr>
+<p><strong>설명</strong><br>리뷰 ID를 통해 특정 리뷰의 상세 정보를 조회합니다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>reviewId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
 </table>
-
-<p><strong>Request Body</strong> (<code>multipart/form-data</code>)</p>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-2-200" text="yes"/>
+→ ReviewRespDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-review-2-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-review-2-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">ReviewRespDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-2-200" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ReviewRespDTO">></div>
+</div></div></$reveal>
 <pre><code>{
+  "id": 1,
+  "bookId": 1,
+  "bookTitle": "string",
+  "userId": 1,
   "content": "string",
-  "rating": "integer($int32)",
-  "images": ["string($binary)"]
+  "rating": 1,
+  "createdAt": "2024-01-01T00:00:00Z",
+  "modifiedAt": "2024-01-01T00:00:00Z",
+  "reviewImages": [{
+    "no": 1,
+    "path": "string",
+    "imageType": "COVER"
+  }]
 }</code></pre>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">204</span> 리뷰 수정 성공 (반환 데이터 없음)<br>
-<span class="api-resp resp-4xx">403</span> 수정 권한 없음<br>
-<span class="api-resp resp-4xx">404</span> 리뷰를 찾을 수 없음
+<br>
 </div>
-
-</$reveal>
-</div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-review-3" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-3" setTo="no">
-<span class="api-method api-post">POST</span>
-<span class="api-path">/api/reviews</span>
-<span class="api-summary-text">리뷰 등록</span>
+<span class="api-method api-put">put</span>
+<span class="api-path">/api/reviews/{reviewId}</span>
+<span class="api-summary-text">리뷰 수정</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-3" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-3" setTo="yes">
-<span class="api-method api-post">POST</span>
-<span class="api-path">/api/reviews</span>
-<span class="api-summary-text">리뷰 등록</span>
+<span class="api-method api-put">put</span>
+<span class="api-path">/api/reviews/{reviewId}</span>
+<span class="api-summary-text">리뷰 수정</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-3" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>도서 리뷰를 등록하고 포인트 적립을 요청합니다. 이미지 최대 3장까지 지원합니다.</p>
-
+<p><strong>설명</strong><br>기존에 작성한 리뷰 내용 및 이미지를 수정합니다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>reviewId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
+</table>
 <p><strong>Request Body</strong> (<code>multipart/form-data</code>)</p>
 <pre><code>{
-  "bookId": "integer($int64)",
-  "content": "string",
-  "rating": "integer($int32)",
-  "images": ["string($binary)"]
+  "metadata": "string (JSON)"
+  "image0": "binary"
+  "image1": "binary"
+  "image2": "binary"
 }</code></pre>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">201</span> 리뷰 등록 성공<br>
-<span class="api-resp resp-4xx">400</span> 잘못된 요청 파라미터<br>
-<span class="api-resp resp-4xx">404</span> 도서를 찾을 수 없음
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 리뷰 수정 성공<br>
+<span class="api-resp resp-4xx">403</span> 수정 권한 없음<br>
+<span class="api-resp resp-4xx">404</span> 리뷰를 찾을 수 없음<br>
 </div>
-
-</$reveal>
-</div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-review-4" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-4" setTo="no">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/me</span>
 <span class="api-summary-text">내 리뷰 목록 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-4" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-4" setTo="yes">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/me</span>
 <span class="api-summary-text">내 리뷰 목록 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-4" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>로그인한 사용자가 작성한 모든 리뷰를 조회합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>X-User-Id</td><td>header</td><td>integer($int64)</td><td>✓</td><td>사용자 고유 ID</td></tr>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>X-User-Id</td><td>header</td><td>integer($int64)</td><td>✓</td></tr>
 </table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK <span class="schema-array-label">array</span> 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-4-200" text="yes"/>
+→ ReviewRespDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-review-4-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-review-4-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">ReviewRespDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-4-200" text="no"/>✕</$button>
 </div>
-
-</$reveal>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ReviewRespDTO">></div>
+</div></div></$reveal>
+<pre><code>[{
+  "id": 1,
+  "bookId": 1,
+  "bookTitle": "string",
+  "userId": 1,
+  "content": "string",
+  "rating": 1,
+  "createdAt": "2024-01-01T00:00:00Z",
+  "modifiedAt": "2024-01-01T00:00:00Z",
+  "reviewImages": [{
+    "no": 1,
+    "path": "string",
+    "imageType": "COVER"
+  }]
+}]</code></pre>
+<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-review-5" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-5" setTo="no">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/books/{bookId}</span>
 <span class="api-summary-text">도서별 리뷰 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-5" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-review-5" setTo="yes">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/reviews/books/{bookId}</span>
 <span class="api-summary-text">도서별 리뷰 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-review-5" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>특정 도서에 달린 모든 리뷰를 조회합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>bookId</td><td>path</td><td>integer($int64)</td><td>✓</td><td>도서 고유 ID</td></tr>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>bookId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
 </table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK <span class="schema-array-label">array</span> 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-5-200" text="yes"/>
+→ ReviewRespDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-review-5-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-review-5-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">ReviewRespDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-review-5-200" text="no"/>✕</$button>
 </div>
-
-</$reveal>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ReviewRespDTO">></div>
+</div></div></$reveal>
+<pre><code>[{
+  "id": 1,
+  "bookId": 1,
+  "bookTitle": "string",
+  "userId": 1,
+  "content": "string",
+  "rating": 1,
+  "createdAt": "2024-01-01T00:00:00Z",
+  "modifiedAt": "2024-01-01T00:00:00Z",
+  "reviewImages": [{
+    "no": 1,
+    "path": "string",
+    "imageType": "COVER"
+  }]
+}]</code></pre>
+<br>
 </div>
+</$reveal></div>

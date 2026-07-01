@@ -1,7 +1,7 @@
 created: 20260630123937867
-modified: 20260630123944332
+modified: 20260701120107847
 title: Project:daiso-book-API-Category-V2
-type: 
+type: text/vnd.tiddlywiki
 
 ! Category V2
 
@@ -15,183 +15,223 @@ type:
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-2" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-3" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-4" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-CategoryList" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-CategoryTreeListRespDTO" text="yes"/>
-모두 펼치기
-</$button>
+<$action-setfield $tiddler="$:/state/api-daiso-catv2-5" text="yes"/>
+모두 펼치기</$button>
 <$button class="api-toolbar-btn">
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-1" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-2" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-3" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-catv2-4" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-CategoryList" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-CategoryTreeListRespDTO" text="no"/>
-모두 접기
-</$button>
+<$action-setfield $tiddler="$:/state/api-daiso-catv2-5" text="no"/>
+모두 접기</$button>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-catv2-1" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-1" setTo="no">
-<span class="api-method api-put">PUT</span>
-<span class="api-path">/api/v2/books/categories/{categoryId}</span>
-<span class="api-summary-text">기존 카테고리 수정</span>
+<span class="api-method api-get">get</span>
+<span class="api-path">/api/v2/books/categories</span>
+<span class="api-summary-text">전체 카테고리 목록 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-1" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-1" setTo="yes">
-<span class="api-method api-put">PUT</span>
-<span class="api-path">/api/v2/books/categories/{categoryId}</span>
-<span class="api-summary-text">기존 카테고리 수정</span>
+<span class="api-method api-get">get</span>
+<span class="api-path">/api/v2/books/categories</span>
+<span class="api-summary-text">전체 카테고리 목록 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-1" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>특정 카테고리의 정보를 변경합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
-<tr><td>categoryId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
-</table>
-
-<p><strong>Request Body</strong> (<code>application/json</code>) — <code>CategoryModifyReqDTO</code></p>
+<p><strong>설명</strong><br>모든 카테고리를 평면적인 리스트 형태로 조회합니다.</p>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-catv2-1-200" text="yes"/>
+→ CategoryList
+</$button>
+<$reveal state="$:/state/resp-daiso-catv2-1-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-catv2-1-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">CategoryList</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-catv2-1-200" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryList">></div>
+</div></div></$reveal>
 <pre><code>{
-  "name": "string",
-  "deep": "integer($int32)"
+  "categoryPathList": [{
+    "categoryId": 1,
+    "categoryName": "string",
+    "path": "string"
+  }]
 }</code></pre>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">204</span> 카테고리 수정 성공<br>
-<span class="api-resp resp-4xx">404</span> 존재하지 않는 카테고리 ID
+<br>
 </div>
-
-</$reveal>
-</div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-catv2-2" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-2" setTo="no">
-<span class="api-method api-delete">DELETE</span>
-<span class="api-path">/api/v2/books/categories/{categoryId}</span>
-<span class="api-summary-text">카테고리 삭제</span>
+<span class="api-method api-post">post</span>
+<span class="api-path">/api/v2/books/categories</span>
+<span class="api-summary-text">새 카테고리 등록</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-2" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-2" setTo="yes">
-<span class="api-method api-delete">DELETE</span>
-<span class="api-path">/api/v2/books/categories/{categoryId}</span>
-<span class="api-summary-text">카테고리 삭제</span>
+<span class="api-method api-post">post</span>
+<span class="api-path">/api/v2/books/categories</span>
+<span class="api-summary-text">새 카테고리 등록</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-2" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>특정 카테고리를 삭제합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
-<tr><td>categoryId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
-</table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">204</span> 카테고리 삭제 성공<br>
-<span class="api-resp resp-4xx">409</span> 하위 카테고리 존재 등 연관 데이터로 인한 삭제 불가
+<p><strong>설명</strong><br>새로운 도서 카테고리를 생성합니다.</p>
+<p><strong>Request Body</strong> (<code>application/json</code>)</p>
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-catv2-2" text="yes"/>
+→ CategoryRegisterReqDTO
+</$button>
+<$reveal state="$:/state/req-body-daiso-catv2-2" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-catv2-2','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">CategoryRegisterReqDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-catv2-2" text="no"/>✕</$button>
 </div>
-
-</$reveal>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryRegisterReqDTO">></div>
+</div></div></$reveal>
+<pre><code>{
+  "categoryId": 1,
+  "name": "string",
+  "deep": 1,
+  "preCategoryId": 1
+}</code></pre>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 카테고리 생성 성공<br>
+<span class="api-resp resp-4xx">400</span> 잘못된 입력 값<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-catv2-3" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-3" setTo="no">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/v2/books/categories</span>
-<span class="api-summary-text">전체 카테고리 목록 조회</span>
+<span class="api-method api-get">get</span>
+<span class="api-path">/api/v2/books/categories/tree</span>
+<span class="api-summary-text">카테고리 트리 구조 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-3" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-3" setTo="yes">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/v2/books/categories</span>
-<span class="api-summary-text">전체 카테고리 목록 조회</span>
+<span class="api-method api-get">get</span>
+<span class="api-path">/api/v2/books/categories/tree</span>
+<span class="api-summary-text">카테고리 트리 구조 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-3" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>모든 카테고리를 평면적인 리스트 형태로 조회합니다.</p>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>설명</strong><br>부모-자식 관계가 포함된 트리 구조의 카테고리 목록을 조회합니다.</p>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-catv2-3-200" text="yes"/>
+→ CategoryTreeListRespDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-catv2-3-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-catv2-3-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">CategoryTreeListRespDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-catv2-3-200" text="no"/>✕</$button>
 </div>
-
-<$reveal state="$:/state/schema-CategoryList" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-CategoryList" setTo="no">→ CategoryList ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-CategoryList" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-CategoryList" setTo="yes">→ CategoryList ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-CategoryList" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryTreeListRespDTO">></div>
+</div></div></$reveal>
 <pre><code>{
-  "categoryPathList": [
-    { "categoryId": "integer($int64)", "categoryName": "string", "path": "string" }
-  ]
+  "categoryTreeList": [{
+    "categoryId": 1,
+    "name": "string",
+    "preCategoryId": 1,
+    "deep": 1
+  }]
 }</code></pre>
-</$reveal>
-
-</$reveal>
+<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-catv2-4" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-4" setTo="no">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/v2/books/categories/tree</span>
-<span class="api-summary-text">카테고리 트리 구조 조회</span>
+<span class="api-method api-put">put</span>
+<span class="api-path">/api/v2/books/categories/{categoryId}</span>
+<span class="api-summary-text">기존 카테고리 수정</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-4" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-catv2-4" setTo="yes">
-<span class="api-method api-get">GET</span>
-<span class="api-path">/api/v2/books/categories/tree</span>
-<span class="api-summary-text">카테고리 트리 구조 조회</span>
+<span class="api-method api-put">put</span>
+<span class="api-path">/api/v2/books/categories/{categoryId}</span>
+<span class="api-summary-text">기존 카테고리 수정</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-catv2-4" type="match" text="yes" default="no" class="api-body" tag="div">
-
-<p><strong>설명</strong><br>부모-자식 관계가 포함된 트리 구조의 카테고리 목록을 조회합니다.</p>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>설명</strong><br>특정 카테고리의 정보를 변경합니다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>categoryId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong> (<code>application/json</code>)</p>
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-catv2-4" text="yes"/>
+→ CategoryModifyReqDTO
+</$button>
+<$reveal state="$:/state/req-body-daiso-catv2-4" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-catv2-4','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">CategoryModifyReqDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-catv2-4" text="no"/>✕</$button>
 </div>
-
-<$reveal state="$:/state/schema-CategoryTreeListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-CategoryTreeListRespDTO" setTo="no">→ CategoryTreeListRespDTO ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-CategoryTreeListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-CategoryTreeListRespDTO" setTo="yes">→ CategoryTreeListRespDTO ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-CategoryTreeListRespDTO" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryModifyReqDTO">></div>
+</div></div></$reveal>
 <pre><code>{
-  "categoryTreeList": [
-    { "categoryId": "integer($int64)", "name": "string", "preCategoryId": "integer($int64)", "deep": "integer($int32)" }
-  ]
+  "name": "string",
+  "deep": 1
 }</code></pre>
-</$reveal>
-
-</$reveal>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 카테고리 수정 성공<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 카테고리 ID<br>
 </div>
+</$reveal></div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-catv2-5" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-catv2-5" setTo="no">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/api/v2/books/categories/{categoryId}</span>
+<span class="api-summary-text">카테고리 삭제</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/api-daiso-catv2-5" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-catv2-5" setTo="yes">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/api/v2/books/categories/{categoryId}</span>
+<span class="api-summary-text">카테고리 삭제</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/api-daiso-catv2-5" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>설명</strong><br>특정 카테고리를 삭제합니다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>categoryId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 카테고리 삭제 성공<br>
+<span class="api-resp resp-4xx">409</span> 하위 카테고리 존재 등 연관 데이터로 인한 삭제 불가<br>
+</div>
+</$reveal></div>

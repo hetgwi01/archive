@@ -73,3 +73,31 @@
   .api-schema-body pre, .api-body pre { background: #f5f5f5 !important; border: 1px solid #ddd !important; }
   .api-schema-body code, .api-body code { background: transparent !important; color: #111 !important; }
 }
+
+
+.schema-body { padding: 8px 12px; }
+.schema-field { display: flex; align-items: center; gap: 6px; padding: 3px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.schema-field:last-child { border-bottom: none; }
+.schema-field-name { font-family: monospace; color: #d4d4d4; min-width: 180px; }
+.schema-type { font-size: 11px; color: #aaa; }
+.schema-badge { font-size: 11px; font-weight: bold; padding: 1px 6px; border-radius: 3px; background: #b45309; color: white; }
+.schema-badge-string { background: #15803d; }
+.schema-badge-boolean { background: #7e22ce; }
+.schema-badge-enum { background: #1d4ed8; }
+.schema-badge-date { background: #0e7490; }
+.schema-array-label { color: #888; font-size: 11px; font-style: italic; }
+.schema-nested { margin-left: 16px; border-left: 2px solid #333; padding-left: 10px; margin-top: 2px; }
+.schema-ref { color: #60a5fa; font-family: monospace; font-size: 12px; }
+
+@media print {
+  .schema-field { border-bottom: 1px solid #eee !important; }
+  .schema-field-name { color: #111 !important; }
+  .schema-type { color: #555 !important; }
+  .schema-badge { color: white !important; }
+  .schema-badge-string { background: #15803d !important; }
+  .schema-badge-boolean { background: #7e22ce !important; }
+  .schema-badge-enum { background: #1d4ed8 !important; }
+  .schema-badge-date { background: #0e7490 !important; }
+  .schema-ref { color: #1d4ed8 !important; }
+  .schema-nested { border-left: 2px solid #ccc !important; }
+}

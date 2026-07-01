@@ -1,7 +1,7 @@
 created: 20260630080331502
-modified: 20260630082340790
+modified: 20260701115541232
 title: Project:daiso-book-API-Book-Order
-type: 
+type: text/vnd.tiddlywiki
 
 ! Book Order
 
@@ -15,242 +15,262 @@ type:
 <$action-setfield $tiddler="$:/state/api-daiso-order-2" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-order-3" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-order-4" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-OrderCancelRequest" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-BookReviewRequest" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-BookIdListReqDTO-1" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-BookIdListReqDTO-2" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-OrderBooksInfoRespDTO" text="yes"/>
-모두 펼치기
-</$button>
+모두 펼치기</$button>
 <$button class="api-toolbar-btn">
 <$action-setfield $tiddler="$:/state/api-daiso-order-1" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-order-2" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-order-3" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-order-4" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-OrderCancelRequest" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-BookReviewRequest" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-BookIdListReqDTO-1" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-BookIdListReqDTO-2" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-OrderBooksInfoRespDTO" text="no"/>
-모두 접기
-</$button>
+모두 접기</$button>
 </div>
 
 <div class="api-card">
-
 <$reveal state="$:/state/api-daiso-order-1" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-1" setTo="no">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/order-cancel</span>
 <span class="api-summary-text">주문 취소 시 재고 및 데이터 복구</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-1" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-1" setTo="yes">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/order-cancel</span>
 <span class="api-summary-text">주문 취소 시 재고 및 데이터 복구</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-1" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>주문이 취소되었을 때 해당 도서들의 상태를 업데이트하거나 관련 처리를 수행합니다.</p>
-
 <p><strong>Request Body</strong> (<code>application/json</code>)</p>
-
-<$reveal state="$:/state/schema-OrderCancelRequest" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-OrderCancelRequest" setTo="no">OrderCancelRequest ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-OrderCancelRequest" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-OrderCancelRequest" setTo="yes">OrderCancelRequest ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-OrderCancelRequest" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-1" text="yes"/>
+→ OrderCancelRequest
+</$button>
+<$reveal state="$:/state/req-body-daiso-order-1" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-order-1','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">OrderCancelRequest</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-1" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderCancelRequest">></div>
+</div></div></$reveal>
 <pre><code>{
-  "bookId": "integer($int64)",
-  "quantity": "integer($int32)"
+  "bookId": 1,
+  "quantity": 1
 }</code></pre>
-</$reveal>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
+<p><strong>Responses</strong></p><div class="api-resp-group">
 <span class="api-resp resp-2xx">204</span> 취소 처리 성공<br>
-<span class="api-resp resp-4xx">404</span> 주문 정보를 찾을 수 없음
+<span class="api-resp resp-4xx">404</span> 주문 정보를 찾을 수 없음<br>
 </div>
-
-</$reveal>
-
-</div>
+</$reveal></div>
 
 <div class="api-card">
-
 <$reveal state="$:/state/api-daiso-order-2" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-2" setTo="no">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/list/book-review</span>
 <span class="api-summary-text">사용자 도서 리뷰 상태 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-2" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-2" setTo="yes">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/list/book-review</span>
 <span class="api-summary-text">사용자 도서 리뷰 상태 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-2" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>주문한 도서들에 대해 사용자가 리뷰를 작성했는지 여부를 포함한 목록을 조회합니다.</p>
-
 <p><strong>Request Body</strong> (<code>application/json</code>)</p>
-
-<$reveal state="$:/state/schema-BookReviewRequest" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookReviewRequest" setTo="no">BookReviewRequest ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-BookReviewRequest" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookReviewRequest" setTo="yes">BookReviewRequest ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-BookReviewRequest" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-2" text="yes"/>
+→ BookReviewRequest
+</$button>
+<$reveal state="$:/state/req-body-daiso-order-2" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-order-2','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">BookReviewRequest</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-2" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookReviewRequest">></div>
+</div></div></$reveal>
 <pre><code>{
-  "userId": "integer($int64)",
-  "bookOrderDetailRequests": [
-    { "bookId": "integer($int64)", "orderDetailId": "integer($int64)" }
-  ]
+  "userId": 1,
+  "bookOrderDetailRequests": [{
+    "bookId": 1,
+    "orderDetailId": 1
+  }]
 }</code></pre>
-</$reveal>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK <span class="schema-array-label">array</span> 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-2-200" text="yes"/>
+→ BookReviewResponse
+</$button>
+<$reveal state="$:/state/resp-daiso-order-2-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-order-2-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">BookReviewResponse</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-2-200" text="no"/>✕</$button>
 </div>
-
-</$reveal>
-
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookReviewResponse">></div>
+</div></div></$reveal>
+<pre><code>[{
+  "book": {
+    "bookId": 1,
+    "title": "string",
+    "imageList": [{
+      "no": 1,
+      "path": "string",
+      "imageType": "COVER"
+    }]
+  },
+  "orderDetailId": 1,
+  "reviewId": 1
+}]</code></pre>
+<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
-
 <$reveal state="$:/state/api-daiso-order-3" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-3" setTo="no">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/books/list</span>
 <span class="api-summary-text">주문 도서 요약 목록 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-3" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-3" setTo="yes">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/books/list</span>
 <span class="api-summary-text">주문 도서 요약 목록 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-3" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>장바구니나 주문 목록 표시를 위한 도서 요약 정보를 조회합니다.</p>
-
 <p><strong>Request Body</strong> (<code>application/json</code>)</p>
-
-<$reveal state="$:/state/schema-BookIdListReqDTO-1" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookIdListReqDTO-1" setTo="no">BookIdListReqDTO ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-BookIdListReqDTO-1" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookIdListReqDTO-1" setTo="yes">BookIdListReqDTO ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-BookIdListReqDTO-1" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-3" text="yes"/>
+→ BookIdListReqDTO
+</$button>
+<$reveal state="$:/state/req-body-daiso-order-3" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-order-3','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">BookIdListReqDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-3" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookIdListReqDTO">></div>
+</div></div></$reveal>
 <pre><code>{
-  "bookIdList": ["integer"]
+  "bookIdList": [1]
 }</code></pre>
-</$reveal>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> OK
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK <span class="schema-array-label">array</span> 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-3-200" text="yes"/>
+→ OrderBookSummeryDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-order-3-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-order-3-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">OrderBookSummeryDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-3-200" text="no"/>✕</$button>
 </div>
-
-</$reveal>
-
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderBookSummeryDTO">></div>
+</div></div></$reveal>
+<pre><code>[{
+  "bookId": 1,
+  "title": "string",
+  "price": 1
+}]</code></pre>
+<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
-
 <$reveal state="$:/state/api-daiso-order-4" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-4" setTo="no">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/books/info</span>
 <span class="api-summary-text">주문 도서 상세 정보 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-4" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-order-4" setTo="yes">
-<span class="api-method api-post">POST</span>
+<span class="api-method api-post">post</span>
 <span class="api-path">/api/v2/books/order-service/books/info</span>
 <span class="api-summary-text">주문 도서 상세 정보 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-order-4" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>주문 처리에 필요한 도서들의 상세 정보를 리스트로 조회합니다.</p>
-
 <p><strong>Request Body</strong> (<code>application/json</code>)</p>
-
-<$reveal state="$:/state/schema-BookIdListReqDTO-2" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookIdListReqDTO-2" setTo="no">BookIdListReqDTO ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-BookIdListReqDTO-2" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookIdListReqDTO-2" setTo="yes">BookIdListReqDTO ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-BookIdListReqDTO-2" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-4" text="yes"/>
+→ BookIdListReqDTO
+</$button>
+<$reveal state="$:/state/req-body-daiso-order-4" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/req-body-daiso-order-4','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">BookIdListReqDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/req-body-daiso-order-4" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookIdListReqDTO">></div>
+</div></div></$reveal>
 <pre><code>{
-  "bookIdList": ["integer"]
+  "bookIdList": [1]
 }</code></pre>
-</$reveal>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> 조회 성공
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> 조회 성공 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-4-200" text="yes"/>
+→ OrderBooksInfoRespDTO
+</$button>
+<$reveal state="$:/state/resp-daiso-order-4-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-order-4-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">OrderBooksInfoRespDTO</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-order-4-200" text="no"/>✕</$button>
 </div>
-
-<$reveal state="$:/state/schema-OrderBooksInfoRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-OrderBooksInfoRespDTO" setTo="no">→ OrderBooksInfoRespDTO ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-OrderBooksInfoRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-OrderBooksInfoRespDTO" setTo="yes">→ OrderBooksInfoRespDTO ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-OrderBooksInfoRespDTO" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderBooksInfoRespDTO">></div>
+</div></div></$reveal>
 <pre><code>{
-  "orderBookInfoRespDTOList": [
-    {
-      "bookId": "integer($int64)",
-      "title": "string",
-      "price": "integer($int64)",
-      "stock": "integer($int32)",
-      "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-      "discountPercentage": "number",
-      "discountPrice": "integer($int64)",
-      "coverImage": "string",
-      "volumeNo": "integer($int32)",
-      "isPackaging": "boolean"
-    }
-  ]
+  "orderBookInfoRespDTOList": [{
+    "bookId": 1,
+    "title": "string",
+    "price": 1,
+    "stock": 1,
+    "status": "ON_SALE",
+    "discountPercentage": 0.0,
+    "discountPrice": 1,
+    "coverImage": "string",
+    "volumeNo": 1,
+    "isPackaging": false
+  }]
 }</code></pre>
-</$reveal>
-
-<div class="api-resp-group">
-<span class="api-resp resp-4xx">400</span> 잘못된 도서 ID 리스트
+<br>
+<span class="api-resp resp-4xx">400</span> 잘못된 도서 ID 리스트<br>
 </div>
-
-</$reveal>
-
-</div>
+</$reveal></div>

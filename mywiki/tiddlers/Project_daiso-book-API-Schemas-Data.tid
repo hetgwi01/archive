@@ -1,0 +1,937 @@
+title: Project:daiso-book-API-Schemas-Data
+type: application/json
+
+{
+  "AdminBookMetaData": {
+    "bookAdminResponseDTOS": {
+      "$ref": "PageBookAdminResponseDTO"
+    },
+    "totalDate": {
+      "$ref": "TotalDataRespDTO"
+    }
+  },
+  "AuthorInfoData": {
+    "authorName": {
+      "type": "string"
+    },
+    "roleName": {
+      "type": "string"
+    }
+  },
+  "AuthorRespDTO": {
+    "authorId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "roleId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "roleName": {
+      "type": "string"
+    }
+  },
+  "BookAdminResponseDTO": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "discountPercentage": {
+      "type": "number"
+    },
+    "discountPrice": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "stock": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "isDeleted": {
+      "type": "boolean"
+    }
+  },
+  "BookCategoryResponse": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "primaryCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "secondaryCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "BookIdListReqDTO": {
+    "bookIdList": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    }
+  },
+  "BookInfoDataView": {
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "index": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "authorList": {
+      "type": "array",
+      "$ref": "AuthorInfoData"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "categories": {
+      "type": "array",
+      "$ref": "CategoryRespDTO"
+    },
+    "tags": {
+      "type": "array",
+      "$ref": "TagInfoData"
+    }
+  },
+  "BookListByCategoryRespDTO": {
+    "bookList": {
+      "$ref": "PageBookListRespDTO"
+    }
+  },
+  "BookListRespDTO": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "authorList": {
+      "type": "array",
+      "$ref": "AuthorRespDTO"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "discountPercentage": {
+      "type": "number"
+    },
+    "discountPrice": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    },
+    "categories": {
+      "type": "array",
+      "$ref": "CategoryRespDTO"
+    },
+    "tags": {
+      "type": "array",
+      "$ref": "TagRespDTO"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "isPackaging": {
+      "type": "boolean"
+    },
+    "isLike": {
+      "type": "boolean"
+    },
+    "isDeleted": {
+      "type": "boolean"
+    }
+  },
+  "BookOrderDetailRequest": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "orderDetailId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "BookResponse": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    }
+  },
+  "BookReviewRequest": {
+    "userId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "bookOrderDetailRequests": {
+      "type": "array",
+      "$ref": "BookOrderDetailRequest"
+    }
+  },
+  "BookReviewResponse": {
+    "book": {
+      "$ref": "BookResponse"
+    },
+    "orderDetailId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "reviewId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "BookRespDTO": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "index": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "authorList": {
+      "type": "array",
+      "$ref": "AuthorRespDTO"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "discountPercentage": {
+      "type": "number"
+    },
+    "discountPrice": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isPackaging": {
+      "type": "boolean"
+    },
+    "stock": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "categories": {
+      "type": "array",
+      "$ref": "CategoryRespDTO"
+    },
+    "tags": {
+      "type": "array",
+      "$ref": "TagRespDTO"
+    },
+    "likeCount": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "isLike": {
+      "type": "boolean"
+    },
+    "reviewList": {
+      "type": "array",
+      "$ref": "ReviewRespDTO"
+    },
+    "isDeleted": {
+      "type": "boolean"
+    }
+  },
+  "BookUpdateView": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "index": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "authorList": {
+      "type": "array",
+      "$ref": "AuthorRespDTO"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isPackaging": {
+      "type": "boolean"
+    },
+    "stock": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "imageList": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "categories": {
+      "type": "array",
+      "$ref": "CategoryRespDTO"
+    },
+    "tags": {
+      "type": "array",
+      "$ref": "TagRespDTO"
+    },
+    "isDeleted": {
+      "type": "boolean"
+    }
+  },
+  "CategoryList": {
+    "categoryPathList": {
+      "type": "array",
+      "$ref": "CategoryPath"
+    }
+  },
+  "CategoryModifyReqDTO": {
+    "name": {
+      "type": "string"
+    },
+    "deep": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "CategoryPath": {
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "categoryName": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    }
+  },
+  "CategoryRegisterReqDTO": {
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    },
+    "deep": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "preCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "CategoryRespDTO": {
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "categoryName": {
+      "type": "string"
+    },
+    "deep": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "preCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "preCategoryName": {
+      "type": "string"
+    }
+  },
+  "CategorySimpleResponse": {
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "categoryName": {
+      "type": "string"
+    }
+  },
+  "CategoryTree": {
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    },
+    "preCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "deep": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "CategoryTreeListRespDTO": {
+    "categoryTreeList": {
+      "type": "array",
+      "$ref": "CategoryTree"
+    }
+  },
+  "FindIsbnMetaData": {
+    "refinedBook": {
+      "$ref": "BookInfoDataView"
+    },
+    "categoryList": {
+      "$ref": "CategoryList"
+    },
+    "roleNameList": {
+      "$ref": "RoleNameListRespDTO"
+    }
+  },
+  "ImageRespDTO": {
+    "no": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "path": {
+      "type": "string"
+    },
+    "imageType": {
+      "type": "string",
+      "enum": [
+        "COVER",
+        "DETAIL",
+        "REVIEW"
+      ]
+    }
+  },
+  "LikeListRespDTO": {
+    "likeId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "authorRespDTOList": {
+      "type": "array",
+      "$ref": "AuthorRespDTO"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "discountPercentage": {
+      "type": "number"
+    },
+    "discountPrice": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "image": {
+      "type": "string"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "packaging": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "MainPageBookListRespDTO": {
+    "bookOfTheWeek": {
+      "$ref": "SortBookListRespDTO"
+    },
+    "newReleases": {
+      "$ref": "SortBookListRespDTO"
+    }
+  },
+  "ModifyBookMetaData": {
+    "bookUpdateView": {
+      "$ref": "BookUpdateView"
+    },
+    "categoryList": {
+      "$ref": "CategoryList"
+    },
+    "roleNameList": {
+      "$ref": "RoleNameListRespDTO"
+    }
+  },
+  "MyLikeList": {
+    "likeList": {
+      "type": "array",
+      "$ref": "LikeListRespDTO"
+    }
+  },
+  "OrderBookInfoRespDTO": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "stock": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ON_SALE",
+        "SOLD_OUT",
+        "DISCONTINUE",
+        "UNPUBLISHED"
+      ]
+    },
+    "discountPercentage": {
+      "type": "number"
+    },
+    "discountPrice": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "coverImage": {
+      "type": "string"
+    },
+    "volumeNo": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "isPackaging": {
+      "type": "boolean"
+    }
+  },
+  "OrderBookSummeryDTO": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "OrderBooksInfoRespDTO": {
+    "orderBookInfoRespDTOList": {
+      "type": "array",
+      "$ref": "OrderBookInfoRespDTO"
+    }
+  },
+  "OrderCancelRequest": {
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "PageBookAdminResponseDTO": {
+    "totalElements": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "totalPages": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "pageable": {
+      "$ref": "PageableObject"
+    },
+    "first": {
+      "type": "boolean"
+    },
+    "last": {
+      "type": "boolean"
+    },
+    "numberOfElements": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "size": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "content": {
+      "type": "array",
+      "$ref": "BookAdminResponseDTO"
+    },
+    "number": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sort": {
+      "$ref": "SortObject"
+    },
+    "empty": {
+      "type": "boolean"
+    }
+  },
+  "PageBookListRespDTO": {
+    "totalElements": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "totalPages": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "pageable": {
+      "$ref": "PageableObject"
+    },
+    "first": {
+      "type": "boolean"
+    },
+    "last": {
+      "type": "boolean"
+    },
+    "numberOfElements": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "size": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "content": {
+      "type": "array",
+      "$ref": "BookListRespDTO"
+    },
+    "number": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sort": {
+      "$ref": "SortObject"
+    },
+    "empty": {
+      "type": "boolean"
+    }
+  },
+  "PageableObject": {
+    "unpaged": {
+      "type": "boolean"
+    },
+    "paged": {
+      "type": "boolean"
+    },
+    "pageNumber": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "pageSize": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "offset": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "sort": {
+      "$ref": "SortObject"
+    }
+  },
+  "RegisterBookMetaData": {
+    "categoryList": {
+      "$ref": "CategoryList"
+    },
+    "roleNameList": {
+      "$ref": "RoleNameListRespDTO"
+    }
+  },
+  "ReviewRespDTO": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "bookId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "bookTitle": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "content": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewImages": {
+      "type": "array",
+      "$ref": "ImageRespDTO"
+    }
+  },
+  "RoleNameListRespDTO": {
+    "roleNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "SortBookListRespDTO": {
+    "bookListRespDTOS": {
+      "type": "array",
+      "$ref": "BookListRespDTO"
+    }
+  },
+  "SortObject": {
+    "unsorted": {
+      "type": "boolean"
+    },
+    "sorted": {
+      "type": "boolean"
+    },
+    "empty": {
+      "type": "boolean"
+    }
+  },
+  "TagInfoData": {
+    "tagName": {
+      "type": "string"
+    }
+  },
+  "TagRespDTO": {
+    "tagId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "tagName": {
+      "type": "string"
+    }
+  },
+  "TestReq": {
+    "metadata": {
+      "type": "string"
+    },
+    "image0": {
+      "type": "string",
+      "format": "binary"
+    },
+    "image1": {
+      "type": "string",
+      "format": "binary"
+    },
+    "image2": {
+      "type": "string",
+      "format": "binary"
+    },
+    "image3": {
+      "type": "string",
+      "format": "binary"
+    },
+    "image4": {
+      "type": "string",
+      "format": "binary"
+    }
+  },
+  "TotalDataRespDTO": {
+    "totalCount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "soldOutCount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "newReviewCount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "categoryCount": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

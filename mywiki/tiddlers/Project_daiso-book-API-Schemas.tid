@@ -1,7 +1,7 @@
-created: 20260701004858842
-modified: 20260701004911096
-title: Project:daiso-book-API-Schemas
-type: 
+created: 20260701084410408
+modified: 20260701115239824
+title: Project_daiso-book-API-Schemas
+type: text/vnd.tiddlywiki
 
 ! Data Schemas
 
@@ -17,12 +17,14 @@ API에서 사용되는 전체 데이터 스키마 목록입니다.
 <$action-setfield $tiddler="$:/state/schema-full-BookAdminResponseDTO" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookCategoryResponse" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookIdListReqDTO" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookInfoDataView" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookListByCategoryRespDTO" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookListRespDTO" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookOrderDetailRequest" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-full-BookRespDTO" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookResponse" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookReviewRequest" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookReviewResponse" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookRespDTO" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookUpdateView" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-CategoryList" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-CategoryModifyReqDTO" text="yes"/>
@@ -44,7 +46,6 @@ API에서 사용되는 전체 데이터 스키마 목록입니다.
 <$action-setfield $tiddler="$:/state/schema-full-OrderCancelRequest" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageBookAdminResponseDTO" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageBookListRespDTO" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-full-Pageable" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageableObject" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-RegisterBookMetaData" text="yes"/>
 <$action-setfield $tiddler="$:/state/schema-full-ReviewRespDTO" text="yes"/>
@@ -64,12 +65,14 @@ API에서 사용되는 전체 데이터 스키마 목록입니다.
 <$action-setfield $tiddler="$:/state/schema-full-BookAdminResponseDTO" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookCategoryResponse" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookIdListReqDTO" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookInfoDataView" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookListByCategoryRespDTO" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookListRespDTO" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookOrderDetailRequest" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-full-BookRespDTO" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookResponse" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookReviewRequest" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookReviewResponse" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-BookRespDTO" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-BookUpdateView" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-CategoryList" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-CategoryModifyReqDTO" text="no"/>
@@ -91,7 +94,6 @@ API에서 사용되는 전체 데이터 스키마 목록입니다.
 <$action-setfield $tiddler="$:/state/schema-full-OrderCancelRequest" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageBookAdminResponseDTO" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageBookListRespDTO" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-full-Pageable" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-PageableObject" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-RegisterBookMetaData" text="no"/>
 <$action-setfield $tiddler="$:/state/schema-full-ReviewRespDTO" text="no"/>
@@ -108,1048 +110,540 @@ API에서 사용되는 전체 데이터 스키마 목록입니다.
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-AdminBookMetaData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AdminBookMetaData" setTo="no">
-<span class="api-path">AdminBookMetaData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AdminBookMetaData" setTo="no"><span class="api-path">AdminBookMetaData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-AdminBookMetaData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AdminBookMetaData" setTo="yes">
-<span class="api-path">AdminBookMetaData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AdminBookMetaData" setTo="yes"><span class="api-path">AdminBookMetaData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-AdminBookMetaData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookAdminResponseDTOS": "→ PageBookAdminResponseDTO",
-  "totalDate": "→ TotalDataRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-AdminBookMetaData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"AdminBookMetaData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-AuthorInfoData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AuthorInfoData" setTo="no">
-<span class="api-path">AuthorInfoData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AuthorInfoData" setTo="no"><span class="api-path">AuthorInfoData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-AuthorInfoData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AuthorInfoData" setTo="yes">
-<span class="api-path">AuthorInfoData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AuthorInfoData" setTo="yes"><span class="api-path">AuthorInfoData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-AuthorInfoData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "authorName": "string",
-  "roleName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-AuthorInfoData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"AuthorInfoData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-AuthorRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AuthorRespDTO" setTo="no">
-<span class="api-path">AuthorRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AuthorRespDTO" setTo="no"><span class="api-path">AuthorRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-AuthorRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-AuthorRespDTO" setTo="yes">
-<span class="api-path">AuthorRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-AuthorRespDTO" setTo="yes"><span class="api-path">AuthorRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-AuthorRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "authorId": "integer($int64)",
-  "authorName": "string",
-  "roleId": "integer($int64)",
-  "roleName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-AuthorRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"AuthorRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookAdminResponseDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookAdminResponseDTO" setTo="no">
-<span class="api-path">BookAdminResponseDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookAdminResponseDTO" setTo="no"><span class="api-path">BookAdminResponseDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookAdminResponseDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookAdminResponseDTO" setTo="yes">
-<span class="api-path">BookAdminResponseDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookAdminResponseDTO" setTo="yes"><span class="api-path">BookAdminResponseDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookAdminResponseDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "isbn": "string",
-  "title": "string",
-  "imageList": ["→ ImageRespDTO"],
-  "price": "integer($int64)",
-  "discountPercentage": "number",
-  "discountPrice": "integer($int64)",
-  "stock": "integer($int32)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "publicationDate": "string($date)",
-  "publisher": "string",
-  "isDeleted": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookAdminResponseDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookAdminResponseDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookCategoryResponse" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookCategoryResponse" setTo="no">
-<span class="api-path">BookCategoryResponse</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookCategoryResponse" setTo="no"><span class="api-path">BookCategoryResponse</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookCategoryResponse" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookCategoryResponse" setTo="yes">
-<span class="api-path">BookCategoryResponse</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookCategoryResponse" setTo="yes"><span class="api-path">BookCategoryResponse</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookCategoryResponse" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "primaryCategoryId": "integer($int64)",
-  "secondaryCategoryId": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookCategoryResponse" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookCategoryResponse">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookIdListReqDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookIdListReqDTO" setTo="no">
-<span class="api-path">BookIdListReqDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookIdListReqDTO" setTo="no"><span class="api-path">BookIdListReqDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookIdListReqDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookIdListReqDTO" setTo="yes">
-<span class="api-path">BookIdListReqDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookIdListReqDTO" setTo="yes"><span class="api-path">BookIdListReqDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookIdListReqDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookIdList": ["integer"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookIdListReqDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookIdListReqDTO">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-BookInfoDataView" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookInfoDataView" setTo="no"><span class="api-path">BookInfoDataView</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-BookInfoDataView" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookInfoDataView" setTo="yes"><span class="api-path">BookInfoDataView</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-BookInfoDataView" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookInfoDataView">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookListByCategoryRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookListByCategoryRespDTO" setTo="no">
-<span class="api-path">BookListByCategoryRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookListByCategoryRespDTO" setTo="no"><span class="api-path">BookListByCategoryRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookListByCategoryRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookListByCategoryRespDTO" setTo="yes">
-<span class="api-path">BookListByCategoryRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookListByCategoryRespDTO" setTo="yes"><span class="api-path">BookListByCategoryRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookListByCategoryRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookList": "→ PageBookListRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookListByCategoryRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookListByCategoryRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookListRespDTO" setTo="no">
-<span class="api-path">BookListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookListRespDTO" setTo="no"><span class="api-path">BookListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookListRespDTO" setTo="yes">
-<span class="api-path">BookListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookListRespDTO" setTo="yes"><span class="api-path">BookListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "isbn": "string",
-  "title": "string",
-  "description": "string",
-  "authorList": ["→ AuthorRespDTO"],
-  "publisher": "string",
-  "publicationDate": "string($date)",
-  "price": "integer($int64)",
-  "discountPercentage": "number",
-  "discountPrice": "integer($int64)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "imageList": ["→ ImageRespDTO"],
-  "categories": ["→ CategoryRespDTO"],
-  "tags": ["→ TagRespDTO"],
-  "volumeNo": "integer($int32)",
-  "isPackaging": "boolean",
-  "isLike": "boolean",
-  "isDeleted": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookOrderDetailRequest" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookOrderDetailRequest" setTo="no">
-<span class="api-path">BookOrderDetailRequest</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookOrderDetailRequest" setTo="no"><span class="api-path">BookOrderDetailRequest</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookOrderDetailRequest" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookOrderDetailRequest" setTo="yes">
-<span class="api-path">BookOrderDetailRequest</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookOrderDetailRequest" setTo="yes"><span class="api-path">BookOrderDetailRequest</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookOrderDetailRequest" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "orderDetailId": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookOrderDetailRequest" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookOrderDetailRequest">>
 </$reveal>
 </div>
 
 <div class="api-card">
-<$reveal state="$:/state/schema-full-BookRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookRespDTO" setTo="no">
-<span class="api-path">BookRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$reveal state="$:/state/schema-full-BookResponse" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookResponse" setTo="no"><span class="api-path">BookResponse</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookRespDTO" setTo="yes">
-<span class="api-path">BookRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$reveal state="$:/state/schema-full-BookResponse" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookResponse" setTo="yes"><span class="api-path">BookResponse</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "isbn": "string",
-  "title": "string",
-  "index": "string",
-  "description": "string",
-  "authorList": ["→ AuthorRespDTO"],
-  "publisher": "string",
-  "publicationDate": "string($date)",
-  "price": "integer($int64)",
-  "discountPercentage": "number",
-  "discountPrice": "integer($int64)",
-  "isPackaging": "boolean",
-  "stock": "integer($int32)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "imageList": ["→ ImageRespDTO"],
-  "volumeNo": "integer($int32)",
-  "categories": ["→ CategoryRespDTO"],
-  "tags": ["→ TagRespDTO"],
-  "likeCount": "integer($int32)",
-  "isLike": "boolean",
-  "reviewList": ["→ ReviewRespDTO"],
-  "isDeleted": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookResponse" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookResponse">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookReviewRequest" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewRequest" setTo="no">
-<span class="api-path">BookReviewRequest</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewRequest" setTo="no"><span class="api-path">BookReviewRequest</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookReviewRequest" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewRequest" setTo="yes">
-<span class="api-path">BookReviewRequest</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewRequest" setTo="yes"><span class="api-path">BookReviewRequest</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookReviewRequest" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "userId": "integer($int64)",
-  "bookOrderDetailRequests": ["→ BookOrderDetailRequest"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookReviewRequest" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookReviewRequest">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookReviewResponse" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewResponse" setTo="no">
-<span class="api-path">BookReviewResponse</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewResponse" setTo="no"><span class="api-path">BookReviewResponse</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookReviewResponse" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewResponse" setTo="yes">
-<span class="api-path">BookReviewResponse</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookReviewResponse" setTo="yes"><span class="api-path">BookReviewResponse</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookReviewResponse" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "book": "→ BookResponse",
-  "orderDetailId": "integer($int64)",
-  "reviewId": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookReviewResponse" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookReviewResponse">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-BookRespDTO" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookRespDTO" setTo="no"><span class="api-path">BookRespDTO</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-BookRespDTO" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-BookRespDTO" setTo="yes"><span class="api-path">BookRespDTO</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-BookRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-BookUpdateView" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookUpdateView" setTo="no">
-<span class="api-path">BookUpdateView</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookUpdateView" setTo="no"><span class="api-path">BookUpdateView</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-BookUpdateView" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-BookUpdateView" setTo="yes">
-<span class="api-path">BookUpdateView</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-BookUpdateView" setTo="yes"><span class="api-path">BookUpdateView</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-BookUpdateView" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "isbn": "string",
-  "title": "string",
-  "index": "string",
-  "description": "string",
-  "authorList": ["→ AuthorRespDTO"],
-  "publisher": "string",
-  "publicationDate": "string($date)",
-  "price": "integer($int64)",
-  "isPackaging": "boolean",
-  "stock": "integer($int32)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "imageList": ["→ ImageRespDTO"],
-  "volumeNo": "integer($int32)",
-  "categories": ["→ CategoryRespDTO"],
-  "tags": ["→ TagRespDTO"],
-  "isDeleted": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-BookUpdateView" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookUpdateView">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryList" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryList" setTo="no">
-<span class="api-path">CategoryList</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryList" setTo="no"><span class="api-path">CategoryList</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryList" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryList" setTo="yes">
-<span class="api-path">CategoryList</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryList" setTo="yes"><span class="api-path">CategoryList</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryList" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryPathList": ["→ CategoryPath"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryList" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryList">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryModifyReqDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryModifyReqDTO" setTo="no">
-<span class="api-path">CategoryModifyReqDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryModifyReqDTO" setTo="no"><span class="api-path">CategoryModifyReqDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryModifyReqDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryModifyReqDTO" setTo="yes">
-<span class="api-path">CategoryModifyReqDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryModifyReqDTO" setTo="yes"><span class="api-path">CategoryModifyReqDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryModifyReqDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "name": "string",
-  "deep": "integer($int32)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryModifyReqDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryModifyReqDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryPath" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryPath" setTo="no">
-<span class="api-path">CategoryPath</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryPath" setTo="no"><span class="api-path">CategoryPath</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryPath" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryPath" setTo="yes">
-<span class="api-path">CategoryPath</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryPath" setTo="yes"><span class="api-path">CategoryPath</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryPath" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryId": "integer($int64)",
-  "categoryName": "string",
-  "path": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryPath" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryPath">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryRegisterReqDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRegisterReqDTO" setTo="no">
-<span class="api-path">CategoryRegisterReqDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRegisterReqDTO" setTo="no"><span class="api-path">CategoryRegisterReqDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryRegisterReqDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRegisterReqDTO" setTo="yes">
-<span class="api-path">CategoryRegisterReqDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRegisterReqDTO" setTo="yes"><span class="api-path">CategoryRegisterReqDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryRegisterReqDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryId": "integer($int64)",
-  "name": "string",
-  "deep": "integer($int32)",
-  "preCategoryId": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryRegisterReqDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryRegisterReqDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRespDTO" setTo="no">
-<span class="api-path">CategoryRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRespDTO" setTo="no"><span class="api-path">CategoryRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRespDTO" setTo="yes">
-<span class="api-path">CategoryRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryRespDTO" setTo="yes"><span class="api-path">CategoryRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryId": "integer($int64)",
-  "categoryName": "string",
-  "deep": "integer($int32)",
-  "preCategoryId": "integer($int64)",
-  "preCategoryName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategorySimpleResponse" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategorySimpleResponse" setTo="no">
-<span class="api-path">CategorySimpleResponse</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategorySimpleResponse" setTo="no"><span class="api-path">CategorySimpleResponse</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategorySimpleResponse" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategorySimpleResponse" setTo="yes">
-<span class="api-path">CategorySimpleResponse</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategorySimpleResponse" setTo="yes"><span class="api-path">CategorySimpleResponse</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategorySimpleResponse" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryId": "integer($int64)",
-  "categoryName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategorySimpleResponse" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategorySimpleResponse">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryTree" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTree" setTo="no">
-<span class="api-path">CategoryTree</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTree" setTo="no"><span class="api-path">CategoryTree</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryTree" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTree" setTo="yes">
-<span class="api-path">CategoryTree</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTree" setTo="yes"><span class="api-path">CategoryTree</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryTree" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryId": "integer($int64)",
-  "name": "string",
-  "preCategoryId": "integer($int64)",
-  "deep": "integer($int32)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryTree" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryTree">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-CategoryTreeListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTreeListRespDTO" setTo="no">
-<span class="api-path">CategoryTreeListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTreeListRespDTO" setTo="no"><span class="api-path">CategoryTreeListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-CategoryTreeListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTreeListRespDTO" setTo="yes">
-<span class="api-path">CategoryTreeListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-CategoryTreeListRespDTO" setTo="yes"><span class="api-path">CategoryTreeListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-CategoryTreeListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryTreeList": ["→ CategoryTree"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-CategoryTreeListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategoryTreeListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-FindIsbnMetaData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-FindIsbnMetaData" setTo="no">
-<span class="api-path">FindIsbnMetaData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-FindIsbnMetaData" setTo="no"><span class="api-path">FindIsbnMetaData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-FindIsbnMetaData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-FindIsbnMetaData" setTo="yes">
-<span class="api-path">FindIsbnMetaData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-FindIsbnMetaData" setTo="yes"><span class="api-path">FindIsbnMetaData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-FindIsbnMetaData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "refinedBook": "→ BookInfoDataView",
-  "categoryList": "→ CategoryList",
-  "roleNameList": "→ RoleNameListRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-FindIsbnMetaData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"FindIsbnMetaData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-ImageRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ImageRespDTO" setTo="no">
-<span class="api-path">ImageRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ImageRespDTO" setTo="no"><span class="api-path">ImageRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-ImageRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ImageRespDTO" setTo="yes">
-<span class="api-path">ImageRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ImageRespDTO" setTo="yes"><span class="api-path">ImageRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-ImageRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "no": "integer($int64)",
-  "path": "string",
-  "imageType": "enum: COVER, DETAIL, REVIEW"
-}</code></pre>
+<$reveal state="$:/state/schema-full-ImageRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ImageRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-LikeListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-LikeListRespDTO" setTo="no">
-<span class="api-path">LikeListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-LikeListRespDTO" setTo="no"><span class="api-path">LikeListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-LikeListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-LikeListRespDTO" setTo="yes">
-<span class="api-path">LikeListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-LikeListRespDTO" setTo="yes"><span class="api-path">LikeListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-LikeListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "likeId": "integer($int64)",
-  "bookId": "integer($int64)",
-  "isbn": "string",
-  "title": "string",
-  "authorRespDTOList": ["→ AuthorRespDTO"],
-  "price": "integer($int64)",
-  "discountPercentage": "number",
-  "discountPrice": "integer($int64)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "image": "string",
-  "volumeNo": "integer($int32)",
-  "packaging": "boolean",
-  "createdAt": "string($date-time)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-LikeListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"LikeListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-MainPageBookListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-MainPageBookListRespDTO" setTo="no">
-<span class="api-path">MainPageBookListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-MainPageBookListRespDTO" setTo="no"><span class="api-path">MainPageBookListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-MainPageBookListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-MainPageBookListRespDTO" setTo="yes">
-<span class="api-path">MainPageBookListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-MainPageBookListRespDTO" setTo="yes"><span class="api-path">MainPageBookListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-MainPageBookListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookOfTheWeek": "→ SortBookListRespDTO",
-  "newReleases": "→ SortBookListRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-MainPageBookListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"MainPageBookListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-ModifyBookMetaData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ModifyBookMetaData" setTo="no">
-<span class="api-path">ModifyBookMetaData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ModifyBookMetaData" setTo="no"><span class="api-path">ModifyBookMetaData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-ModifyBookMetaData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ModifyBookMetaData" setTo="yes">
-<span class="api-path">ModifyBookMetaData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ModifyBookMetaData" setTo="yes"><span class="api-path">ModifyBookMetaData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-ModifyBookMetaData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookUpdateView": "→ BookUpdateView",
-  "categoryList": "→ CategoryList",
-  "roleNameList": "→ RoleNameListRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-ModifyBookMetaData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ModifyBookMetaData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-MyLikeList" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-MyLikeList" setTo="no">
-<span class="api-path">MyLikeList</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-MyLikeList" setTo="no"><span class="api-path">MyLikeList</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-MyLikeList" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-MyLikeList" setTo="yes">
-<span class="api-path">MyLikeList</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-MyLikeList" setTo="yes"><span class="api-path">MyLikeList</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-MyLikeList" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "likeList": ["→ LikeListRespDTO"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-MyLikeList" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"MyLikeList">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-OrderBookInfoRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookInfoRespDTO" setTo="no">
-<span class="api-path">OrderBookInfoRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookInfoRespDTO" setTo="no"><span class="api-path">OrderBookInfoRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-OrderBookInfoRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookInfoRespDTO" setTo="yes">
-<span class="api-path">OrderBookInfoRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookInfoRespDTO" setTo="yes"><span class="api-path">OrderBookInfoRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-OrderBookInfoRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "title": "string",
-  "price": "integer($int64)",
-  "stock": "integer($int32)",
-  "status": "enum: ON_SALE, SOLD_OUT, DISCONTINUE, UNPUBLISHED",
-  "discountPercentage": "number",
-  "discountPrice": "integer($int64)",
-  "coverImage": "string",
-  "volumeNo": "integer($int32)",
-  "isPackaging": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-OrderBookInfoRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderBookInfoRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-OrderBookSummeryDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookSummeryDTO" setTo="no">
-<span class="api-path">OrderBookSummeryDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookSummeryDTO" setTo="no"><span class="api-path">OrderBookSummeryDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-OrderBookSummeryDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookSummeryDTO" setTo="yes">
-<span class="api-path">OrderBookSummeryDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBookSummeryDTO" setTo="yes"><span class="api-path">OrderBookSummeryDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-OrderBookSummeryDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "title": "string",
-  "price": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-OrderBookSummeryDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderBookSummeryDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-OrderBooksInfoRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBooksInfoRespDTO" setTo="no">
-<span class="api-path">OrderBooksInfoRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBooksInfoRespDTO" setTo="no"><span class="api-path">OrderBooksInfoRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-OrderBooksInfoRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderBooksInfoRespDTO" setTo="yes">
-<span class="api-path">OrderBooksInfoRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderBooksInfoRespDTO" setTo="yes"><span class="api-path">OrderBooksInfoRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-OrderBooksInfoRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "orderBookInfoRespDTOList": ["→ OrderBookInfoRespDTO"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-OrderBooksInfoRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderBooksInfoRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-OrderCancelRequest" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderCancelRequest" setTo="no">
-<span class="api-path">OrderCancelRequest</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderCancelRequest" setTo="no"><span class="api-path">OrderCancelRequest</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-OrderCancelRequest" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-OrderCancelRequest" setTo="yes">
-<span class="api-path">OrderCancelRequest</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-OrderCancelRequest" setTo="yes"><span class="api-path">OrderCancelRequest</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-OrderCancelRequest" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookId": "integer($int64)",
-  "quantity": "integer($int32)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-OrderCancelRequest" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"OrderCancelRequest">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-PageBookAdminResponseDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageBookAdminResponseDTO" setTo="no">
-<span class="api-path">PageBookAdminResponseDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageBookAdminResponseDTO" setTo="no"><span class="api-path">PageBookAdminResponseDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-PageBookAdminResponseDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageBookAdminResponseDTO" setTo="yes">
-<span class="api-path">PageBookAdminResponseDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageBookAdminResponseDTO" setTo="yes"><span class="api-path">PageBookAdminResponseDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-PageBookAdminResponseDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "totalElements": "integer($int64)",
-  "totalPages": "integer($int32)",
-  "pageable": "→ PageableObject",
-  "first": "boolean",
-  "last": "boolean",
-  "numberOfElements": "integer($int32)",
-  "size": "integer($int32)",
-  "content": ["→ BookAdminResponseDTO"],
-  "number": "integer($int32)",
-  "sort": "→ SortObject",
-  "empty": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-PageBookAdminResponseDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"PageBookAdminResponseDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-PageBookListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageBookListRespDTO" setTo="no">
-<span class="api-path">PageBookListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageBookListRespDTO" setTo="no"><span class="api-path">PageBookListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-PageBookListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageBookListRespDTO" setTo="yes">
-<span class="api-path">PageBookListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageBookListRespDTO" setTo="yes"><span class="api-path">PageBookListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-PageBookListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "totalElements": "integer($int64)",
-  "totalPages": "integer($int32)",
-  "pageable": "→ PageableObject",
-  "first": "boolean",
-  "last": "boolean",
-  "numberOfElements": "integer($int32)",
-  "size": "integer($int32)",
-  "content": ["→ BookListRespDTO"],
-  "number": "integer($int32)",
-  "sort": "→ SortObject",
-  "empty": "boolean"
-}</code></pre>
-</$reveal>
-</div>
-
-<div class="api-card">
-<$reveal state="$:/state/schema-full-Pageable" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-Pageable" setTo="no">
-<span class="api-path">Pageable</span>
-<span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
-<$reveal state="$:/state/schema-full-Pageable" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-Pageable" setTo="yes">
-<span class="api-path">Pageable</span>
-<span class="api-chevron">▶</span>
-</$button>
-</$reveal>
-<$reveal state="$:/state/schema-full-Pageable" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "page": "integer($int32)",
-  "size": "integer($int32)",
-  "sort": ["string"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-PageBookListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"PageBookListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-PageableObject" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageableObject" setTo="no">
-<span class="api-path">PageableObject</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageableObject" setTo="no"><span class="api-path">PageableObject</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-PageableObject" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-PageableObject" setTo="yes">
-<span class="api-path">PageableObject</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-PageableObject" setTo="yes"><span class="api-path">PageableObject</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-PageableObject" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "paged": "boolean",
-  "pageNumber": "integer($int32)",
-  "pageSize": "integer($int32)",
-  "unpaged": "boolean",
-  "offset": "integer($int64)",
-  "sort": "→ SortObject"
-}</code></pre>
+<$reveal state="$:/state/schema-full-PageableObject" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"PageableObject">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-RegisterBookMetaData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-RegisterBookMetaData" setTo="no">
-<span class="api-path">RegisterBookMetaData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-RegisterBookMetaData" setTo="no"><span class="api-path">RegisterBookMetaData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-RegisterBookMetaData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-RegisterBookMetaData" setTo="yes">
-<span class="api-path">RegisterBookMetaData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-RegisterBookMetaData" setTo="yes"><span class="api-path">RegisterBookMetaData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-RegisterBookMetaData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "categoryList": "→ CategoryList",
-  "roleNameList": "→ RoleNameListRespDTO"
-}</code></pre>
+<$reveal state="$:/state/schema-full-RegisterBookMetaData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"RegisterBookMetaData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-ReviewRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ReviewRespDTO" setTo="no">
-<span class="api-path">ReviewRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ReviewRespDTO" setTo="no"><span class="api-path">ReviewRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-ReviewRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-ReviewRespDTO" setTo="yes">
-<span class="api-path">ReviewRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-ReviewRespDTO" setTo="yes"><span class="api-path">ReviewRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-ReviewRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "id": "integer($int64)",
-  "bookId": "integer($int64)",
-  "bookTitle": "string",
-  "userId": "integer($int64)",
-  "content": "string",
-  "rating": "integer($int32)",
-  "createdAt": "string($date-time)",
-  "modifiedAt": "string($date-time)",
-  "reviewImages": ["→ ImageRespDTO"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-ReviewRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"ReviewRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-RoleNameListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-RoleNameListRespDTO" setTo="no">
-<span class="api-path">RoleNameListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-RoleNameListRespDTO" setTo="no"><span class="api-path">RoleNameListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-RoleNameListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-RoleNameListRespDTO" setTo="yes">
-<span class="api-path">RoleNameListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-RoleNameListRespDTO" setTo="yes"><span class="api-path">RoleNameListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-RoleNameListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "roleNames": ["string"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-RoleNameListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"RoleNameListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-SortBookListRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-SortBookListRespDTO" setTo="no">
-<span class="api-path">SortBookListRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-SortBookListRespDTO" setTo="no"><span class="api-path">SortBookListRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-SortBookListRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-SortBookListRespDTO" setTo="yes">
-<span class="api-path">SortBookListRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-SortBookListRespDTO" setTo="yes"><span class="api-path">SortBookListRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-SortBookListRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "bookListRespDTOS": ["→ BookListRespDTO"]
-}</code></pre>
+<$reveal state="$:/state/schema-full-SortBookListRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"SortBookListRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-SortObject" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-SortObject" setTo="no">
-<span class="api-path">SortObject</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-SortObject" setTo="no"><span class="api-path">SortObject</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-SortObject" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-SortObject" setTo="yes">
-<span class="api-path">SortObject</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-SortObject" setTo="yes"><span class="api-path">SortObject</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-SortObject" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "sorted": "boolean",
-  "unsorted": "boolean",
-  "empty": "boolean"
-}</code></pre>
+<$reveal state="$:/state/schema-full-SortObject" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"SortObject">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-TagInfoData" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TagInfoData" setTo="no">
-<span class="api-path">TagInfoData</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TagInfoData" setTo="no"><span class="api-path">TagInfoData</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-TagInfoData" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TagInfoData" setTo="yes">
-<span class="api-path">TagInfoData</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TagInfoData" setTo="yes"><span class="api-path">TagInfoData</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-TagInfoData" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "tagName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-TagInfoData" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"TagInfoData">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-TagRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TagRespDTO" setTo="no">
-<span class="api-path">TagRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TagRespDTO" setTo="no"><span class="api-path">TagRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-TagRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TagRespDTO" setTo="yes">
-<span class="api-path">TagRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TagRespDTO" setTo="yes"><span class="api-path">TagRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-TagRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "tagId": "integer($int64)",
-  "tagName": "string"
-}</code></pre>
+<$reveal state="$:/state/schema-full-TagRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"TagRespDTO">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-TestReq" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TestReq" setTo="no">
-<span class="api-path">TestReq</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TestReq" setTo="no"><span class="api-path">TestReq</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-TestReq" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TestReq" setTo="yes">
-<span class="api-path">TestReq</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TestReq" setTo="yes"><span class="api-path">TestReq</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-TestReq" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "metadata": "string",
-  "image0": "string($binary)",
-  "image1": "string($binary)",
-  "image2": "string($binary)",
-  "image3": "string($binary)",
-  "image4": "string($binary)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-TestReq" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"TestReq">>
 </$reveal>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/schema-full-TotalDataRespDTO" type="match" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TotalDataRespDTO" setTo="no">
-<span class="api-path">TotalDataRespDTO</span>
-<span class="api-chevron open">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TotalDataRespDTO" setTo="no"><span class="api-path">TotalDataRespDTO</span><span class="api-chevron open">▶</span></$button>
 </$reveal>
 <$reveal state="$:/state/schema-full-TotalDataRespDTO" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-summary-btn" set="$:/state/schema-full-TotalDataRespDTO" setTo="yes">
-<span class="api-path">TotalDataRespDTO</span>
-<span class="api-chevron">▶</span>
-</$button>
+<$button class="api-summary-btn" set="$:/state/schema-full-TotalDataRespDTO" setTo="yes"><span class="api-path">TotalDataRespDTO</span><span class="api-chevron">▶</span></$button>
 </$reveal>
-<$reveal state="$:/state/schema-full-TotalDataRespDTO" type="match" text="yes" default="no" class="api-body" tag="div">
-<pre><code>{
-  "totalCount": "integer($int64)",
-  "soldOutCount": "integer($int64)",
-  "newReviewCount": "integer($int64)",
-  "categoryCount": "integer($int64)"
-}</code></pre>
+<$reveal state="$:/state/schema-full-TotalDataRespDTO" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"TotalDataRespDTO">>
 </$reveal>
 </div>

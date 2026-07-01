@@ -1,0 +1,132 @@
+created: 20260701224157690
+modified: 20260701224219570
+tags: Snippet
+title: API-Doc-Schema-Snippet
+type: text/vnd.tiddlywiki
+
+! 스키마 데이터 스니펫 모음
+
+새 프로젝트의 API 스키마를 등록하고 사용하는 방법을 정리한 스니펫입니다.
+
+---
+
+!! 1. 스키마 데이터 티들러 생성
+
+새 프로젝트마다 아래 형식으로 JSON 티들러를 하나 만드세요.
+
+* 제목: `Project:프로젝트명-API-Schemas-Data`
+* 타입: `application/json`
+
+<pre>
+{
+  "SchemaName": {
+    "fieldName": { "type": "string" },
+    "fieldName2": { "type": "integer", "format": "int64" }
+  }
+}
+</pre>
+
+---
+
+!! 2. 필드 타입 작성 규칙
+
+|타입 |작성법 |h
+|string |`{ "type": "string" }` |
+|integer (int64) |`{ "type": "integer", "format": "int64" }` |
+|integer (int32) |`{ "type": "integer", "format": "int32" }` |
+|number (float) |`{ "type": "number" }` |
+|boolean |`{ "type": "boolean" }` |
+|date |`{ "type": "string", "format": "date" }` |
+|date-time |`{ "type": "string", "format": "date-time" }` |
+|binary |`{ "type": "string", "format": "binary" }` |
+|enum |`{ "type": "string", "enum": ["A", "B", "C"] }` |
+|다른 DTO 참조 |`{ "$ref": "OtherSchemaName" }` |
+|DTO 배열 |`{ "type": "array", "$ref": "OtherSchemaName" }` |
+|string 배열 |`{ "type": "array", "items": { "type": "string" } }` |
+|integer 배열 |`{ "type": "array", "items": { "type": "integer", "format": "int64" } }` |
+
+---
+
+!! 3. JSON 데이터 예시
+
+<pre>
+{
+  "BookRespDTO": {
+    "bookId": { "type": "integer", "format": "int64" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["ON_SALE", "SOLD_OUT"] },
+    "authorList": { "type": "array", "$ref": "AuthorRespDTO" },
+    "isDeleted": { "type": "boolean" }
+  },
+  "AuthorRespDTO": {
+    "authorId": { "type": "integer", "format": "int64" },
+    "authorName": { "type": "string" }
+  }
+}
+</pre>
+
+---
+
+!! 4. 스키마 페이지 티들러 생성
+
+스키마 목록 페이지도 프로젝트마다 하나 만드세요.
+
+* 제목: `Project:프로젝트명-API-Schemas`
+
+<pre>
+! Data Schemas
+
+&lt;div class="api-back-link"&gt;[_[← API 목차로 돌아가기|Project:프로젝트명-API-Doc]_]&lt;/div&gt;
+
+&lt;div class="api-toolbar"&gt;
+&lt;$button class="api-toolbar-btn"&gt;
+&lt;$action-setfield $tiddler="$_:/state/schema-full-SchemaName1" text="yes"/&gt;
+&lt;$action-setfield $tiddler="$_:/state/schema-full-SchemaName2" text="yes"/&gt;
+모두 펼치기&lt;/$button&gt;
+&lt;$button class="api-toolbar-btn"&gt;
+&lt;$action-setfield $tiddler="$_:/state/schema-full-SchemaName1" text="no"/&gt;
+&lt;$action-setfield $tiddler="$_:/state/schema-full-SchemaName2" text="no"/&gt;
+모두 접기&lt;/$button&gt;
+&lt;/div&gt;
+
+&lt;div class="api-card"&gt;
+&lt;$reveal state="$_:/state/schema-full-SchemaName1" type="match" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-summary-btn" set="$_:/state/schema-full-SchemaName1" setTo="no"&gt;
+&lt;span class="api-path"&gt;SchemaName1&lt;/span&gt;&lt;span class="api-chevron open"&gt;▶&lt;/span&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/schema-full-SchemaName1" type="nomatch" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-summary-btn" set="$_:/state/schema-full-SchemaName1" setTo="yes"&gt;
+&lt;span class="api-path"&gt;SchemaName1&lt;/span&gt;&lt;span class="api-chevron"&gt;▶&lt;/span&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/schema-full-SchemaName1" type="match" text="yes" default="no" class="api-body schema-body" tag="div"&gt;
+&lt;&lt;renderSchema dataTiddler:"Project:프로젝트명-API-Schemas-Data" schemaName:"SchemaName1"&gt;&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+</pre>
+
+---
+
+!! 5. renderSchema 매크로 직접 호출
+
+엔드포인트 팝업 안에서 스키마를 보여줄 때:
+
+<pre>
+&lt;&lt;renderSchema dataTiddler:"Project:프로젝트명-API-Schemas-Data" schemaName:"BookRespDTO"&gt;&gt;
+</pre>
+
+---
+
+!! 6. 교체 키워드 목록
+
+|키워드 |설명 |예시 |h
+|`프로젝트명` |프로젝트 고유명 |`daiso-book` |
+|`SchemaName` |스키마 이름 (DTO명) |`BookRespDTO` |
+
+---
+
+!! 7. 주의사항
+
+* JSON 티들러 타입을 반드시 `application/json`으로 설정
+* `$ref`는 같은 JSON 티들러 안에 정의된 스키마명만 참조 가능
+* 스키마 추가/수정 시 JSON 티들러 하나만 수정하면 모든 곳에 반영됨
+* `renderSchema` 매크로는 `API-Schema-Renderer` 티들러가 있어야 작동

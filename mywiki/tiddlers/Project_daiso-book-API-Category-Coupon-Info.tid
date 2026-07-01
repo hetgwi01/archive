@@ -1,7 +1,7 @@
 created: 20260630123812112
-modified: 20260630123817400
+modified: 20260701120019632
 title: Project:daiso-book-API-Category-Coupon-Info
-type: 
+type: text/vnd.tiddlywiki
 
 ! Category Coupon & Info
 
@@ -13,99 +13,103 @@ type:
 <$button class="api-toolbar-btn">
 <$action-setfield $tiddler="$:/state/api-daiso-ccoupon-1" text="yes"/>
 <$action-setfield $tiddler="$:/state/api-daiso-ccoupon-2" text="yes"/>
-<$action-setfield $tiddler="$:/state/schema-BookCategoryResponse" text="yes"/>
-모두 펼치기
-</$button>
+모두 펼치기</$button>
 <$button class="api-toolbar-btn">
 <$action-setfield $tiddler="$:/state/api-daiso-ccoupon-1" text="no"/>
 <$action-setfield $tiddler="$:/state/api-daiso-ccoupon-2" text="no"/>
-<$action-setfield $tiddler="$:/state/schema-BookCategoryResponse" text="no"/>
-모두 접기
-</$button>
+모두 접기</$button>
 </div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-ccoupon-1" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-1" setTo="no">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/books/{bookId}/category</span>
 <span class="api-summary-text">도서의 카테고리 정보 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-ccoupon-1" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-1" setTo="yes">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/books/{bookId}/category</span>
 <span class="api-summary-text">도서의 카테고리 정보 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-ccoupon-1" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>특정 도서가 속한 카테고리 정보를 조회합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>bookId</td><td>path</td><td>integer($int64)</td><td>✓</td><td>도서 고유 ID</td></tr>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>bookId</td><td>path</td><td>integer($int64)</td><td>✓</td></tr>
 </table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> 조회 성공<br>
-<span class="api-resp resp-4xx">404</span> 해당 도서의 카테고리 정보를 찾을 수 없음
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> 조회 성공 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-ccoupon-1-200" text="yes"/>
+→ BookCategoryResponse
+</$button>
+<$reveal state="$:/state/resp-daiso-ccoupon-1-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-ccoupon-1-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">BookCategoryResponse</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-ccoupon-1-200" text="no"/>✕</$button>
 </div>
-
-<$reveal state="$:/state/schema-BookCategoryResponse" type="match" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookCategoryResponse" setTo="no">→ BookCategoryResponse ▾</$button>
-</$reveal>
-<$reveal state="$:/state/schema-BookCategoryResponse" type="nomatch" text="yes" default="no" tag="div">
-<$button class="api-schema-link" set="$:/state/schema-BookCategoryResponse" setTo="yes">→ BookCategoryResponse ▸</$button>
-</$reveal>
-
-<$reveal state="$:/state/schema-BookCategoryResponse" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"BookCategoryResponse">></div>
+</div></div></$reveal>
 <pre><code>{
-  "bookId": "integer($int64)",
-  "primaryCategoryId": "integer($int64)",
-  "secondaryCategoryId": "integer($int64)"
+  "bookId": 1,
+  "primaryCategoryId": 1,
+  "secondaryCategoryId": 1
 }</code></pre>
-</$reveal>
-
-</$reveal>
+<br>
+<span class="api-resp resp-4xx">404</span> 해당 도서의 카테고리 정보를 찾을 수 없음<br>
 </div>
+</$reveal></div>
 
 <div class="api-card">
 <$reveal state="$:/state/api-daiso-ccoupon-2" type="match" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-2" setTo="no">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/books/categoriesIds</span>
 <span class="api-summary-text">카테고리 ID 리스트로 단순 정보 조회</span>
 <span class="api-chevron open">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-ccoupon-2" type="nomatch" text="yes" default="no" tag="div">
 <$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-2" setTo="yes">
-<span class="api-method api-get">GET</span>
+<span class="api-method api-get">get</span>
 <span class="api-path">/api/books/categoriesIds</span>
 <span class="api-summary-text">카테고리 ID 리스트로 단순 정보 조회</span>
 <span class="api-chevron">▶</span>
-</$button>
-</$reveal>
+</$button></$reveal>
 <$reveal state="$:/state/api-daiso-ccoupon-2" type="match" text="yes" default="no" class="api-body" tag="div">
-
 <p><strong>설명</strong><br>쿠폰 적용 범위 확인 등을 위해 여러 카테고리의 이름과 ID 목록을 조회합니다.</p>
-
-<p><strong>Parameters</strong></p>
-<table>
-<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
-<tr><td>ids</td><td>query</td><td>array</td><td>✓</td><td>조회할 카테고리 ID 목록</td></tr>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>ids</td><td>query</td><td>array[integer($int64)]</td><td>✓</td></tr>
 </table>
-
-<p><strong>Responses</strong></p>
-<div class="api-resp-group">
-<span class="api-resp resp-2xx">200</span> 조회 성공
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> 조회 성공 <span class="schema-array-label">array</span> 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-daiso-ccoupon-2-200" text="yes"/>
+→ CategorySimpleResponse
+</$button>
+<$reveal state="$:/state/resp-daiso-ccoupon-2-200" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-daiso-ccoupon-2-200','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">CategorySimpleResponse</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-daiso-ccoupon-2-200" text="no"/>✕</$button>
 </div>
-
-</$reveal>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:daiso-book-API-Schemas-Data" schemaName:"CategorySimpleResponse">></div>
+</div></div></$reveal>
+<pre><code>[{
+  "categoryId": 1,
+  "categoryName": "string"
+}]</code></pre>
+<br>
 </div>
+</$reveal></div>
