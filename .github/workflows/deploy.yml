@@ -31,6 +31,7 @@ jobs:
       - name: Add read-only config
         run: |
           echo -e "title: \$:/config/ViewToolbarButtons/Visibility/\$:/core/ui/Buttons/edit\ntext: hide" > "mywiki/tiddlers/\$__config_ViewToolbarButtons_Visibility_\$__core_ui_Buttons_edit.tid"
+          echo -e "title: \$:/config/SyncFilter\ntext: " > "mywiki/tiddlers/\$__config_SyncFilter.tid"
 
       - name: Build TiddlyWiki
         run: tiddlywiki mywiki --build index
