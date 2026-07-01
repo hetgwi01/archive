@@ -1,5 +1,15 @@
-node_modules/
+
+
+### 기본 제외
 .DS_Store
+**.DS_Store
+node_modules/
+
+### 기존꺼 제외
 empty.html
 empty.html_backup
-**/.DS_Store
+
+### 캐시 제외
+mywiki/tiddlers/$__state_*.tid
+mywiki/tiddlers/$__HistoryList*
+mywiki/tiddlers/$__StoryList.tid
