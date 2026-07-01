@@ -1,17 +1,18 @@
 created: 20260630060727569
-modified: 20260701012822634
+modified: 20260701054744653
 tags: 
 title: Project:daiso-book
+type: text/vnd.tiddlywiki
 
 <div style="margin: 12px 0;">
 
 <$button>
 <$action-setfield $tiddler="$:/state/img-daiso-erd-full" text="yes"/>
-<img src="./images/project-daiso-book-full-erd.png" alt="전체 ERD 구조" style="width:100%; cursor:zoom-in; border-radius:6px;">
+<img src="./files/project-daiso-book-full-erd.png" alt="전체 ERD 구조" style="width:100%; cursor:zoom-in; border-radius:6px;">
 </$button>
 
 <div style="text-align:right; margin-top:6px;">
-<a href="./images/project-daiso-book-full-erd.png" target="_blank" style="font-size:12px; color:#60a5fa;">🔗 새 탭에서 원본 크기로 보기</a>
+<a href="./files/project-daiso-book-full-erd.png" target="_blank" style="font-size:12px; color:#60a5fa;">🔗 새 탭에서 원본 크기로 보기</a>
 </div>
 
 <$reveal state="$:/state/img-daiso-erd-full" type="match" text="yes" default="no" tag="div">
@@ -23,7 +24,7 @@ title: Project:daiso-book
 </$button>
 </div>
 <div style="flex:1; overflow:auto; padding:0 20px 20px; display:flex; align-items:flex-start; justify-content:center;">
-<img src="./images/project-daiso-book-full-erd.png" alt="전체 ERD 구조" style="max-width:100%; border-radius:6px;">
+<img src="./files/project-daiso-book-full-erd.png" alt="전체 ERD 구조" style="max-width:100%; border-radius:6px;">
 </div>
 </div>
 </$reveal>

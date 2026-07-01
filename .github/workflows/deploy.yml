@@ -38,6 +38,7 @@ jobs:
       - name: Move output
         run: |
           cp mywiki/output/index.html ./index.html
+          cp -r mywiki/files ./files
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
