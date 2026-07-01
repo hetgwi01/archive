@@ -25,6 +25,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Prepare production tiddlywiki.info
+        run: |
+          cat > mywiki/tiddlywiki.info << 'EOF'
+          {
+              "plugins": [],
+              "themes": [
+                  "tiddlywiki/snowwhite",
+                  "tiddlywiki/vanilla"
+              ],
+              "build": {
+                  "index": [
+                      "--rendertiddler",
+                      "$:/core/save/all",
+                      "index.html",
+                      "text/plain"
+                  ]
+              }
+          }
+          EOF
+
+
       - name: Install TiddlyWiki
         run: npm install -g tiddlywiki
 
@@ -33,7 +54,7 @@ jobs:
           echo -e "title: \$:/config/ViewToolbarButtons/Visibility/\$:/core/ui/Buttons/edit\ntext: hide" > "mywiki/tiddlers/\$__config_ViewToolbarButtons_Visibility_\$__core_ui_Buttons_edit.tid"
 
       - name: Build TiddlyWiki
-        run: tiddlywiki mywiki --build index --setfield "$:/config/tiddlyweb-host" text "" text/plain
+        run: tiddlywiki mywiki --build index
 
       - name: Move output
         run: |
