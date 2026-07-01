@@ -31,10 +31,9 @@ jobs:
       - name: Add read-only config
         run: |
           echo -e "title: \$:/config/ViewToolbarButtons/Visibility/\$:/core/ui/Buttons/edit\ntext: hide" > "mywiki/tiddlers/\$__config_ViewToolbarButtons_Visibility_\$__core_ui_Buttons_edit.tid"
-          echo -e "title: \$:/config/Server/ExternalCoreURL\ntext: no" > "mywiki/tiddlers/\$__config_Server_ExternalCoreURL.tid"
 
       - name: Build TiddlyWiki
-        run: tiddlywiki mywiki --build index
+        run: tiddlywiki mywiki --build index --setfield "$:/config/tiddlyweb-host" text "" text/plain
 
       - name: Move output
         run: |
