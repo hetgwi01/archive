@@ -1,0 +1,111 @@
+created: 20260630123812112
+modified: 20260630123817400
+title: Project:daiso-book-API-Category-Coupon-Info
+type: 
+
+! Category Coupon & Info
+
+쿠폰 적용 및 도서 정보 조회를 위한 카테고리 데이터 API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:daiso-book-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/api-daiso-ccoupon-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/api-daiso-ccoupon-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-BookCategoryResponse" text="yes"/>
+모두 펼치기
+</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/api-daiso-ccoupon-1" text="no"/>
+<$action-setfield $tiddler="$:/state/api-daiso-ccoupon-2" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-BookCategoryResponse" text="no"/>
+모두 접기
+</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-ccoupon-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-1" setTo="no">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/api/books/{bookId}/category</span>
+<span class="api-summary-text">도서의 카테고리 정보 조회</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-ccoupon-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-1" setTo="yes">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/api/books/{bookId}/category</span>
+<span class="api-summary-text">도서의 카테고리 정보 조회</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-ccoupon-1" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>설명</strong><br>특정 도서가 속한 카테고리 정보를 조회합니다.</p>
+
+<p><strong>Parameters</strong></p>
+<table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
+<tr><td>bookId</td><td>path</td><td>integer($int64)</td><td>✓</td><td>도서 고유 ID</td></tr>
+</table>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> 조회 성공<br>
+<span class="api-resp resp-4xx">404</span> 해당 도서의 카테고리 정보를 찾을 수 없음
+</div>
+
+<$reveal state="$:/state/schema-BookCategoryResponse" type="match" text="yes" default="no" tag="div">
+<$button class="api-schema-link" set="$:/state/schema-BookCategoryResponse" setTo="no">→ BookCategoryResponse ▾</$button>
+</$reveal>
+<$reveal state="$:/state/schema-BookCategoryResponse" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-schema-link" set="$:/state/schema-BookCategoryResponse" setTo="yes">→ BookCategoryResponse ▸</$button>
+</$reveal>
+
+<$reveal state="$:/state/schema-BookCategoryResponse" type="match" text="yes" default="no" class="api-schema-body" tag="div">
+<pre><code>{
+  "bookId": "integer($int64)",
+  "primaryCategoryId": "integer($int64)",
+  "secondaryCategoryId": "integer($int64)"
+}</code></pre>
+</$reveal>
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-ccoupon-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-2" setTo="no">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/api/books/categoriesIds</span>
+<span class="api-summary-text">카테고리 ID 리스트로 단순 정보 조회</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-ccoupon-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-ccoupon-2" setTo="yes">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/api/books/categoriesIds</span>
+<span class="api-summary-text">카테고리 ID 리스트로 단순 정보 조회</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-ccoupon-2" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>설명</strong><br>쿠폰 적용 범위 확인 등을 위해 여러 카테고리의 이름과 ID 목록을 조회합니다.</p>
+
+<p><strong>Parameters</strong></p>
+<table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr>
+<tr><td>ids</td><td>query</td><td>array</td><td>✓</td><td>조회할 카테고리 ID 목록</td></tr>
+</table>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> 조회 성공
+</div>
+
+</$reveal>
+</div>

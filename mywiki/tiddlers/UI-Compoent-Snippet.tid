@@ -1,0 +1,62 @@
+created: 20260701012712336
+modified: 20260701012751540
+tags: Snippet
+title: UI-Compoent-Snippet
+
+! UI 컴포넌트 스니펫 모음
+
+포트폴리오 전체에서 재사용 가능한 UI 컴포넌트 모음입니다.
+편집 모드(연필 아이콘)로 열어서 필요한 부분 복사해서 쓰세요.
+
+복붙 후 아래를 찾아바꾸기(Cmd+H 또는 Ctrl+H)로 일괄 치환하세요.
+
+|찾기 |바꾸기 |h
+|`$_:` |`$:` |
+
+---
+
+!! 1. 이미지 뷰어 (클릭하면 팝업 + 새 탭 버튼)
+
+이미지를 클릭하면 오버레이 팝업으로 확인, 아래 버튼으로 새 탭에서 원본 크기로 열기.
+
+<pre>
+&lt;div style="margin: 12px 0;"&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler="$_:/state/img-UNIQUE-ID" text="yes"/&gt;
+&lt;img src="./images/파일명.png" alt="이미지 설명" style="width:100%; cursor:zoom-in; border-radius:6px;"&gt;
+&lt;/$button&gt;
+
+&lt;div style="text-align:right; margin-top:6px;"&gt;
+&lt;a href="./images/파일명.png" target="_blank" style="font-size:12px; color:#60a5fa;"&gt;🔗 새 탭에서 원본 크기로 보기&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;$reveal state="$_:/state/img-UNIQUE-ID" type="match" text="yes" default="no" tag="div"&gt;
+&lt;div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; overflow:auto; display:flex; flex-direction:column;"&gt;
+&lt;div style="padding:12px 20px; text-align:right;"&gt;
+&lt;$button style="background:transparent; border:1px solid #666; color:white; padding:6px 14px; border-radius:6px; cursor:pointer;"&gt;
+&lt;$action-setfield $tiddler="$_:/state/img-UNIQUE-ID" text="no"/&gt;
+✕ 닫기
+&lt;/$button&gt;
+&lt;/div&gt;
+&lt;div style="flex:1; overflow:auto; padding:0 20px 20px; display:flex; align-items:flex-start; justify-content:center;"&gt;
+&lt;img src="./images/파일명.png" alt="이미지 설명" style="max-width:100%; border-radius:6px;"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+
+&lt;/div&gt;
+</pre>
+
+교체할 키워드:
+
+|키워드 |설명 |예시 |h
+|`UNIQUE-ID` |위키 전체에서 유일한 ID |`daiso-erd-full` |
+|`파일명.png` |실제 이미지 파일명 |`project-daiso-book-full-erd.png` |
+|`이미지 설명` |alt 텍스트 |`전체 ERD 구조` |
+
+---
+
+!! 2. (추후 추가 예정)
+
+새로운 UI 컴포넌트가 생기면 여기에 추가하세요.

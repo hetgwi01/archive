@@ -1,0 +1,135 @@
+created: 20260701002122589
+modified: 20260701012806479
+tags: Snippet
+title: API-Doc-Endpoint-Snippet
+
+! API 문서 스니펫 모음
+
+앞으로 API 문서 작성할 때 편집 모드(연필 아이콘)로 열어서 필요한 부분 복사해서 쓰세요.
+
+복붙 후 아래 3가지를 찾아바꾸기(Cmd+H 또는 Ctrl+H)로 일괄 치환하세요.
+
+|찾기 |바꾸기 |h
+|`$_:` |`$:` |
+|`[_[` |`[[` |
+|`]_]` |`]]` |
+
+---
+
+!! 1. 엔드포인트 카드 (엔드포인트 하나당 반복)
+
+<pre>
+&lt;div class="api-card"&gt;
+&lt;$reveal state="$_:/state/api-PROJECT-ID" type="match" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-summary-btn" set="$_:/state/api-PROJECT-ID" setTo="no"&gt;
+&lt;span class="api-method api-METHOD"&gt;METHOD&lt;/span&gt;
+&lt;span class="api-path"&gt;/YOUR/PATH&lt;/span&gt;
+&lt;span class="api-summary-text"&gt;요약 설명&lt;/span&gt;
+&lt;span class="api-chevron open"&gt;▶&lt;/span&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/api-PROJECT-ID" type="nomatch" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-summary-btn" set="$_:/state/api-PROJECT-ID" setTo="yes"&gt;
+&lt;span class="api-method api-METHOD"&gt;METHOD&lt;/span&gt;
+&lt;span class="api-path"&gt;/YOUR/PATH&lt;/span&gt;
+&lt;span class="api-summary-text"&gt;요약 설명&lt;/span&gt;
+&lt;span class="api-chevron"&gt;▶&lt;/span&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/api-PROJECT-ID" type="match" text="yes" default="no" class="api-body" tag="div"&gt;
+
+&lt;p&gt;&lt;strong&gt;설명&lt;/strong&gt;&lt;br&gt;설명을 여기에&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;In&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Required&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;파라미터명&lt;/td&gt;&lt;td&gt;path/query/header&lt;/td&gt;&lt;td&gt;타입&lt;/td&gt;&lt;td&gt;✓&lt;/td&gt;&lt;td&gt;설명&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Request Body&lt;/strong&gt; (&lt;code&gt;application/json&lt;/code&gt;)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  "field": "type"
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Responses&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="api-resp-group"&gt;
+&lt;span class="api-resp resp-2xx"&gt;200&lt;/span&gt; 설명&lt;br&gt;
+&lt;span class="api-resp resp-4xx"&gt;400&lt;/span&gt; 설명
+&lt;/div&gt;
+
+&lt;/$reveal&gt;
+&lt;/div&gt;
+</pre>
+
+---
+
+!! 2. 스키마 토글 (응답/요청 스키마 보여줄 때)
+
+<pre>
+&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="match" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-schema-link" set="$_:/state/schema-SCHEMA-ID" setTo="no"&gt;→ SchemaName ▾&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="nomatch" text="yes" default="no" tag="div"&gt;
+&lt;$button class="api-schema-link" set="$_:/state/schema-SCHEMA-ID" setTo="yes"&gt;→ SchemaName ▸&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state="$_:/state/schema-SCHEMA-ID" type="match" text="yes" default="no" class="api-schema-body" tag="div"&gt;
+&lt;pre&gt;&lt;code&gt;{
+  "field": "type"
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/$reveal&gt;
+</pre>
+
+---
+
+!! 3. 툴바 (그룹 페이지 상단)
+
+<pre>
+&lt;div class="api-toolbar"&gt;
+&lt;$button class="api-toolbar-btn"&gt;
+&lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-1" text="yes"/&gt;
+&lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-2" text="yes"/&gt;
+모두 펼치기
+&lt;/$button&gt;
+&lt;$button class="api-toolbar-btn"&gt;
+&lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-1" text="no"/&gt;
+&lt;$action-setfield $tiddler="$_:/state/api-PROJECT-ID-2" text="no"/&gt;
+모두 접기
+&lt;/$button&gt;
+&lt;/div&gt;
+</pre>
+
+---
+
+!! 4. 뒤로가기 링크
+
+<pre>
+&lt;div class="api-back-link"&gt;[_[← API 목차로 돌아가기|Project:프로젝트명-API-Doc]_]&lt;/div&gt;
+</pre>
+
+---
+
+!! 5. 그룹 페이지 기본 구조
+
+<pre>
+! 그룹명
+
+그룹 설명
+
+&lt;div class="api-back-link"&gt;[_[← API 목차로 돌아가기|Project:프로젝트명-API-Doc]_]&lt;/div&gt;
+
+[툴바 스니펫 붙여넣기]
+
+[엔드포인트 카드 스니펫 반복]
+</pre>
+
+---
+
+!! 6. 교체 키워드 목록
+
+|키워드 |설명 |예시 |h
+|`PROJECT-ID` |위키 전체에서 유일한 ID |`daiso-image-1` |
+|`METHOD` |HTTP 메서드 소문자 |`get` `post` `delete` `put` `patch` |
+|`/YOUR/PATH` |API 경로 |`/api/v2/books/{bookId}` |
+|`SCHEMA-ID` |스키마 고유 ID |`BookRespDTO` |
+|`SchemaName` |스키마 표시명 |`BookRespDTO` |
+|`프로젝트명` |목차 티들러 이름 |`daiso-book` |

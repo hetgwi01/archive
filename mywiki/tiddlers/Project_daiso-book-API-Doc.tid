@@ -1,0 +1,22 @@
+created: 20260630061838766
+modified: 20260630064408166
+tags: 
+title: Project:daiso-book-API-Doc
+
+독스<br/>
+
+! API 그룹
+
+* [[Book Management Admin|Project:daiso-book-API-Book-Management-Admin]] — 관리자용 도서 관리 및 메타데이터 API
+* [[Book Order|Project:daiso-book-API-Book-Order]] — 주문 서비스 연동용 도서 정보 조회 API
+* [[Book V2 API|Project:daiso-book-API-Book-V2]] — 도서 등록, 수정, 삭제 및 조회 기능
+* [[Category Coupon & Info|Project:daiso-book-API-Category-Coupon-Info]] — 쿠폰 적용 및 도서 정보 조회
+* [[Category V2|Project:daiso-book-API-Category-V2]] — 도서 카테고리 관리 (계층 구조)
+* [[Image API|Project:daiso-book-API-Image]] — 이미지 업로드 및 관리
+* [[Like V2 API|Project:daiso-book-API-Like-V2]] — 도서 좋아요 등록/취소
+* [[Review V2|Project:daiso-book-API-Review-V2]] — 리뷰 등록, 조회, 수정
+* [[System Dev Tools|Project:daiso-book-API-System-Dev-Tools]] — 시스템 관리 및 테스트용 API
+
+! 데이터 스키마
+
+* [[전체 스키마 보기|Project:daiso-book-API-Schemas]]

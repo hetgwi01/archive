@@ -1,0 +1,164 @@
+created: 20260630125308713
+modified: 20260630125313067
+title: Project:daiso-book-API-System-Dev-Tools
+type: 
+
+! System Dev Tools
+
+시스템 관리, 이미지 마이그레이션 및 테스트용 API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:daiso-book-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-3" text="yes"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-4" text="yes"/>
+모두 펼치기
+</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-1" text="no"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-2" text="no"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-3" text="no"/>
+<$action-setfield $tiddler="$:/state/api-daiso-sdt-4" text="no"/>
+모두 접기
+</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-sdt-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-1" setTo="no">
+<span class="api-method api-post">POST</span>
+<span class="api-path">/migrate-images</span>
+<span class="api-summary-text">이미지 일괄 마이그레이션 실행</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-1" setTo="yes">
+<span class="api-method api-post">POST</span>
+<span class="api-path">/migrate-images</span>
+<span class="api-summary-text">이미지 일괄 마이그레이션 실행</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-1" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>설명</strong><br>기존 서버의 이미지들을 배치를 통해 MinIO로 이전합니다.</p>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK
+</div>
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-sdt-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-2" setTo="no">
+<span class="api-method api-post">POST</span>
+<span class="api-path">/create</span>
+<span class="api-summary-text">도서 생성 통합 테스트</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-2" setTo="yes">
+<span class="api-method api-post">POST</span>
+<span class="api-path">/create</span>
+<span class="api-summary-text">도서 생성 통합 테스트</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-2" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>설명</strong><br>Multipart Form 데이터를 사용하여 도서 메타데이터와 이미지를 한 번에 등록 테스트합니다.</p>
+
+<p><strong>Request Body</strong> (<code>multipart/form-data</code>) — <code>TestReq</code></p>
+<pre><code>{
+  "metadata": "string",
+  "image0": "string($binary)",
+  "image1": "string($binary)",
+  "image2": "string($binary)",
+  "image3": "string($binary)",
+  "image4": "string($binary)"
+}</code></pre>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 테스트 등록 성공
+</div>
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-sdt-3" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-3" setTo="no">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/upload</span>
+<span class="api-summary-text">외부 URL 이미지 MinIO 업로드 테스트</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-3" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-3" setTo="yes">
+<span class="api-method api-get">GET</span>
+<span class="api-path">/upload</span>
+<span class="api-summary-text">외부 URL 이미지 MinIO 업로드 테스트</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-3" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>설명</strong><br>이미지 URL을 통해 MinIO 스토리지로 직접 업로드를 시도합니다.</p>
+
+<p><strong>Parameters</strong></p>
+<table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>bookId</td><td>query</td><td>integer($int64)</td><td>✓</td></tr>
+<tr><td>imageUrl</td><td>query</td><td>string</td><td>✓</td></tr>
+</table>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK
+</div>
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/api-daiso-sdt-4" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-4" setTo="no">
+<span class="api-method api-delete">DELETE</span>
+<span class="api-path">/delete</span>
+<span class="api-summary-text">MinIO 객체 삭제 테스트</span>
+<span class="api-chevron open">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-4" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/api-daiso-sdt-4" setTo="yes">
+<span class="api-method api-delete">DELETE</span>
+<span class="api-path">/delete</span>
+<span class="api-summary-text">MinIO 객체 삭제 테스트</span>
+<span class="api-chevron">▶</span>
+</$button>
+</$reveal>
+<$reveal state="$:/state/api-daiso-sdt-4" type="match" text="yes" default="no" class="api-body" tag="div">
+
+<p><strong>Parameters</strong></p>
+<table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>objectName</td><td>query</td><td>string</td><td>✓</td></tr>
+</table>
+
+<p><strong>Responses</strong></p>
+<div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK
+</div>
+
+</$reveal>
+</div>

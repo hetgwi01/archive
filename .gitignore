@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+empty.html
+empty.html_backup
+**/.DS_Store
