@@ -1,11 +1,11 @@
 created: 20260701084410408
-modified: 20260701115239824
-title: Project_daiso-book-API-Schemas
+modified: 20260702052018847
+title: Project:daiso-book-API-Schemas
 type: text/vnd.tiddlywiki
 
 ! Data Schemas
 
-API에서 사용되는 전체 데이터 스키마 목록입니다.
+API에서 사용되는 전체 데이터 스키마 목록입니다. ([[json data|Project:daiso-book-API-Schemas-Data]])
 
 <div class="api-back-link">[[← API 목차로 돌아가기|Project:daiso-book-API-Doc]]</div>
 

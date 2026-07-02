@@ -1,0 +1,53 @@
+.api-doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.api-doc-card {
+  background: var(--tiddler-background-color, rgba(128,128,128,0.08));
+  border: 1px solid var(--tiddler-border-color, rgba(128,128,128,0.2));
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.1s;
+}
+
+.api-doc-card:hover {
+  border-color: var(--primary-color, #5c7cfa);
+  transform: translateY(-2px);
+}
+
+.api-doc-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.api-doc-card-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.api-doc-card-count {
+  font-size: 12px;
+  opacity: 0.6;
+  background: rgba(128,128,128,0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.api-doc-card-desc {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.api-doc-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
