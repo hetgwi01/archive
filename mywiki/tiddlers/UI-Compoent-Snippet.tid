@@ -1,7 +1,8 @@
 created: 20260701012712336
-modified: 20260701012751540
+modified: 20260703045335317
 tags: Snippet
 title: UI-Compoent-Snippet
+type: text/vnd.tiddlywiki
 
 ! UI 컴포넌트 스니펫 모음
 
@@ -21,16 +22,13 @@ title: UI-Compoent-Snippet
 
 <pre>
 &lt;div style="margin: 12px 0;"&gt;
-
 &lt;$button&gt;
 &lt;$action-setfield $tiddler="$_:/state/img-UNIQUE-ID" text="yes"/&gt;
-&lt;img src="./images/파일명.png" alt="이미지 설명" style="width:100%; cursor:zoom-in; border-radius:6px;"&gt;
+&lt;img src="./files/파일명.png" alt="이미지 설명" style="width:100%; cursor:zoom-in; border-radius:6px;"&gt;
 &lt;/$button&gt;
-
 &lt;div style="text-align:right; margin-top:6px;"&gt;
-&lt;a href="./images/파일명.png" target="_blank" style="font-size:12px; color:#60a5fa;"&gt;🔗 새 탭에서 원본 크기로 보기&lt;/a&gt;
+&lt;a href="./files/파일명.png" target="_blank" style="font-size:12px; color:#60a5fa;"&gt;🔗 새 탭에서 원본 크기로 보기&lt;/a&gt;
 &lt;/div&gt;
-
 &lt;$reveal state="$_:/state/img-UNIQUE-ID" type="match" text="yes" default="no" tag="div"&gt;
 &lt;div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; overflow:auto; display:flex; flex-direction:column;"&gt;
 &lt;div style="padding:12px 20px; text-align:right;"&gt;
@@ -40,11 +38,10 @@ title: UI-Compoent-Snippet
 &lt;/$button&gt;
 &lt;/div&gt;
 &lt;div style="flex:1; overflow:auto; padding:0 20px 20px; display:flex; align-items:flex-start; justify-content:center;"&gt;
-&lt;img src="./images/파일명.png" alt="이미지 설명" style="max-width:100%; border-radius:6px;"&gt;
+&lt;img src="./files/파일명.png" alt="이미지 설명" style="max-width:100%; border-radius:6px;"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
-
 &lt;/div&gt;
 </pre>
 

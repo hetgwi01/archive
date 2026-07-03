@@ -1,0 +1,119 @@
+created: 20260703052625110
+modified: 20260703080323480
+tags: 
+title: Project:daiso-book-Flow-order-saga
+type: text/vnd.tiddlywiki
+
+<style>
+.seq-wrap { width: 100%; }
+.seq-wrap svg { display: block; width: 100%; height: auto; }
+.seq-line { stroke: #444; fill: none; }
+.seq-line-d { stroke: #444; fill: none; stroke-dasharray: 4 3; }
+.seq-text { fill: #333; font-size: 12px; font-family: sans-serif; }
+.seq-phase { fill: #444; font-size: 12px; font-family: sans-serif; }
+.seq-lifeline { stroke: #aaa; stroke-width: 1.5; stroke-dasharray: 5 3; opacity: 0.4; }
+@media (prefers-color-scheme: dark) {
+  .seq-line { stroke: #aaa; }
+  .seq-line-d { stroke: #aaa; }
+  .seq-text { fill: #ccc; }
+  .seq-phase { fill: #aaa; }
+  .seq-lifeline { stroke: #666; stroke-width: 1.5; opacity: 0.5; }
+}
+@media print {
+  .seq-wrap svg { width: 100%; height: auto; }
+}
+</style>
+<div class="seq-wrap">
+<svg width="100%" viewBox="0 0 780 620" xmlns="http://www.w3.org/2000/svg" style="font-family:sans-serif;">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- 범례 -->
+<rect x="20"  y="10" width="12" height="12" rx="3" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="0.5"/>
+<text x="36"  y="16" class="seq-phase" dominant-baseline="central">내부 서비스</text>
+<rect x="140" y="10" width="12" height="12" rx="3" fill="#1A6A7A" stroke="#3A9A9A" stroke-width="0.5"/>
+<text x="156" y="16" class="seq-phase" dominant-baseline="central">메시지 브로커</text>
+<rect x="270" y="10" width="12" height="12" rx="3" fill="#8A5A10" stroke="#C08030" stroke-width="0.5"/>
+<text x="286" y="16" class="seq-phase" dominant-baseline="central">인프라</text>
+
+<!-- 참여자 헤더 -->
+<rect x="20"  y="32" width="130" height="40" rx="8" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="0.5"/>
+<text x="85"  y="44" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Order-Payment</text>
+<text x="85"  y="62" font-size="11" fill="#aaa"  text-anchor="middle" dominant-baseline="central">SAGA 오케스트레이터</text>
+
+<rect x="180" y="32" width="110" height="40" rx="8" fill="#1A6A7A" stroke="#3A9A9A" stroke-width="0.5"/>
+<text x="235" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">RabbitMQ</text>
+
+<rect x="320" y="32" width="130" height="40" rx="8" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="1.5"/>
+<text x="385" y="44" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Books-Search ★</text>
+<text x="385" y="62" font-size="11" fill="#aaa"  text-anchor="middle" dominant-baseline="central">SagaListener</text>
+
+<rect x="480" y="32" width="110" height="40" rx="8" fill="#8A5A10" stroke="#C08030" stroke-width="0.5"/>
+<text x="535" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">MySQL</text>
+
+<rect x="620" y="32" width="110" height="40" rx="8" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="0.5"/>
+<text x="675" y="44" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Books-Search</text>
+<text x="675" y="62" font-size="11" fill="#aaa"  text-anchor="middle" dominant-baseline="central">BookOutbox</text>
+
+<!-- 생명선 -->
+<line x1="85"  y1="72" x2="85"  y2="590" class="seq-lifeline"/>
+<line x1="235" y1="72" x2="235" y2="590" class="seq-lifeline"/>
+<line x1="385" y1="72" x2="385" y2="590" class="seq-lifeline"/>
+<line x1="535" y1="72" x2="535" y2="590" class="seq-lifeline"/>
+<line x1="675" y1="72" x2="675" y2="590" class="seq-lifeline"/>
+
+<!-- Phase 1 -->
+<rect x="20" y="82" width="740" height="106" rx="4" fill="#3B82C4" opacity="0.06"/>
+<text x="390" y="98" class="seq-phase" text-anchor="middle" dominant-baseline="central">Phase 1 — 주문 이벤트 수신 및 멱등성 체크</text>
+
+<line x1="87"  y1="120" x2="233" y2="120" class="seq-line-d" marker-end="url(#arr)"/>
+<text x="160"  y="110" class="seq-text" text-anchor="middle" dominant-baseline="central">command.book.checkout 발행 (비동기)</text>
+
+<line x1="237" y1="148" x2="383" y2="148" class="seq-line-d" marker-end="url(#arr)"/>
+<text x="310"  y="138" class="seq-text" text-anchor="middle" dominant-baseline="central">큐 수신 (SagaListener)</text>
+
+<text x="387"  y="172" class="seq-text" dominant-baseline="central">→ BookDeduplicationRepository 멱등성 체크</text>
+
+<!-- Phase 2 -->
+<rect x="20" y="198" width="740" height="166" rx="4" fill="#3B82C4" opacity="0.06"/>
+<text x="390" y="214" class="seq-phase" text-anchor="middle" dominant-baseline="central">Phase 2 — 재고 검증 및 차감 (내가 구현한 핵심 로직)</text>
+
+<line x1="387" y1="238" x2="533" y2="238" class="seq-line" marker-end="url(#arr)"/>
+<text x="460"  y="228" class="seq-text" text-anchor="middle" dominant-baseline="central">도서별 재고 검증 쿼리</text>
+
+<line x1="533" y1="266" x2="387" y2="266" class="seq-line-d" marker-end="url(#arr)"/>
+<text x="460"  y="256" class="seq-text" text-anchor="middle" dominant-baseline="central">재고 확인</text>
+
+<text x="387"  y="292" class="seq-text" dominant-baseline="central">→ 재고 부족/미판매/미존재: BookOutOfStockException → 롤백</text>
+
+<line x1="387" y1="320" x2="533" y2="320" class="seq-line" marker-end="url(#arr)"/>
+<text x="460"  y="310" class="seq-text" text-anchor="middle" dominant-baseline="central">재고 차감 (UPDATE)</text>
+
+<!-- Phase 3 -->
+<rect x="20" y="374" width="740" height="136" rx="4" fill="#3B82C4" opacity="0.06"/>
+<text x="390" y="390" class="seq-phase" text-anchor="middle" dominant-baseline="central">Phase 3 — Outbox 패턴으로 응답 발행</text>
+
+<line x1="387" y1="414" x2="673" y2="414" class="seq-line" marker-end="url(#arr)"/>
+<text x="530"  y="404" class="seq-text" text-anchor="middle" dominant-baseline="central">BookOutbox 응답 레코드 저장 (REQUIRES_NEW)</text>
+
+<text x="387"  y="440" class="seq-text" dominant-baseline="central">→ BookOutboxCommittedEvent 발행</text>
+<text x="387"  y="464" class="seq-text" dominant-baseline="central">→ @TransactionalEventListener(AFTER_COMMIT) 트리거</text>
+
+<line x1="387" y1="492" x2="233" y2="492" class="seq-line-d" marker-end="url(#arr)"/>
+<text x="310"  y="482" class="seq-text" text-anchor="middle" dominant-baseline="central">reply.order 발행 → Order-Payment가 다음 단계 처리</text>
+
+<!-- Phase 4 -->
+<rect x="20" y="520" width="740" height="50" rx="4" fill="#3B82C4" opacity="0.06"/>
+<text x="390" y="545" class="seq-phase" text-anchor="middle" dominant-baseline="central">Phase 4 — Order-Payment가 reply 수신 후 다음 서비스(User 등) 순차 처리</text>
+
+<!-- 선 범례 -->
+<line x1="20"  y1="600" x2="54"  y2="600" class="seq-line" marker-end="url(#arr)"/>
+<text x="62"   y="600" class="seq-phase" dominant-baseline="central">동기</text>
+<line x1="160" y1="600" x2="194" y2="600" class="seq-line-d" marker-end="url(#arr)"/>
+<text x="202"  y="600" class="seq-phase" dominant-baseline="central">RabbitMQ 이벤트 / 비동기</text>
+
+</svg>
+</div>

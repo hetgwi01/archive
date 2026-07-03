@@ -1,0 +1,146 @@
+created: 20260702081545866
+modified: 20260703073510881
+tags: 
+title: Project:daiso-book-Flow-book-register
+type: text/vnd.tiddlywiki
+
+<style>
+.seq-wrap { width: 100%; }
+.seq-wrap svg { display: block; width: 100%; height: auto; }
+.seq-line { stroke: #444; }
+.seq-text { fill: #333; }
+.seq-phase { fill: #333; }
+.seq-lifeline { stroke: #bbb; }
+@media (prefers-color-scheme: dark) {
+  .seq-line { stroke: #aaa; }
+  .seq-text { fill: #ccc; }
+  .seq-phase { fill: #aaa; }
+  .seq-lifeline { stroke: #666; stroke-width: 1.5; opacity: 0.5; }
+}
+@media print {
+  .seq-wrap svg { width: 100%; height: auto; }
+}
+</style>
+<div class="seq-wrap">
+<svg width="100%" viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg" style="font-family:sans-serif;">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- 색상 변수 대신 직접 값 사용 (TiddlyWiki HTML 티들러는 CSS 변수 미지원) -->
+<!-- 라이트/다크 공통으로 잘 보이는 색으로 지정 -->
+
+<!-- 범례 -->
+<rect x="20" y="10" width="12" height="12" rx="3" fill="#777" stroke="#aaa" stroke-width="0.5"/>
+<text x="36" y="16" class="seq-phase" font-size="12" dominant-baseline="central">사용자</text>
+<rect x="90" y="10" width="12" height="12" rx="3" fill="#3B82C4" stroke="#5B9FE4" stroke-width="0.5"/>
+<text x="106" y="16" class="seq-phase" font-size="12" dominant-baseline="central">내부 서비스</text>
+<rect x="210" y="10" width="12" height="12" rx="3" fill="#7C5CBF" stroke="#9C7CDF" stroke-width="0.5"/>
+<text x="226" y="16" class="seq-phase" font-size="12" dominant-baseline="central">프론트</text>
+<rect x="284" y="10" width="12" height="12" rx="3" fill="#3A7A3A" stroke="#5A9A5A" stroke-width="0.5"/>
+<text x="300" y="16" class="seq-phase" font-size="12" dominant-baseline="central">외부 API</text>
+<rect x="370" y="10" width="12" height="12" rx="3" fill="#B07020" stroke="#D09040" stroke-width="0.5"/>
+<text x="386" y="16" class="seq-phase" font-size="12" dominant-baseline="central">내부 인프라</text>
+<rect x="474" y="10" width="12" height="12" rx="3" fill="#1A7A7A" stroke="#3A9A9A" stroke-width="0.5"/>
+<text x="490" y="16" class="seq-phase" font-size="12" dominant-baseline="central">메시지 브로커</text>
+
+<!-- 참여자 헤더 -->
+<rect x="30" y="32" width="80" height="40" rx="8" fill="#555" stroke="#888" stroke-width="0.5"/>
+<text x="70" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">관리자</text>
+
+<rect x="150" y="32" width="100" height="40" rx="8" fill="#5B3FA0" stroke="#8B6FD0" stroke-width="0.5"/>
+<text x="200" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">FrontServer</text>
+
+<rect x="300" y="32" width="120" height="40" rx="8" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="0.5"/>
+<text x="360" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Books-Search</text>
+
+<rect x="455" y="32" width="110" height="40" rx="8" fill="#2A6A2A" stroke="#5A9A5A" stroke-width="0.5"/>
+<text x="510" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Aladin API</text>
+
+<rect x="595" y="32" width="110" height="40" rx="8" fill="#2A6A2A" stroke="#5A9A5A" stroke-width="0.5"/>
+<text x="650" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">Gemini AI</text>
+
+<rect x="735" y="32" width="110" height="40" rx="8" fill="#8A5A10" stroke="#C08030" stroke-width="0.5"/>
+<text x="790" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">MinIO</text>
+
+<rect x="875" y="32" width="110" height="40" rx="8" fill="#0A6A6A" stroke="#3A9A9A" stroke-width="0.5"/>
+<text x="930" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">RabbitMQ</text>
+
+<rect x="1000" y="32" width="80" height="40" rx="8" fill="#1B5FA0" stroke="#4B8FD0" stroke-width="0.5"/>
+<text x="1040" y="52" font-size="13" font-weight="500" fill="#eee" text-anchor="middle" dominant-baseline="central">worker</text>
+
+<!-- 생명선 -->
+<line x1="70"   y1="72" x2="70"   y2="740" class="seq-lifeline"/>
+<line x1="200"  y1="72" x2="200"  y2="740" class="seq-lifeline"/>
+<line x1="360"  y1="72" x2="360"  y2="740" class="seq-lifeline"/>
+<line x1="510"  y1="72" x2="510"  y2="740" class="seq-lifeline"/>
+<line x1="650"  y1="72" x2="650"  y2="740" class="seq-lifeline"/>
+<line x1="790"  y1="72" x2="790"  y2="740" class="seq-lifeline"/>
+<line x1="930"  y1="72" x2="930"  y2="740" class="seq-lifeline"/>
+<line x1="1040" y1="72" x2="1040" y2="740" class="seq-lifeline"/>
+
+<!-- Phase 1 -->
+<rect x="20" y="82" width="1064" height="90" rx="4" fill="#3B82C4" opacity="0.08"/>
+<text x="552" y="96" class="seq-phase" font-size="12" text-anchor="middle" dominant-baseline="central">Phase 1 — ISBN 중복 체크</text>
+<line x1="72" y1="116" x2="198" y2="116" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="135" y="108" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">ISBN 입력</text>
+<line x1="202" y1="140" x2="358" y2="140" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="280" y="132" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">중복 체크 요청</text>
+<line x1="358" y1="160" x2="202" y2="160" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="280" y="152" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">미등록 확인</text>
+
+<!-- Phase 2 -->
+<rect x="20" y="182" width="1064" height="160" rx="4" fill="#3B82C4" opacity="0.08"/>
+<text x="552" y="196" class="seq-phase" font-size="12" text-anchor="middle" dominant-baseline="central">Phase 2 — 외부 데이터 수집 및 AI 정제</text>
+<line x1="202" y1="220" x2="358" y2="220" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="280" y="212" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">도서 정보 조회 요청</text>
+<line x1="362" y1="244" x2="508" y2="244" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="435" y="236" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">Aladin API 호출</text>
+<line x1="512" y1="268" x2="648" y2="268" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="580" y="260" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">데이터 전달</text>
+<line x1="648" y1="292" x2="362" y2="292" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="505" y="284" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">카테고리·태그 정제 후 반환</text>
+<line x1="358" y1="326" x2="202" y2="326" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="280" y="318" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">TUI Editor 자동 채움</text>
+
+<!-- Phase 3 -->
+<rect x="20" y="352" width="1064" height="130" rx="4" fill="#3B82C4" opacity="0.08"/>
+<text x="552" y="366" class="seq-phase" font-size="12" text-anchor="middle" dominant-baseline="central">Phase 3 — 이미지 업로드 (TUI Editor)</text>
+<line x1="72" y1="390" x2="198" y2="390" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="135" y="382" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">이미지 드래그앤드롭</text>
+<line x1="202" y1="414" x2="358" y2="414" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="280" y="406" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">업로드 요청 (프론트 경유)</text>
+<line x1="362" y1="438" x2="788" y2="438" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="575" y="430" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">MinIO 저장</text>
+<line x1="788" y1="462" x2="202" y2="462" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="495" y="454" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">프록시 URL 반환 → 에디터 삽입</text>
+
+<!-- Phase 4 -->
+<rect x="20" y="492" width="1064" height="130" rx="4" fill="#3B82C4" opacity="0.08"/>
+<text x="552" y="506" class="seq-phase" font-size="12" text-anchor="middle" dominant-baseline="central">Phase 4 — 최종 등록 (DB 저장)</text>
+<line x1="72" y1="530" x2="198" y2="530" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="135" y="522" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">등록 버튼 클릭</text>
+<line x1="202" y1="554" x2="358" y2="554" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="280" y="546" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">도서 등록 요청 (multipart)</text>
+<text x="364" y="576" class="seq-text" font-size="12" dominant-baseline="central">→ MySQL: Book + 연관 데이터 저장 (트랜잭션)</text>
+<line x1="358" y1="604" x2="202" y2="604" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="280" y="596" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">등록 완료</text>
+
+<!-- Phase 5 -->
+<rect x="20" y="632" width="1064" height="100" rx="4" fill="#3B82C4" opacity="0.08"/>
+<text x="552" y="646" class="seq-phase" font-size="12" text-anchor="middle" dominant-baseline="central">Phase 5 — ES 색인 (트랜잭션 커밋 후 비동기)</text>
+<line x1="362" y1="672" x2="928" y2="672" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="645" y="664" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">book upsert 이벤트 발행</text>
+<line x1="932" y1="700" x2="1038" y2="700" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="985" y="692" class="seq-text" font-size="12" text-anchor="middle" dominant-baseline="central">소비 → ES 색인</text>
+
+<!-- 범례: 선 종류 -->
+<line x1="20" y1="754" x2="60" y2="754" class="seq-line" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="68" y="754" class="seq-phase" font-size="12" dominant-baseline="central">요청 (HTTP)</text>
+<line x1="210" y1="754" x2="250" y2="754" class="seq-line" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+<text x="258" y="754" class="seq-phase" font-size="12" dominant-baseline="central">응답 / 비동기 이벤트</text>
+
+</svg>
+</div>
