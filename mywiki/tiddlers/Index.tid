@@ -1,5 +1,5 @@
 created: 20260630052329342
-modified: 20260703172204533
+modified: 20260703174620446
 tags: 
 title: Index
 type: text/vnd.tiddlywiki
@@ -64,7 +64,7 @@ type: text/vnd.tiddlywiki
 </div>
 <div class="project-card-links">
 <$link to="Project:daiso-book" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> 자세히 보기</$link>
-<a href="https://github.com/nhnacademy-be12-daiso/Books-Search" target="_blank" class="project-link-btn" style="font-size:12px;padding:3px 10px;">⎋ GitHub</a>
+<a href="https://github.com/hetgwi01" target="_blank" class="project-link-btn">⎋ GitHub</a>
 </div>
 </div>
 
