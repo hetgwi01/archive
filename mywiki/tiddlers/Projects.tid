@@ -1,7 +1,22 @@
 created: 20260630052912029
-modified: 20260701000535263
+modified: 20260703162222625
 title: Projects
-type: 
+type: text/vnd.tiddlywiki
 
-프로젝트<br/>
-[[daiso-book|Project:daiso-book]]
+! 프로젝트 목록
+
+<div class="project-list">
+
+<<projectCard
+  name:"daiso-book.shop"
+  type:"팀 프로젝트 · NHN Academy 12기"
+  period:"2025.11 ~ 2025.12"
+  desc:"MSA 기반 온라인 서점 — 도서(Books) 도메인 총괄"
+  role:"담당: 도서(Books) 도메인 총괄 설계 및 구현"
+  bullets:"ISBN 입력 → Gemini AI 연동 도서 자동 등록|N+1 해결 — Native Query + JSON_ARRAYAGG 단일 쿼리|Saga Pattern + RabbitMQ 주문-재고 분산 트랜잭션"
+  badges:"Java 21:backend|Spring Boot:backend|MySQL:db|Redis:db|MinIO:infra|RabbitMQ:infra|Gemini AI:external"
+  tiddler:"Project:daiso-book"
+  github:"https://github.com/nhnacademy-be12-daiso/Books-Search"
+>>
+
+</div>

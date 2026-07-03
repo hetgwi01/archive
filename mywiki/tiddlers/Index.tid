@@ -1,8 +1,86 @@
 created: 20260630052329342
-modified: 20260630052909617
+modified: 20260703172204533
 tags: 
 title: Index
+type: text/vnd.tiddlywiki
 
-Hellow World!
+<div class="index-hero">
+<div class="index-name">김동건 <span class="index-name-en">DongGeon Kim</span></div>
+<div class="index-role">Java Backend Developer</div>
+<div class="index-intro">MSA · Spring Boot · 문제를 코드로 풀어내는 백엔드 개발자입니다.</div>
+<div class="index-links">
+<a href="https://github.com/hetgwi01" target="_blank" class="project-link-btn">⎋ GitHub</a>
+<$link to="Projects" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-list"/></svg> 프로젝트 목록</$link>
+</div>
+</div>
 
-* [[Projects]]
+---
+
+!! 기술 스택
+
+<div class="tech-stack">
+<span class="tech-badge backend">Java</span>
+<span class="tech-badge backend">Spring Boot</span>
+<span class="tech-badge backend">Spring Data JPA</span>
+<span class="tech-badge backend">Spring Cloud</span>
+<span class="tech-badge db">MySQL</span>
+<span class="tech-badge db">Redis</span>
+<span class="tech-badge infra">Docker</span>
+<span class="tech-badge infra">RabbitMQ</span>
+<span class="tech-badge infra">MinIO</span>
+<span class="tech-badge infra">GitHub Actions</span>
+</div>
+
+---
+
+!! 프로젝트
+
+<div class="project-list-card">
+<div class="project-list-header">
+<div>
+<span class="project-card-title">daiso-book.shop</span>
+<span class="project-card-type">팀 프로젝트 · NHN Academy 12기</span>
+</div>
+<span class="project-card-period">2025.11 ~ 2025.12</span>
+</div>
+<div class="project-card-desc">MSA 기반 온라인 서점 — 도서 검색부터 주문·리뷰까지</div>
+<div class="project-card-role">담당: 도서(Books) 도메인 총괄 설계 및 구현</div>
+<ul class="project-card-bullets">
+<li>ISBN 입력 → 알라딘 API + Gemini AI로 도서 자동 등록 파이프라인 구현</li>
+<li>MultipleBagFetchException → Native Query + JSON_ARRAYAGG로 단일 쿼리 해결 (N+1 제거)</li>
+<li>HTTPS Mixed Content → FrontServer ImageProxyController로 MinIO 이미지 프록시 구현</li>
+<li>Saga Pattern + RabbitMQ로 주문-재고 분산 트랜잭션 처리 (Outbox 패턴)</li>
+<li>계층형 카테고리 Tree + Redis 캐싱 (변경 시 직접 갱신)</li>
+<li>리뷰 이미지 3장 MinIO 업로드 + @Async/@Retryable 포인트 적립</li>
+</ul>
+<div class="tech-stack" style="margin:8px 0;">
+<span class="tech-badge backend">Java 21</span>
+<span class="tech-badge backend">Spring Boot</span>
+<span class="tech-badge db">MySQL</span>
+<span class="tech-badge db">Redis</span>
+<span class="tech-badge infra">MinIO</span>
+<span class="tech-badge infra">RabbitMQ</span>
+<span class="tech-badge external">Gemini AI</span>
+</div>
+<div class="project-card-links">
+<$link to="Project:daiso-book" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> 자세히 보기</$link>
+<a href="https://github.com/nhnacademy-be12-daiso/Books-Search" target="_blank" class="project-link-btn" style="font-size:12px;padding:3px 10px;">⎋ GitHub</a>
+</div>
+</div>
+
+<style>
+.index-hero { padding: 32px 0 24px; }
+.index-name { font-size: 28px; font-weight: bold; margin-bottom: 6px; }
+.index-name-en { font-size: 18px; font-weight: normal; opacity: 0.6; margin-left: 8px; }
+.index-role { font-size: 16px; font-weight: 500; margin-bottom: 8px; opacity: 0.85; }
+.index-intro { font-size: 14px; opacity: 0.65; margin-bottom: 16px; }
+.index-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.project-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+.project-card-title { font-size: 16px; font-weight: bold; margin-right: 10px; }
+.project-card-type { font-size: 12px; opacity: 0.6; }
+.project-card-period { font-size: 12px; opacity: 0.6; }
+.project-card-desc { font-size: 13px; margin-bottom: 6px; opacity: 0.85; }
+.project-card-role { font-size: 12px; font-weight: bold; margin-bottom: 10px; padding: 4px 10px; border-radius: 6px; display: inline-block; background: rgba(79,195,247,0.12); border: 1px solid rgba(79,195,247,0.25); }
+.project-card-bullets { font-size: 13px; margin: 8px 0 12px 0; padding-left: 18px; line-height: 1.9; opacity: 0.85; }
+.project-card-links { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+</style>

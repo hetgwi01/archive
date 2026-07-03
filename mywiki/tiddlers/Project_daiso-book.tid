@@ -1,5 +1,5 @@
 created: 20260630060727569
-modified: 20260703083720269
+modified: 20260703173655616
 tags: 
 title: Project:daiso-book
 type: text/vnd.tiddlywiki
@@ -48,7 +48,7 @@ ISBN 기반 알라딘 API와 Google Gemini AI를 연동하여 도서 등록을 �
 <div class="project-links">
 <a href="https://github.com/nhnacademy-be12-daiso/Books-Search" target="_blank" class="project-link-btn">⎋ GitHub (Books-Search)</a>
 <a href="https://github.com/nhnacademy-be12-daiso" target="_blank" class="project-link-btn">⎋ GitHub (전체 조직)</a>
-<$link to="Project:daiso-book-API-Doc" class="project-link-btn">📄 API 문서</$link>
+<$link to="Project:daiso-book-API-Doc" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> API 문서</$link>
 </div>
 
 ---
@@ -453,7 +453,7 @@ Controller, Service, Repository 전 계층에 대한 단위/통합 테스트를 
 
 !! 링크
 
-* [[📋 API 문서 보기|Project:daiso-book-API-Doc]]
-* [[🗄 데이터 스키마 보기|Project:daiso-book-API-Schemas]]
-* [[GitHub — Books-Search Repository|https://github.com/nhnacademy-be12-daiso/Books-Search]]
-* [[GitHub — daiso 전체 조직|https://github.com/nhnacademy-be12-daiso]]
+* <$link to="Project:daiso-book-API-Doc"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> API 문서 보기</$link>
+* <$link to="Project:daiso-book-API-Schemas"><svg width="14" height="14" style="vertical-align:-1px; margin-right:4px;"><use href="#icon-schema"/></svg> 데이터 스키마 보기</$link>
+* <a href="https://github.com/nhnacademy-be12-daiso/Books-Search" target="_blank">GitHub — Books-Search Repository</a>
+* <a href="https://github.com/nhnacademy-be12-daiso" target="_blank">GitHub — daiso 전체 조직</a>

@@ -1,8 +1,3 @@
-title: API-Doc-API-Card-Renderer
-tags: $:/tags/Macro
-type: application/javascript
-module-type: macro
-
 (function(){
 
 if(typeof window !== "undefined" && !window._docRendererListenerAdded) {
@@ -14,10 +9,29 @@ if(typeof window !== "undefined" && !window._docRendererListenerAdded) {
                 e.preventDefault();
                 var tiddler = card.getAttribute("data-doc-navigate");
                 var storyList = $tw.wiki.getTiddlerList("$:/StoryList") || [];
-                if (storyList.indexOf(tiddler) === -1) {
-                    storyList = [tiddler].concat(storyList);
+                var alreadyOpen = storyList.indexOf(tiddler) !== -1;
+                if (!alreadyOpen) {
+                    var currentTiddler = null;
+                    var el = card;
+                    while (el) {
+                        if (el.getAttribute && el.getAttribute("data-tiddler-title")) {
+                            currentTiddler = el.getAttribute("data-tiddler-title");
+                            break;
+                        }
+                        el = el.parentElement;
+                    }
+                    var insertIdx = currentTiddler ? storyList.indexOf(currentTiddler) : -1;
+                    if (insertIdx !== -1) {
+                        storyList.splice(insertIdx + 1, 0, tiddler);
+                    } else {
+                        storyList = storyList.concat([tiddler]);
+                    }
                     $tw.wiki.setText("$:/StoryList", "list", null, storyList.join(" "));
                 }
+                setTimeout(function() {
+                    var target = document.querySelector('[data-tiddler-title="' + tiddler + '"]');
+                    if (target) target.scrollIntoView({behavior: "smooth", block: "start"});
+                }, 200);
             }
         });
     }, 100);
