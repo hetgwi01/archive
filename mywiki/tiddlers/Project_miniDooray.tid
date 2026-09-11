@@ -1,0 +1,78 @@
+created: 20260911044933738
+modified: 20260911051326317
+tags: 
+title: Project:miniDooray
+type: text/vnd.tiddlywiki
+
+! miniDooray
+
+NHN 두레이(Dooray)를 벤치마킹한 협업 툴 클론 프로젝트. 프로젝트 생성부터 태스크·댓글·마일스톤·멤버 관리까지 지원하며, Gateway·계정(Account)·태스크(Task)·프론트(FE) 4개 서비스로 구성된 MSA(마이크로서비스 아키텍처)로 설계했다.
+
+<img src="./files/project/miniDooray/projects-list.jpg" alt="miniDooray 프로젝트 목록 화면" style="width:100%; object-fit:cover; object-position:top; border-radius:6px;">
+
+<div class="project-meta">
+<span class="project-period">2026.05.14 ~ 2026.05.22</span>
+<span class="project-team">팀 프로젝트(4인) · NHN Academy AIOT3 · team11</span>
+<span class="project-role">담당: Account API + Task API 백엔드</span>
+</div>
+
+!! 서비스 구성
+
+```
+Client
+  │
+  ▼
+FE (8080) ── Spring MVC + Thymeleaf, Redis 세션
+  │
+  ▼ (서버사이드 RestClient)
+Gateway (8000)  ── /account-api, /task-api 라우팅
+  ├── Account API (8081) ── 계정 관리
+  └── Task API    (8082) ── 프로젝트 · 태스크 · 마일스톤 · 멤버 · 댓글
+        │
+        └── (내부 호출) Account API
+```
+
+Client(브라우저)는 FE에 직접 접속해 화면을 렌더링받는다. FE는 서버 사이드에서 백엔드 데이터가 필요할 때만 Gateway를 거쳐 Account API·Task API를 호출하며, Gateway는 `/account-api`, `/task-api` 경로만 라우팅한다(FE는 Gateway를 거치지 않고 독립 배포). Task API는 회원 관련 정보가 필요할 때 Account API를 RestClient로 내부 호출한다. FE는 Redis에 세션을 저장한다.
+
+!! 기술 스택
+
+<div class="tech-stack">
+<span class="tech-badge backend">Java 21</span>
+<span class="tech-badge backend">Spring Boot 4.0.6</span>
+<span class="tech-badge backend">Spring Data JPA</span>
+<span class="tech-badge backend">Spring Security</span>
+<span class="tech-badge backend">Spring Cloud Gateway</span>
+<span class="tech-badge db">MySQL</span>
+<span class="tech-badge db">H2</span>
+<span class="tech-badge infra">Redis</span>
+<span class="tech-badge infra">SonarQube</span>
+</div>
+
+---
+
+!! 내가 한 것
+
+4개 서비스 중 **Account API**와 **Task API** 두 백엔드 서비스를 담당했다.
+
+;Account API — 계정 도메인
+* `Account`, `DeletedAccount` 엔티티 설계 및 초기 구현 — 계정 삭제 시 이력을 `DeletedAccount` 테이블로 분리 보관하도록 구성
+* Spring Security + `BCryptPasswordEncoder`로 비밀번호 암호화 (인증 자체는 Gateway/FE에서 처리하므로 Account API의 Security 설정은 암호화 기능만 사용하도록 필터 체인을 최소화)
+* MySQL(운영) / H2 in-memory(개발) 프로필 분리 설정
+* 테스트 코드 작성 및 SonarQube 연동 — 라인 커버리지 94.4%
+
+;Task API — 태스크 도메인
+* 마일스톤(MileStone) 도메인 구현 — `PLANNED / IN_PROGRESS / COMPLETED / CANCELLED` 상태를 가지는 CRUD, 태스크 당 1개 제약
+* 프로젝트 멤버(ProjectMember) 권한 로직 구현 — `ADMIN`/`MEMBER` 권한 체크, 멤버 추가·수정·삭제 시 권한 검증을 Facade 계층에서 일괄 처리
+* `AccountApiClient`를 통한 Account API 내부 연동 — 멤버 목록 조회 시 accountId 목록으로 계정 정보를 일괄 조회
+* 리팩토링 및 예외 처리 — 필수값 NotNull 검증, 도메인별 커스텀 예외(`ProjectMemberIsNotExistException` 등) 정리
+* 테스트 코드 작성 — 라인 커버리지 88.2%
+
+<img src="./files/project/miniDooray/task-detail.jpg" alt="miniDooray 태스크 상세 화면" style="width:100%; object-fit:cover; object-position:top; border-radius:6px;">
+
+//태스크 상세 화면 — 마일스톤 상태, 태그, 댓글이 한 화면에서 관리된다.//
+
+!! 링크
+
+<div class="project-links">
+<a href="https://github.com/AIOT3-miniDooray-team11" target="_blank" class="project-link-btn">⎋ GitHub Organization</a>
+</div>

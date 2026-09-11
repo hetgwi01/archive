@@ -1,5 +1,5 @@
 created: 20260630052912029
-modified: 20260703162222625
+modified: 20260911045119996
 title: Projects
 type: text/vnd.tiddlywiki
 
@@ -17,6 +17,18 @@ type: text/vnd.tiddlywiki
   badges:"Java 21:backend|Spring Boot:backend|MySQL:db|Redis:db|MinIO:infra|RabbitMQ:infra|Gemini AI:external"
   tiddler:"Project:daiso-book"
   github:"https://github.com/nhnacademy-be12-daiso/Books-Search"
+>>
+
+<<projectCard
+  name:"miniDooray"
+  type:"팀 프로젝트(4인) · NHN Academy AIOT3 · team11"
+  period:"2026.05.14 ~ 2026.05.22"
+  desc:"Dooray를 벤치마킹한 협업 툴 클론 — Gateway·Account·Task·FE 4개 서비스로 구성된 MSA"
+  role:"담당: Account API + Task API 백엔드"
+  bullets:"Account/DeletedAccount 엔티티 설계 + BCrypt 비밀번호 암호화|마일스톤 도메인 구현 — 상태 관리 CRUD|ProjectMember 권한 로직 — ADMIN/MEMBER 권한 체크|Account API RestClient 내부 연동, 테스트 커버리지 88~94%"
+  badges:"Java 21:backend|Spring Boot:backend|Spring Data JPA:backend|Spring Security:backend|MySQL:db|H2:db"
+  tiddler:"Project:miniDooray"
+  github:"https://github.com/AIOT3-miniDooray-team11"
 >>
 
 </div>
