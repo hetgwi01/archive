@@ -1,5 +1,5 @@
 created: 20260630052912029
-modified: 20260929094239708
+modified: 20260929140054996
 title: Projects
 type: text/vnd.tiddlywiki
 
@@ -39,8 +39,20 @@ type: text/vnd.tiddlywiki
   role:"담당: RabbitMQ 비동기 파이프라인 (리뷰 임베딩 갱신 · 리뷰 AI 요약)"
   bullets:"리뷰 등록 이벤트를 RabbitMQ로 비동기 발행 — @TransactionalEventListener(AFTER_COMMIT)|DLX/DLQ 구성으로 처리 실패 메시지 격리|로컬 AI(MLX) 연동 HTTP 클라이언트 오작동 트러블슈팅|임베딩 배치 서버(ai-library-embedding) 초기 스캐폴딩"
   badges:"Java 21:backend|Spring Boot:backend|Spring AI:backend|RabbitMQ:infra|PostgreSQL:db|pgvector:db|Redis:db"
-  tiddler:"Project:ai-library-team1"
+  tiddler:"Project:ai-library"
   github:"https://github.com/team1-ai-library"
+>>
+
+<<projectCard
+  name:"Yesaido"
+  type:"팀 프로젝트(9인) · NHN Academy AIOT3"
+  period:"2026.07.08 ~ 2026.09.16"
+  desc:"IoT 센서 기반 버섯 재배 환경을 자동 제어하고 AI가 생육 상태를 분석해주는 스마트팜 플랫폼 — 8개 서비스로 구성된 MSA"
+  role:"담당: CI/CD · 센서(Cultivation) · 알림(Notification)"
+  bullets:"Kubernetes 매니페스트 + 중앙 배포 워크플로로 전체 서비스 CI/CD 파이프라인 구축|센서 그래프 Redis 캐싱 — 분산 락 + Lua 스크립트로 다중 인스턴스 원자적 갱신|Feign 응답 그대로 반환 시 내부 헤더가 브라우저로 새던 문제 → UpstreamResponseUtils로 일반화|알림 채널/템플릿 유니크 제약 및 소프트 삭제 검증 강화"
+  badges:"Java 21:backend|Spring Boot:backend|Spring Cloud:backend|PostgreSQL:db|Redis:db|InfluxDB:db|RabbitMQ:infra|Kubernetes:infra|Docker:infra"
+  tiddler:"Project:Yesaido"
+  github:"https://github.com/nhnacademy-aiot3-yes-ai-do"
 >>
 
 </div>
