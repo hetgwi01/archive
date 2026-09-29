@@ -1,5 +1,5 @@
 created: 20260630052912029
-modified: 20260911045119996
+modified: 20260929094239708
 title: Projects
 type: text/vnd.tiddlywiki
 
@@ -29,6 +29,18 @@ type: text/vnd.tiddlywiki
   badges:"Java 21:backend|Spring Boot:backend|Spring Data JPA:backend|Spring Security:backend|MySQL:db|H2:db"
   tiddler:"Project:miniDooray"
   github:"https://github.com/AIOT3-miniDooray-team11"
+>>
+
+<<projectCard
+  name:"ai-library"
+  type:"팀 프로젝트(4인) · NHN Academy AIOT3"
+  period:"2026.06.17 ~ 2026.07.04"
+  desc:"도서 검색·AI 추천·챗봇을 묶은 AI 기반 도서관 서비스 — 웹/텔레그램 + MCP Tool 서버 + 임베딩 배치 서버 3개 리포로 구성된 MSA"
+  role:"담당: RabbitMQ 비동기 파이프라인 (리뷰 임베딩 갱신 · 리뷰 AI 요약)"
+  bullets:"리뷰 등록 이벤트를 RabbitMQ로 비동기 발행 — @TransactionalEventListener(AFTER_COMMIT)|DLX/DLQ 구성으로 처리 실패 메시지 격리|로컬 AI(MLX) 연동 HTTP 클라이언트 오작동 트러블슈팅|임베딩 배치 서버(ai-library-embedding) 초기 스캐폴딩"
+  badges:"Java 21:backend|Spring Boot:backend|Spring AI:backend|RabbitMQ:infra|PostgreSQL:db|pgvector:db|Redis:db"
+  tiddler:"Project:ai-library-team1"
+  github:"https://github.com/team1-ai-library"
 >>
 
 </div>

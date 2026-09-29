@@ -1,5 +1,5 @@
 created: 20260630052329342
-modified: 20260929090311119
+modified: 20260929101159809
 tags: 
 title: Index
 type: text/vnd.tiddlywiki
@@ -18,17 +18,50 @@ type: text/vnd.tiddlywiki
 
 !! 기술 스택
 
+<div class="tech-stack-group">
+<div class="tech-stack-label">BACKEND</div>
 <div class="tech-stack">
 <span class="tech-badge backend">Java</span>
 <span class="tech-badge backend">Spring Boot</span>
 <span class="tech-badge backend">Spring Data JPA</span>
 <span class="tech-badge backend">Spring Cloud</span>
+<span class="tech-badge backend">Spring Security</span>
+</div>
+</div>
+
+<div class="tech-stack-group">
+<div class="tech-stack-label">DATA</div>
+<div class="tech-stack">
 <span class="tech-badge db">MySQL</span>
+<span class="tech-badge db">PostgreSQL / pgvector</span>
 <span class="tech-badge db">Redis</span>
+</div>
+</div>
+
+<div class="tech-stack-group">
+<div class="tech-stack-label">INFRA</div>
+<div class="tech-stack">
 <span class="tech-badge infra">Docker</span>
 <span class="tech-badge infra">RabbitMQ</span>
 <span class="tech-badge infra">MinIO</span>
 <span class="tech-badge infra">GitHub Actions</span>
+</div>
+</div>
+
+<div class="tech-stack-group">
+<div class="tech-stack-label">QUALITY</div>
+<div class="tech-stack">
+<span class="tech-badge infra">JUnit5</span>
+<span class="tech-badge infra">SonarQube</span>
+</div>
+</div>
+
+<div class="tech-stack-group">
+<div class="tech-stack-label">AI</div>
+<div class="tech-stack">
+<span class="tech-badge backend">Spring AI</span>
+<span class="tech-badge external">Gemini AI</span>
+</div>
 </div>
 
 ---
@@ -113,4 +146,10 @@ type: text/vnd.tiddlywiki
 .project-card-role { font-size: 12px; font-weight: bold; margin-bottom: 10px; padding: 4px 10px; border-radius: 6px; display: inline-block; background: rgba(79,195,247,0.12); border: 1px solid rgba(79,195,247,0.25); }
 .project-card-bullets { font-size: 13px; margin: 8px 0 12px 0; padding-left: 18px; line-height: 1.9; opacity: 0.85; }
 .project-card-links { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+
+@media print {
+  .tc-tiddler-title, .tc-tiddler-controls, .tc-tiddler-edit-frame .tc-tiddler-controls,
+  .tc-tiddler-frame > .tc-tiddler-title-heading, .tc-subtitle { display: none !important; }
+  .project-list-card { break-inside: avoid; page-break-inside: avoid; }
+}
 </style>

@@ -1,0 +1,225 @@
+created: 20260929094117470
+modified: 20260929094155528
+tags: 
+title: Project:ai-library
+type: text/vnd.tiddlywiki
+
+! ai-library
+
+도서 검색·AI 추천·챗봇을 하나로 묶은 AI 기반 도서관 서비스입니다. 웹 서비스(`ai-library-team1`), MCP Tool 서버(`ai-library-mcp-server`), 임베딩 배치 서버(`ai-library-embedding`) 3개 리포지토리가 함께 동작하는 MSA로 구성했습니다.
+
+<div class="project-meta">
+<span class="project-period">2026.06.17 ~ 2026.07.04</span>
+<span class="project-team">팀 프로젝트(4인) · NHN Academy AIOT3</span>
+<span class="project-role">담당: RabbitMQ 비동기 파이프라인 (리뷰 임베딩 갱신 · 리뷰 AI 요약)</span>
+</div>
+
+!! 서비스 소개
+
+키워드 검색(PostgreSQL 전문 검색)과 벡터 검색(BGE-M3 임베딩 + pgvector)을 RRF 알고리즘으로 결합한 하이브리드 검색, 그 결과를 LLM(Gemini / Ollama / Local AI)에 넘겨 도서를 추천하는 RAG 파이프라인을 제공합니다. 웹과 텔레그램 봇으로 동일한 서비스를 이용할 수 있고, 국립중앙도서관 Open API는 별도 MCP Tool 서버를 통해 LLM이 직접 호출합니다.
+
+!! 아키텍처
+
+```
+┌────────────────────────────────────┐
+│         ai-library-team1           │  ← 웹 + 텔레그램
+│  Spring Boot + Thymeleaf           │
+│  검색(KW/Vec/Hybrid) · RAG · 리뷰   │
+└──────┬──────────────────┬──────────┘
+       │ pgvector 검색     │ MCP Tool 호출
+       ▼                   ▼
+┌─────────────┐   ┌──────────────────┐
+│ai-library-  │   │ai-library-       │
+│embedding    │   │mcp-server        │
+│(임베딩 배치) │   │(국립중앙도서관   │
+│RabbitMQ 수신│   │ Open API 래핑)   │
+└─────────────┘   └──────────────────┘
+```
+
+''리뷰 등록 → RabbitMQ 이벤트 흐름''
+
+```
+리뷰 등록 API
+    │
+    ├─ library.team1.review.embedding  →  ai-library-embedding (임베딩 갱신)
+    └─ library.team1.inner.review      →  team1 내부 (리뷰 AI 요약 생성)
+
+실패 시 → library.team1.review.dlx → library.team1.review.embedding.dlq
+```
+
+!! 기술 스택
+
+<div class="tech-stack">
+<span class="tech-badge backend">Java 21</span>
+<span class="tech-badge backend">Spring Boot 3.5.15</span>
+<span class="tech-badge backend">Spring AI 1.1.8</span>
+<span class="tech-badge backend">Spring Data JPA</span>
+<span class="tech-badge backend">QueryDSL</span>
+<span class="tech-badge db">PostgreSQL + pgvector</span>
+<span class="tech-badge db">Redis</span>
+<span class="tech-badge infra">RabbitMQ</span>
+<span class="tech-badge infra">SonarQube</span>
+<span class="tech-badge external">Gemini 2.5 Flash</span>
+<span class="tech-badge external">Ollama</span>
+<span class="tech-badge external">TelegramBots</span>
+</div>
+
+---
+
+!! 내가 구현한 것
+
+4개 리포 중 **ai-library-team1**과 **ai-library-embedding** 두 서비스에 걸쳐, 리뷰 등록 시 발생하는 RabbitMQ 비동기 파이프라인을 담당했습니다.
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/ailib-impl-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/ailib-impl-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/ailib-impl-3" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/ailib-impl-1" text="no"/>
+<$action-setfield $tiddler="$:/state/ailib-impl-2" text="no"/>
+<$action-setfield $tiddler="$:/state/ailib-impl-3" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/ailib-impl-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-1" setTo="no">
+<span class="api-path">리뷰 등록 → RabbitMQ 비동기 파이프라인 설계</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-1" setTo="yes">
+<span class="api-path">리뷰 등록 → RabbitMQ 비동기 파이프라인 설계</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-1" type="match" text="yes" default="no" class="api-body" tag="div">
+
+리뷰가 등록되면 두 가지 일이 뒤따라야 합니다 — 도서 임베딩을 리뷰 내용까지 반영해 갱신하는 것, 그리고 Gemini로 리뷰 요약을 생성하는 것입니다. 둘 다 검색 API 응답 시간에는 영향을 주면 안 되는 부가 작업이라 RabbitMQ로 비동기 분리했습니다.
+
+''해결 과정''
+
+# `ReviewEmbeddingProducer`/`ReviewSummaryProducer`를 `@TransactionalEventListener(phase = AFTER_COMMIT)`로 구현 — 리뷰가 실제로 커밋된 뒤에만 이벤트 발행
+# `library.team1.review.exchange`(Topic) 아래 `library.team1.review.embedding`, `library.team1.inner.review` 두 큐로 라우팅 키를 분리
+# `ReviewSummaryCustomer`에서 `@RabbitListener`로 수신, 처리 성공 시 `basicAck`, 실패 시 `basicNack(requeue=false)`로 DLQ 이동
+
+트랜잭션 롤백 시 이벤트가 발행되지 않도록 보장하면서, 임베딩 갱신과 리뷰 요약 생성을 검색 응답 경로에서 완전히 분리했습니다.
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/ailib-impl-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-2" setTo="no">
+<span class="api-path">DLX/DLQ 구성 — 임베딩 배치 서버(ai-library-embedding) 연동</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-2" setTo="yes">
+<span class="api-path">DLX/DLQ 구성 — 임베딩 배치 서버(ai-library-embedding) 연동</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-2" type="match" text="yes" default="no" class="api-body" tag="div">
+
+`ai-library-embedding`은 처음부터 제가 스캐폴딩한 리포입니다. 엔티티·배치 서비스·테스트까지 기본 구조를 잡은 뒤, 하드코딩되어 있던 접속 정보를 `.env`로 분리하고 실제 RabbitMQ 서버와 연결했습니다.
+
+''해결 과정''
+
+# `library.team1.review.exchange`(Topic Exchange), `library.team1.review.embedding` 큐를 양쪽 리포에 동일하게 구성
+# 큐에 `x-dead-letter-exchange` 인자로 `library.team1.review.dlx`(Direct Exchange) 지정
+# DLX에 `library.team1.review.embedding.dlq`를 바인딩해, 처리 실패한 메시지가 유실 없이 DLQ에 쌓이도록 구성
+
+메시지 처리에 실패해도 유실되지 않고 DLQ에서 확인할 수 있는 구조를 두 서비스에 걸쳐 일관되게 구성했습니다.
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/ailib-impl-3" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-3" setTo="no">
+<span class="api-path">트러블슈팅 — 로컬 AI(MLX) 연동 시 HTTP 클라이언트 오작동</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-3" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-impl-3" setTo="yes">
+<span class="api-path">트러블슈팅 — 로컬 AI(MLX) 연동 시 HTTP 클라이언트 오작동</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-impl-3" type="match" text="yes" default="no" class="api-body" tag="div">
+
+Gemini/Ollama 외에 로컬에서 띄운 Qwen3-4B(MLX) 모델도 OpenAI 호환 API로 붙여 쓸 수 있도록 `localChatClient`를 구성했는데, 리뷰 요약용 `reviewSummarizerChatClient`에서 응답을 제대로 받아오지 못하는 오작동이 있었습니다.
+
+''해결 과정''
+
+# 기본 `SimpleClientHttpRequestFactory` 대신 `httpclient5` 의존성을 추가해 Apache HttpClient5 기반으로 교체
+# `BufferingClientHttpRequestFactory`로 감싸 요청 본문을 버퍼링하도록 구성
+# 로컬 모델이 지원하지 않던 `temperature(0.0)` 옵션 제거
+
+로컬 AI 모델도 Gemini·Ollama와 동일하게 안정적으로 응답을 받아오도록 수정했습니다.
+
+</$reveal>
+</div>
+
+---
+
+!! 아쉬운 점 / 개선할 점
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/ailib-improve-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/ailib-improve-2" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/ailib-improve-1" text="no"/>
+<$action-setfield $tiddler="$:/state/ailib-improve-2" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/ailib-improve-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-improve-1" setTo="no">
+<span class="api-path">DLQ에 쌓인 메시지의 재처리 로직 없음</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-improve-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-improve-1" setTo="yes">
+<span class="api-path">DLQ에 쌓인 메시지의 재처리 로직 없음</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-improve-1" type="match" text="yes" default="no" class="api-body" tag="div">
+
+처리에 실패한 메시지가 유실되지 않고 DLQ에 쌓이도록 구성하는 데까지는 했지만, DLQ에 쌓인 메시지를 다시 처리하거나 모니터링/알림으로 확인하는 부분은 만들지 못했습니다. 지금은 DLQ를 직접 열어봐야 실패 여부를 알 수 있습니다.
+
+''개선 방향''
+
+* DLQ 전용 컨슈머를 추가해 일정 시간 뒤 재시도(retry) 처리
+* 재시도 횟수 초과 시 Slack 알림 등으로 실패를 즉시 인지할 수 있는 구조 추가
+
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/ailib-improve-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-improve-2" setTo="no">
+<span class="api-path">SonarQube 이슈 — Maintainability 26건 미해결</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-improve-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/ailib-improve-2" setTo="yes">
+<span class="api-path">SonarQube 이슈 — Maintainability 26건 미해결</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/ailib-improve-2" type="match" text="yes" default="no" class="api-body" tag="div">
+
+Security는 0건, Reliability는 1건으로 낮은 편이지만 Maintainability(코드 스멜)가 26건 남아있습니다. 하이브리드 검색·RAG·텔레그램 봇·RabbitMQ까지 4인이 2.5주 안에 기능을 붙여나가다 보니, 마지막에 정적 분석 결과를 하나씩 닫는 시간까지는 확보하지 못했습니다.
+
+</$reveal>
+</div>
+
+!! 링크
+
+* <a href="https://github.com/team1-ai-library/ai-library-team1" target="_blank">GitHub — ai-library-team1 (웹/텔레그램)</a>
+* <a href="https://github.com/team1-ai-library/ai-library-embedding" target="_blank">GitHub — ai-library-embedding (임베딩 배치)</a>
+* <a href="https://github.com/team1-ai-library/ai-library-mcp-server" target="_blank">GitHub — ai-library-mcp-server (MCP Tool)</a>
+* <a href="https://github.com/team1-ai-library" target="_blank">GitHub — team1-ai-library 전체 조직</a>
