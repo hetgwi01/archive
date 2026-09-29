@@ -1,0 +1,134 @@
+created: 20260929084057200
+modified: 20260929084113745
+tags: 
+title: Project:miniDooray-API-Comment
+type: text/vnd.tiddlywiki
+
+! Task API — Comment
+
+태스크 댓글 CRUD API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-comment-0" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-comment-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-comment-2" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-comment-0" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-comment-1" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-comment-2" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-comment-0" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-0" setTo="no">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments</span>
+<span class="api-summary-text">댓글 생성</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-0" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-0" setTo="yes">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments</span>
+<span class="api-summary-text">댓글 생성</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-0" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "content": "댓글 내용입니다."
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>content</td><td>O</td><td>String</td><td>댓글 내용</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 생성 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 프로젝트 멤버가 아님 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-comment-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-1" setTo="no">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments/{commentId}</span>
+<span class="api-summary-text">댓글 수정</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-1" setTo="yes">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments/{commentId}</span>
+<span class="api-summary-text">댓글 수정</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-1" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+<tr><td>commentId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "content": "수정된 댓글 내용입니다."
+}</code></pre>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 수정 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 댓글 
+<br>
+<span class="api-resp resp-4xx">403</span> 댓글 작성자가 아님 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-comment-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-2" setTo="no">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments/{commentId}</span>
+<span class="api-summary-text">댓글 삭제</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-comment-2" setTo="yes">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/tasks/{taskId}/comments/{commentId}</span>
+<span class="api-summary-text">댓글 삭제</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-comment-2" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+<tr><td>commentId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 삭제 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 댓글 
+<br>
+<span class="api-resp resp-4xx">403</span> 댓글 작성자가 아님 
+<br>
+</div>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]] · [[데이터 스키마 보기|Project:miniDooray-API-Schemas]]

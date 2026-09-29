@@ -1,0 +1,383 @@
+{
+  "CreateAccountReq": {
+    "userId": {
+      "type": "string"
+    },
+    "userPassword": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    }
+  },
+  "UpdateAccountReq": {
+    "userId": {
+      "type": "string"
+    },
+    "userPassword": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    }
+  },
+  "AccountListReq": {
+    "accountIdList": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  },
+  "AccountResp": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DORMANT"
+      ]
+    },
+    "createAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "AccountListResp": {
+    "accountRespList": {
+      "type": "array",
+      "$ref": "AccountResp"
+    }
+  },
+  "AccountLoginResp": {
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "userPassword": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DORMANT"
+      ]
+    }
+  },
+  "ProjectRequestDto": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DORMANT",
+        "TERMINATED"
+      ]
+    }
+  },
+  "ProjectInfoDto": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DORMANT",
+        "TERMINATED"
+      ]
+    },
+    "taskStatusList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "ProjectViewDto": {
+    "projectInfoDtoList": {
+      "type": "array",
+      "$ref": "ProjectInfoDto"
+    },
+    "taskInfoDtoList": {
+      "type": "array",
+      "$ref": "TaskInfoDto"
+    }
+  },
+  "TaskRequestDto": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "tagNameList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "TaskInfoDto": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "CANCELLED"
+      ]
+    }
+  },
+  "TagResponseDto": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "TaskResponseDto": {
+    "taskId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "projectId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "createMemberId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "milestoneResponseDto": {
+      "$ref": "MilestoneResponseDto"
+    },
+    "tagResponseDtoList": {
+      "type": "array",
+      "$ref": "TagResponseDto"
+    }
+  },
+  "TaskInfoListDto": {
+    "taskInfoDtoList": {
+      "type": "array",
+      "$ref": "TaskInfoDto"
+    }
+  },
+  "TaskViewDto": {
+    "taskResponseDto": {
+      "$ref": "TaskResponseDto"
+    },
+    "taskInfoListDto": {
+      "$ref": "TaskInfoListDto"
+    },
+    "projectInfoDto": {
+      "$ref": "ProjectInfoDto"
+    },
+    "commentResponseDtoList": {
+      "type": "array",
+      "$ref": "CommentResponseDto"
+    }
+  },
+  "MilestoneCreateRequestDto": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "CANCELLED"
+      ]
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "MilestoneResponseDto": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "CANCELLED"
+      ]
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "MemberRequestDto": {
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "auth": {
+      "type": "string",
+      "enum": [
+        "ADMIN",
+        "MEMBER"
+      ]
+    }
+  },
+  "MemberInfoDto": {
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "memberId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "auth": {
+      "type": "string",
+      "enum": [
+        "ADMIN",
+        "MEMBER"
+      ]
+    },
+    "joinedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "MemberInfoListDto": {
+    "memberInfoDtoList": {
+      "type": "array",
+      "$ref": "MemberInfoDto"
+    }
+  },
+  "CommentRequestDto": {
+    "content": {
+      "type": "string"
+    }
+  },
+  "CommentResponseDto": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "CommentListDto": {
+    "commentResponseDtoList": {
+      "type": "array",
+      "$ref": "CommentResponseDto"
+    }
+  },
+  "ErrorResponseDto": {
+    "message": {
+      "type": "string"
+    },
+    "httpStatusCode": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "errorTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

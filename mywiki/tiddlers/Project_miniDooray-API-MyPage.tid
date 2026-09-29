@@ -1,0 +1,80 @@
+created: 20260911063719639
+modified: 20260911063742515
+tags: 
+title: Project:miniDooray-API-MyPage
+type: text/vnd.tiddlywiki
+
+! Task API — MyPage
+
+내 태스크/댓글 조회 API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-mypage-0" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-mypage-1" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-mypage-0" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-mypage-1" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-mypage-0" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-mypage-0" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/mypage/tasks</span>
+<span class="api-summary-text">내 태스크 목록 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-mypage-0" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-mypage-0" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/mypage/tasks</span>
+<span class="api-summary-text">내 태스크 목록 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-mypage-0" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK → <code>TaskInfoListDto</code><br>
+<pre><code>{
+  "taskInfoDtoList": [
+    { "id": 1, "title": "로그인 구현", "status": "IN_PROGRESS" }
+  ]
+}</code></pre>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-mypage-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-mypage-1" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/mypage/comments</span>
+<span class="api-summary-text">내 댓글 목록 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-mypage-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-mypage-1" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/mypage/comments</span>
+<span class="api-summary-text">내 댓글 목록 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-mypage-1" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK → <code>CommentListDto</code><br>
+<pre><code>{
+  "commentResponseDtoList": [
+    { "id": 1, "accountId": 1, "userId": "john_doe", "content": "리뷰 완료했습니다.", "createdAt": "2026-05-22T11:00:00", "updatedAt": "2026-05-22T11:00:00" }
+  ]
+}</code></pre>
+</div>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]] · [[데이터 스키마 보기|Project:miniDooray-API-Schemas]]

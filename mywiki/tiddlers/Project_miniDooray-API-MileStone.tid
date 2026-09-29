@@ -1,0 +1,136 @@
+created: 20260929084138471
+modified: 20260929084155626
+tags: 
+title: Project:miniDooray-API-MileStone
+type: text/vnd.tiddlywiki
+
+! Task API — MileStone
+
+태스크에 딸린 마일스톤 CRUD API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-milestone-0" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-milestone-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-milestone-2" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-milestone-0" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-milestone-1" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-milestone-2" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-milestone-0" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-0" setTo="no">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 생성</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-0" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-0" setTo="yes">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 생성</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-0" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>설명</strong><br>태스크 1개당 마일스톤 1개를 가질 수 있다. 생성·수정·삭제는 태스크 작성자만 가능하다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "title": "1차 스프린트",
+  "description": "기본 기능 구현",
+  "status": "PLANNED",
+  "dueDate": "2026-06-01T00:00:00"
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>title</td><td>O</td><td>String</td><td>마일스톤 제목</td></tr>
+<tr><td>description</td><td>X</td><td>String</td><td>마일스톤 설명</td></tr>
+<tr><td>status</td><td>O</td><td>MileStoneStatus</td><td>마일스톤 상태</td></tr>
+<tr><td>dueDate</td><td>X</td><td>LocalDateTime</td><td>마감일</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 생성 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">403</span> 태스크 작성자가 아님 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-milestone-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-1" setTo="no">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 수정</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-1" setTo="yes">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 수정</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-1" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>설명</strong><br>요청 본문은 마일스톤 생성과 동일하다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 수정 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">403</span> 태스크 작성자가 아님 
+<br>
+<span class="api-resp resp-4xx">404</span> 마일스톤이 존재하지 않음 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-milestone-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-2" setTo="no">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 삭제</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-milestone-2" setTo="yes">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/tasks/{taskId}/milestones</span>
+<span class="api-summary-text">마일스톤 삭제</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-milestone-2" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>taskId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 삭제 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">403</span> 태스크 작성자가 아님 
+<br>
+<span class="api-resp resp-4xx">404</span> 마일스톤이 존재하지 않음 
+<br>
+</div>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]] · [[데이터 스키마 보기|Project:miniDooray-API-Schemas]]

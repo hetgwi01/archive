@@ -1,0 +1,192 @@
+created: 20260929084212382
+modified: 20260929084228831
+tags: 
+title: Project:miniDooray-API-Member
+type: text/vnd.tiddlywiki
+
+! Task API — ProjectMember
+
+프로젝트 멤버 초대/권한/추방 API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-member-0" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-3" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-member-0" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-1" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-2" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-member-3" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-member-0" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-0" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/projects/{projectId}/members</span>
+<span class="api-summary-text">멤버 목록 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-0" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-0" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/task-api/projects/{projectId}/members</span>
+<span class="api-summary-text">멤버 목록 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-0" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>projectId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-mini-member-0-0" text="yes"/>
+→ MemberInfoListDto
+</$button>
+<$reveal state="$:/state/resp-mini-member-0-0" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-mini-member-0-0','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">MemberInfoListDto</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-mini-member-0-0" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MemberInfoListDto">></div>
+</div></div></$reveal>
+<br>
+<pre><code>{
+  "memberInfoDtoList": [
+    { "accountId": 1, "memberId": 1, "userId": "john_doe", "auth": "ADMIN", "joinedAt": "2026-05-22T10:00:00" },
+    { "accountId": 2, "memberId": 2, "userId": "jane_doe", "auth": "MEMBER", "joinedAt": "2026-05-22T11:00:00" }
+  ]
+}</code></pre>
+<span class="api-resp resp-4xx">404</span> 프로젝트 멤버가 아님 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-member-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-1" setTo="no">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/projects/{projectId}/members</span>
+<span class="api-summary-text">멤버 추가</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-1" setTo="yes">
+<span class="api-method api-post">post</span>
+<span class="api-path">/task-api/projects/{projectId}/members</span>
+<span class="api-summary-text">멤버 추가</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-1" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>설명</strong><br>ADMIN 권한을 가진 멤버만 호출할 수 있다. userId로 받아 내부에서 Account API를 호출해 accountId로 변환한 뒤 저장한다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>projectId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "userId": "jane_doe",
+  "auth": "MEMBER"
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>userId</td><td>O</td><td>String</td><td>추가할 계정의 로그인 ID</td></tr>
+<tr><td>auth</td><td>O</td><td>MembersAuth</td><td>부여할 권한</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 생성 성공 (응답 본문 없음). 이미 탈퇴한 멤버라면 재활성화 처리됨 
+<br>
+<span class="api-resp resp-4xx">403</span> 관리자 권한 없음 
+<br>
+<span class="api-resp resp-4xx">409</span> 이미 존재하는 멤버 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-member-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-2" setTo="no">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/projects/{projectId}/members/{memberId}</span>
+<span class="api-summary-text">멤버 권한 변경</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-2" setTo="yes">
+<span class="api-method api-put">put</span>
+<span class="api-path">/task-api/projects/{projectId}/members/{memberId}</span>
+<span class="api-summary-text">멤버 권한 변경</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-2" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>설명</strong><br>ADMIN 권한을 가진 멤버만 호출할 수 있다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>projectId</td><td>path</td><td>Long</td><td>✓</td></tr>
+<tr><td>memberId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "auth": "ADMIN"
+}</code></pre>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 수정 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">403</span> 관리자 권한 없음 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-member-3" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-3" setTo="no">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/projects/{projectId}/members/{memberId}</span>
+<span class="api-summary-text">멤버 삭제</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-3" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-member-3" setTo="yes">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/task-api/projects/{projectId}/members/{memberId}</span>
+<span class="api-summary-text">멤버 삭제</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-member-3" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>헤더</strong><br><code>X-Account-Id: {accountId}</code></p>
+<p><strong>설명</strong><br>본인 탈퇴 또는 ADMIN의 강제 추방이 가능하다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>projectId</td><td>path</td><td>Long</td><td>✓</td></tr>
+<tr><td>memberId</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 삭제 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 멤버 
+<br>
+<span class="api-resp resp-4xx">403</span> 권한 없음 
+<br>
+</div>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]] · [[데이터 스키마 보기|Project:miniDooray-API-Schemas]]

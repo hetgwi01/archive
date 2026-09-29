@@ -1,0 +1,23 @@
+created: 20260929084651051
+modified: 20260929085003515
+tags: 
+title: Project:miniDooray-API-Doc
+type: text/vnd.tiddlywiki
+
+! API 그룹
+
+<div class="api-back-link">[[← 프로젝트로 돌아가기|Project:miniDooray]]</div>
+
+<<renderApiDoc groups:'[
+  {"name":"Account API","desc":"계정 등록/조회/수정/삭제 API","tiddler":"Project:miniDooray-API-Account"},
+  {"name":"Task API — Project","desc":"프로젝트 생성/조회/수정/삭제 API","tiddler":"Project:miniDooray-API-Project"},
+  {"name":"Task API — Task","desc":"태스크 생성/조회/수정/삭제 API","tiddler":"Project:miniDooray-API-Task"},
+  {"name":"Task API — Comment","desc":"태스크 댓글 CRUD API","tiddler":"Project:miniDooray-API-Comment"},
+  {"name":"Task API — MileStone","desc":"태스크에 딸린 마일스톤 CRUD API","tiddler":"Project:miniDooray-API-MileStone"},
+  {"name":"Task API — ProjectMember","desc":"프로젝트 멤버 초대/권한/추방 API","tiddler":"Project:miniDooray-API-Member"},
+  {"name":"Task API — MyPage","desc":"내 태스크/댓글 조회 API","tiddler":"Project:miniDooray-API-MyPage"}
+]'>>
+
+! 데이터 스키마
+
+<<renderSchemaCard tiddler:"Project:miniDooray-API-Schemas" desc:"API에서 사용되는 전체 DTO/Enum 스키마 목록">>

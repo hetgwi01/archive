@@ -1,0 +1,358 @@
+created: 20260911060713969
+modified: 20260929083512808
+tags: 
+title: Project:miniDooray-API-Schemas
+type: text/vnd.tiddlywiki
+
+! Data Schemas
+
+API에서 사용되는 전체 데이터 스키마 목록이다. ([[json data|Project:miniDooray-API-Schemas-Data]])
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/schema-full-CreateAccountReq" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-UpdateAccountReq" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountListReq" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountResp" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountListResp" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountLoginResp" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectRequestDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectInfoDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectViewDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskRequestDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskInfoDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TagResponseDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskResponseDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskInfoListDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskViewDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-MilestoneCreateRequestDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-MilestoneResponseDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberRequestDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberInfoDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberInfoListDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentRequestDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentResponseDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentListDto" text="yes"/>
+<$action-setfield $tiddler="$:/state/schema-full-ErrorResponseDto" text="yes"/>
+모두 펼치기
+</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/schema-full-CreateAccountReq" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-UpdateAccountReq" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountListReq" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountResp" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountListResp" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-AccountLoginResp" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectRequestDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectInfoDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-ProjectViewDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskRequestDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskInfoDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TagResponseDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskResponseDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskInfoListDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-TaskViewDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-MilestoneCreateRequestDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-MilestoneResponseDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberRequestDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberInfoDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-MemberInfoListDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentRequestDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentResponseDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-CommentListDto" text="no"/>
+<$action-setfield $tiddler="$:/state/schema-full-ErrorResponseDto" text="no"/>
+모두 접기
+</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-CreateAccountReq" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CreateAccountReq" setTo="no"><span class="api-path">CreateAccountReq</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CreateAccountReq" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CreateAccountReq" setTo="yes"><span class="api-path">CreateAccountReq</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CreateAccountReq" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"CreateAccountReq">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-UpdateAccountReq" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-UpdateAccountReq" setTo="no"><span class="api-path">UpdateAccountReq</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-UpdateAccountReq" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-UpdateAccountReq" setTo="yes"><span class="api-path">UpdateAccountReq</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-UpdateAccountReq" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"UpdateAccountReq">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-AccountListReq" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountListReq" setTo="no"><span class="api-path">AccountListReq</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountListReq" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountListReq" setTo="yes"><span class="api-path">AccountListReq</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountListReq" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountListReq">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-AccountResp" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountResp" setTo="no"><span class="api-path">AccountResp</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountResp" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountResp" setTo="yes"><span class="api-path">AccountResp</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountResp" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountResp">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-AccountListResp" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountListResp" setTo="no"><span class="api-path">AccountListResp</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountListResp" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountListResp" setTo="yes"><span class="api-path">AccountListResp</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountListResp" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountListResp">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-AccountLoginResp" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountLoginResp" setTo="no"><span class="api-path">AccountLoginResp</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountLoginResp" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-AccountLoginResp" setTo="yes"><span class="api-path">AccountLoginResp</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-AccountLoginResp" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountLoginResp">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-ProjectRequestDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectRequestDto" setTo="no"><span class="api-path">ProjectRequestDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectRequestDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectRequestDto" setTo="yes"><span class="api-path">ProjectRequestDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectRequestDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"ProjectRequestDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-ProjectInfoDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectInfoDto" setTo="no"><span class="api-path">ProjectInfoDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectInfoDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectInfoDto" setTo="yes"><span class="api-path">ProjectInfoDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectInfoDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"ProjectInfoDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-ProjectViewDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectViewDto" setTo="no"><span class="api-path">ProjectViewDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectViewDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ProjectViewDto" setTo="yes"><span class="api-path">ProjectViewDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ProjectViewDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"ProjectViewDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TaskRequestDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskRequestDto" setTo="no"><span class="api-path">TaskRequestDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskRequestDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskRequestDto" setTo="yes"><span class="api-path">TaskRequestDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskRequestDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TaskRequestDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TaskInfoDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskInfoDto" setTo="no"><span class="api-path">TaskInfoDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskInfoDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskInfoDto" setTo="yes"><span class="api-path">TaskInfoDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskInfoDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TaskInfoDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TagResponseDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TagResponseDto" setTo="no"><span class="api-path">TagResponseDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TagResponseDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TagResponseDto" setTo="yes"><span class="api-path">TagResponseDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TagResponseDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TagResponseDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TaskResponseDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskResponseDto" setTo="no"><span class="api-path">TaskResponseDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskResponseDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskResponseDto" setTo="yes"><span class="api-path">TaskResponseDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskResponseDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TaskResponseDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TaskInfoListDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskInfoListDto" setTo="no"><span class="api-path">TaskInfoListDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskInfoListDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskInfoListDto" setTo="yes"><span class="api-path">TaskInfoListDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskInfoListDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TaskInfoListDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-TaskViewDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskViewDto" setTo="no"><span class="api-path">TaskViewDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskViewDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-TaskViewDto" setTo="yes"><span class="api-path">TaskViewDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-TaskViewDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"TaskViewDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-MilestoneCreateRequestDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MilestoneCreateRequestDto" setTo="no"><span class="api-path">MilestoneCreateRequestDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MilestoneCreateRequestDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MilestoneCreateRequestDto" setTo="yes"><span class="api-path">MilestoneCreateRequestDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MilestoneCreateRequestDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MilestoneCreateRequestDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-MilestoneResponseDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MilestoneResponseDto" setTo="no"><span class="api-path">MilestoneResponseDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MilestoneResponseDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MilestoneResponseDto" setTo="yes"><span class="api-path">MilestoneResponseDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MilestoneResponseDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MilestoneResponseDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-MemberRequestDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberRequestDto" setTo="no"><span class="api-path">MemberRequestDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberRequestDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberRequestDto" setTo="yes"><span class="api-path">MemberRequestDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberRequestDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MemberRequestDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-MemberInfoDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberInfoDto" setTo="no"><span class="api-path">MemberInfoDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberInfoDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberInfoDto" setTo="yes"><span class="api-path">MemberInfoDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberInfoDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MemberInfoDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-MemberInfoListDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberInfoListDto" setTo="no"><span class="api-path">MemberInfoListDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberInfoListDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-MemberInfoListDto" setTo="yes"><span class="api-path">MemberInfoListDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-MemberInfoListDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"MemberInfoListDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-CommentRequestDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentRequestDto" setTo="no"><span class="api-path">CommentRequestDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentRequestDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentRequestDto" setTo="yes"><span class="api-path">CommentRequestDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentRequestDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"CommentRequestDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-CommentResponseDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentResponseDto" setTo="no"><span class="api-path">CommentResponseDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentResponseDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentResponseDto" setTo="yes"><span class="api-path">CommentResponseDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentResponseDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"CommentResponseDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-CommentListDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentListDto" setTo="no"><span class="api-path">CommentListDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentListDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-CommentListDto" setTo="yes"><span class="api-path">CommentListDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-CommentListDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"CommentListDto">>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/schema-full-ErrorResponseDto" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ErrorResponseDto" setTo="no"><span class="api-path">ErrorResponseDto</span><span class="api-chevron open">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ErrorResponseDto" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/schema-full-ErrorResponseDto" setTo="yes"><span class="api-path">ErrorResponseDto</span><span class="api-chevron">▶</span></$button>
+</$reveal>
+<$reveal state="$:/state/schema-full-ErrorResponseDto" type="match" text="yes" default="no" class="api-body schema-body" tag="div">
+<<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"ErrorResponseDto">>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]

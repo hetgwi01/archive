@@ -1,0 +1,351 @@
+created: 20260929083852297
+modified: 20260929083910057
+tags: 
+title: Project:miniDooray-API-Account
+type: text/vnd.tiddlywiki
+
+! Account API
+
+계정 등록/조회/수정/삭제 API
+
+<div class="api-back-link">[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]]</div>
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-account-0" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-3" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-4" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-5" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-6" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-api-account-0" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-1" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-2" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-3" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-4" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-5" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-api-account-6" text="no"/>
+모두 접기</$button>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-0" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-0" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts/login</span>
+<span class="api-summary-text">로그인용 계정 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-0" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-0" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts/login</span>
+<span class="api-summary-text">로그인용 계정 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-0" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>설명</strong><br>인증 서비스(FE)가 로그인 처리 시 사용한다. 비밀번호 해시값을 포함한 응답을 반환한다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>userId</td><td>query</td><td>String</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-mini-account-0-0" text="yes"/>
+→ AccountLoginResp
+</$button>
+<$reveal state="$:/state/resp-mini-account-0-0" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-mini-account-0-0','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">AccountLoginResp</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-mini-account-0-0" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountLoginResp">></div>
+</div></div></$reveal>
+<br>
+<pre><code>{
+  "accountId": 1,
+  "userId": "john_doe",
+  "userPassword": "$2a$10$...",
+  "status": "ACTIVE"
+}</code></pre>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 userId 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-1" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-1" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">ID로 계정 단건 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-1" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-1" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">ID로 계정 단건 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-1" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>id</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-mini-account-1-0" text="yes"/>
+→ AccountResp
+</$button>
+<$reveal state="$:/state/resp-mini-account-1-0" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-mini-account-1-0','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">AccountResp</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-mini-account-1-0" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountResp">></div>
+</div></div></$reveal>
+<br>
+<pre><code>{
+  "id": 1,
+  "userId": "john_doe",
+  "email": "john@example.com",
+  "Name": "John Doe",
+  "status": "ACTIVE",
+  "createAt": "2026-05-22T10:00:00"
+}</code></pre>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 id 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-2" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-2" setTo="no">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts</span>
+<span class="api-summary-text">userId로 계정 조회</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-2" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-2" setTo="yes">
+<span class="api-method api-get">get</span>
+<span class="api-path">/account-api/v1/accounts</span>
+<span class="api-summary-text">userId로 계정 조회</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-2" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>설명</strong><br>응답 구조는 ID 단건 조회와 동일하다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>userId</td><td>query</td><td>String</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-mini-account-2-0" text="yes"/>
+→ AccountResp
+</$button>
+<$reveal state="$:/state/resp-mini-account-2-0" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-mini-account-2-0','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">AccountResp</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-mini-account-2-0" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountResp">></div>
+</div></div></$reveal>
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 userId 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-3" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-3" setTo="no">
+<span class="api-method api-post">post</span>
+<span class="api-path">/account-api/v1/accounts</span>
+<span class="api-summary-text">계정 목록 조회 (복수 ID)</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-3" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-3" setTo="yes">
+<span class="api-method api-post">post</span>
+<span class="api-path">/account-api/v1/accounts</span>
+<span class="api-summary-text">계정 목록 조회 (복수 ID)</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-3" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>설명</strong><br>여러 계정 ID를 한 번에 조회한다. Task API가 멤버 목록의 계정 정보를 일괄 조회할 때 사용한다.</p>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "accountIdList": [1, 2, 3]
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>accountIdList</td><td>O</td><td>List<Long></td><td>조회할 계정 ID 목록</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">200</span> OK 
+<$button class="api-schema-link">
+<$action-setfield $tiddler="$:/state/resp-mini-account-3-0" text="yes"/>
+→ AccountListResp
+</$button>
+<$reveal state="$:/state/resp-mini-account-3-0" type="match" text="yes" default="no" tag="div">
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:flex;align-items:center;justify-content:center;">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);" onclick="$tw.wiki.setText('$:/state/resp-mini-account-3-0','text',null,'no')"></div>
+<div style="position:relative;background:#2a2a2a;border:1px solid #444;border-radius:8px;padding:20px;z-index:9999;min-width:300px;max-width:500px;max-height:70vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #444;padding-bottom:8px;">
+<span style="font-weight:bold;color:#d4d4d4;font-family:monospace;">AccountListResp</span>
+<$button style="background:transparent;border:none;color:#aaa;cursor:pointer;font-size:16px;padding:0 4px;">
+<$action-setfield $tiddler="$:/state/resp-mini-account-3-0" text="no"/>✕</$button>
+</div>
+<div class="schema-body"><<renderSchema dataTiddler:"Project:miniDooray-API-Schemas-Data" schemaName:"AccountListResp">></div>
+</div></div></$reveal>
+<br>
+<pre><code>{
+  "accountRespList": [
+    { "id": 1, "userId": "john_doe", "email": "john@example.com", "Name": "John Doe", "status": "ACTIVE", "createAt": "2026-05-22T10:00:00" },
+    { "id": 2, "userId": "jane_doe", "email": "jane@example.com", "Name": "Jane Doe", "status": "ACTIVE", "createAt": "2026-05-20T09:00:00" }
+  ]
+}</code></pre>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-4" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-4" setTo="no">
+<span class="api-method api-post">post</span>
+<span class="api-path">/account-api/v1/accounts/register</span>
+<span class="api-summary-text">계정 등록</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-4" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-4" setTo="yes">
+<span class="api-method api-post">post</span>
+<span class="api-path">/account-api/v1/accounts/register</span>
+<span class="api-summary-text">계정 등록</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-4" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "userId": "john_doe",
+  "userPassword": "password123!",
+  "userEmail": "john@example.com",
+  "userName": "John Doe"
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>userId</td><td>O</td><td>String</td><td>max 30, 공백 불가</td></tr>
+<tr><td>userPassword</td><td>O</td><td>String</td><td>max 100, 공백 불가</td></tr>
+<tr><td>userEmail</td><td>O</td><td>String</td><td>max 50, 이메일 형식</td></tr>
+<tr><td>userName</td><td>O</td><td>String</td><td>max 50, 공백 불가</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">201</span> 계정 등록 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">409</span> 이미 존재하는 userId 
+<br>
+<span class="api-resp resp-4xx">400</span> 필수 입력값 누락/형식 불일치 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-5" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-5" setTo="no">
+<span class="api-method api-put">put</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">계정 수정</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-5" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-5" setTo="yes">
+<span class="api-method api-put">put</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">계정 수정</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-5" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>id</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Request Body</strong></p>
+<pre><code>{
+  "userId": "john_doe_new",
+  "userPassword": "newpassword123!",
+  "userEmail": "john_new@example.com",
+  "userName": "John New"
+}</code></pre>
+<table>
+<tr><th>필드</th><th>필수</th><th>타입</th><th>설명</th></tr>
+<tr><td>userId</td><td>O</td><td>String</td><td>변경할 로그인 ID</td></tr>
+<tr><td>userPassword</td><td>O</td><td>String</td><td>변경할 비밀번호</td></tr>
+<tr><td>userEmail</td><td>O</td><td>String</td><td>변경할 이메일</td></tr>
+<tr><td>userName</td><td>O</td><td>String</td><td>변경할 이름</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 수정 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 id 
+<br>
+<span class="api-resp resp-4xx">400</span> 필수 입력값 누락/형식 불일치 
+<br>
+</div>
+</$reveal>
+</div>
+
+<div class="api-card">
+<$reveal state="$:/state/mini-api-account-6" type="match" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-6" setTo="no">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">계정 삭제</span>
+<span class="api-chevron open">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-6" type="nomatch" text="yes" default="no" tag="div">
+<$button class="api-summary-btn" set="$:/state/mini-api-account-6" setTo="yes">
+<span class="api-method api-delete">delete</span>
+<span class="api-path">/account-api/v1/accounts/{id}</span>
+<span class="api-summary-text">계정 삭제</span>
+<span class="api-chevron">▶</span>
+</$button></$reveal>
+<$reveal state="$:/state/mini-api-account-6" type="match" text="yes" default="no" class="api-body" tag="div">
+<p><strong>설명</strong><br>삭제된 계정 정보는 deleted_accounts 테이블로 이관되어 이력으로 보관된다.</p>
+<p><strong>Parameters</strong></p><table>
+<tr><th>Name</th><th>In</th><th>Type</th><th>Required</th></tr>
+<tr><td>id</td><td>path</td><td>Long</td><td>✓</td></tr>
+</table>
+<p><strong>Responses</strong></p><div class="api-resp-group">
+<span class="api-resp resp-2xx">204</span> 삭제 성공 (응답 본문 없음) 
+<br>
+<span class="api-resp resp-4xx">404</span> 존재하지 않는 id 
+<br>
+</div>
+</$reveal>
+</div>
+
+[[← API 목차로 돌아가기|Project:miniDooray-API-Doc]] · [[데이터 스키마 보기|Project:miniDooray-API-Schemas]]
