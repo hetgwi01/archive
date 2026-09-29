@@ -1,12 +1,12 @@
 created: 20260911044933738
-modified: 20260929085420075
+modified: 20260929091718083
 tags: 
 title: Project:miniDooray
 type: text/vnd.tiddlywiki
 
 ! miniDooray
 
-NHN 두레이(Dooray)를 벤치마킹한 협업 툴 클론 프로젝트. 프로젝트 생성부터 태스크·댓글·마일스톤·멤버 관리까지 지원하며, Gateway·계정(Account)·태스크(Task)·프론트(FE) 4개 서비스로 구성된 MSA(마이크로서비스 아키텍처)로 설계했다.
+NHN 두레이(Dooray)를 벤치마킹한 협업 툴 클론 프로젝트입니다. 프로젝트 생성부터 태스크·댓글·마일스톤·멤버 관리까지 지원하며, Gateway·계정(Account)·태스크(Task)·프론트(FE) 4개 서비스로 구성된 MSA(마이크로서비스 아키텍처)로 설계했습니다.
 
 <img src="./files/project/miniDooray/projects-list.jpg" alt="miniDooray 프로젝트 목록 화면" style="width:100%; max-width:640px; display:block; margin:0 auto; object-fit:cover; object-position:top; border-radius:6px;">
 
@@ -32,7 +32,7 @@ Gateway (8000)  ── /account-api, /task-api 라우팅
         └── (내부 호출) Account API
 ```
 
-Client(브라우저)는 FE에 직접 접속해 화면을 렌더링받는다. FE는 서버 사이드에서 백엔드 데이터가 필요할 때만 Gateway를 거쳐 Account API·Task API를 호출하며, Gateway는 `/account-api`, `/task-api` 경로만 라우팅한다(FE는 Gateway를 거치지 않고 독립 배포). Task API는 회원 관련 정보가 필요할 때 Account API를 RestClient로 내부 호출한다. FE는 Redis에 세션을 저장한다.
+Client(브라우저)는 FE에 직접 접속해 화면을 렌더링받습니다. FE는 서버 사이드에서 백엔드 데이터가 필요할 때만 Gateway를 거쳐 Account API·Task API를 호출하며, Gateway는 `/account-api`, `/task-api` 경로만 라우팅합니다(FE는 Gateway를 거치지 않고 독립 배포). Task API는 회원 관련 정보가 필요할 때 Account API를 RestClient로 내부 호출합니다. FE는 Redis에 세션을 저장합니다.
 
 !! 기술 스택
 
@@ -52,7 +52,7 @@ Client(브라우저)는 FE에 직접 접속해 화면을 렌더링받는다. FE�
 
 !! 내가 구현한 것
 
-4개 서비스 중 **Account API**와 **Task API** 두 백엔드 서비스를 담당했다.
+4개 서비스 중 **Account API**와 **Task API** 두 백엔드 서비스를 담당했습니다.
 
 <div class="api-toolbar">
 <$button class="api-toolbar-btn">
@@ -84,9 +84,9 @@ Client(브라우저)는 FE에 직접 접속해 화면을 렌더링받는다. FE�
 </$button></$reveal>
 <$reveal state="$:/state/mini-impl-1" type="match" text="yes" default="no" class="api-body" tag="div">
 
-회원 탈퇴 시 `Account` 레코드를 바로 지우지 않고 `DeletedAccount` 테이블로 이관하는 구조로 설계했다. 태스크·댓글 등 다른 도메인이 `accountId`를 FK로 참조하고 있어서, 물리 삭제하면 연관 데이터의 무결성이 깨지기 때문이다.
+회원 탈퇴 시 `Account` 레코드를 바로 지우지 않고 `DeletedAccount` 테이블로 이관하는 구조로 설계했습니다. 태스크·댓글 등 다른 도메인이 `accountId`를 FK로 참조하고 있어서, 물리 삭제하면 연관 데이터의 무결성이 깨지기 때문입니다.
 
-Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. 인증 자체(로그인 세션 처리, 실패 카운트)는 FE가 담당하는 구조라, Account API 쪽 Security 설정은 암호화 기능만 사용하도록 필터 체인을 최소화했다.
+Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했습니다. 인증 자체(로그인 세션 처리, 실패 카운트)는 FE가 담당하는 구조라, Account API 쪽 Security 설정은 암호화 기능만 사용하도록 필터 체인을 최소화했습니다.
 
 </$reveal>
 </div>
@@ -104,11 +104,16 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-impl-2" type="match" text="yes" default="no" class="api-body" tag="div">
 
-로그인 시 사용할 계정 조회용으로 `record LoginAccountProjection(long id, String userId, String userPassword, UserStatus status)`을 만들고, JPQL에서 `SELECT a.id, a.userId, a.userPassword, a.status FROM Account a WHERE ...` 형태로 여러 컬럼을 바로 조회하도록 짰다.
+로그인 시 사용할 계정 조회용으로 `record LoginAccountProjection(long id, String userId, String userPassword, UserStatus status)`을 만들고, JPQL에서 `SELECT a.id, a.userId, a.userPassword, a.status FROM Account a WHERE ...` 형태로 여러 컬럼을 바로 조회하도록 짰습니다.
 
-실행해보니 Spring Data JPA가 이 결과를 record 생성자에 매핑하지 못했다. JPQL 다중 컬럼 프로젝션은 `new 패키지.클래스(...)` 형태의 constructor expression을 쓰거나, getter 이름이 select 별칭과 일치하는 **인터페이스 기반 프로젝션**을 써야 하는데, record를 그대로 반환 타입으로 지정한 게 문제였다.
+실행해보니 Spring Data JPA가 이 결과를 record 생성자에 매핑하지 못했습니다. JPQL 다중 컬럼 프로젝션은 `new 패키지.클래스(...)` 형태의 constructor expression을 쓰거나, getter 이름이 select 별칭과 일치하는 **인터페이스 기반 프로젝션**을 써야 하는데, record를 그대로 반환 타입으로 지정한 게 문제였습니다.
 
-`LoginAccountProjection`을 `record`에서 `getId()/getUserId()/getUserPassword()/getStatus()`를 가진 인터페이스로 바꾸고, 쿼리에도 `a.id id, a.userId userId, ...`처럼 별칭을 명시적으로 붙여서 해결했다.
+''해결 과정''
+
+# `LoginAccountProjection`을 `record`에서 `getId()/getUserId()/getUserPassword()/getStatus()`를 가진 인터페이스로 변경
+# JPQL에 `a.id id, a.userId userId, ...`처럼 별칭을 명시적으로 붙여서 getter 이름과 매칭
+
+로그인 API가 계정 정보를 정상적으로 조회하도록 수정했습니다.
 
 </$reveal>
 </div>
@@ -126,9 +131,9 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-impl-3" type="match" text="yes" default="no" class="api-body" tag="div">
 
-`PLANNED / IN_PROGRESS / COMPLETED / CANCELLED` 상태를 갖는 마일스톤 CRUD를 구현했다. 실제 Dooray는 마일스톤 하나에 여러 태스크가 묶이는 N:1 구조지만, 개발 기간이 짧아 태스크—마일스톤을 1:1로 단순화했다(마일스톤 테이블에 `task_id`를 FK로 직접 둠).
+`PLANNED / IN_PROGRESS / COMPLETED / CANCELLED` 상태를 갖는 마일스톤 CRUD를 구현했습니다. 실제 Dooray는 마일스톤 하나에 여러 태스크가 묶이는 N:1 구조지만, 개발 기간이 짧아 태스크—마일스톤을 1:1로 단순화했습니다(마일스톤 테이블에 `task_id`를 FK로 직접 둠).
 
-덕분에 구현은 빨라졌지만, "여러 태스크를 하나의 마일스톤(스프린트)으로 묶어 진행률을 본다"는 원래 Dooray의 용도와는 달라졌다는 한계가 있다. 아래 개선할 점에도 이어지는 부분이다.
+덕분에 구현은 빨라졌지만, "여러 태스크를 하나의 마일스톤(스프린트)으로 묶어 진행률을 본다"는 원래 Dooray의 용도와는 달라졌다는 한계가 있습니다. 아래 개선할 점에도 이어지는 부분입니다.
 
 </$reveal>
 </div>
@@ -146,9 +151,16 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-impl-4" type="match" text="yes" default="no" class="api-body" tag="div">
 
-멤버 추가 화면(사용자 ID 입력, 아래 스크린샷)에서는 사람이 알아보는 `userId`(문자열)를 입력받는데, `ProjectMember` 엔티티는 Account API의 PK인 `accountId`(Long)를 참조한다. 멤버 추가·수정·삭제 시 `ADMIN`/`MEMBER` 권한 체크는 `ProjectMemberFacade`에서 일괄 처리하도록 구성했다.
+멤버 추가 화면(사용자 ID 입력, 아래 스크린샷)에서는 사람이 알아보는 `userId`(문자열)를 입력받는데, `ProjectMember` 엔티티는 Account API의 PK인 `accountId`(Long)를 참조합니다. 멤버 추가·수정·삭제 시 `ADMIN`/`MEMBER` 권한 체크는 `ProjectMemberFacade`에서 일괄 처리하도록 구성했습니다.
 
-초기 구현에서는 `MemberRequestDto`에 담긴 값을 그대로 `accountId`로 취급해서 저장하고 있었다 — 즉 화면에서 받은 `userId` 문자열이 실제로는 계정의 PK가 아니라는 걸 놓친 채로 넘어간 것이다. 멤버 추가가 엉뚱한 계정으로 등록되는 걸 확인하고, `ProjectMemberService.addProjectMember()`에서 `client.getAccountByUserId(userId)`로 Account API에 먼저 조회해 실제 `accountId`를 받아온 뒤 저장하도록 고쳤다.
+초기 구현에서는 `MemberRequestDto`에 담긴 값을 그대로 `accountId`로 취급해서 저장하고 있었습니다 — 즉 화면에서 받은 `userId` 문자열이 실제로는 계정의 PK가 아니라는 걸 놓친 채로 넘어간 것이었습니다. 멤버 추가가 엉뚱한 계정으로 등록되는 걸 확인했습니다.
+
+''해결 과정''
+
+# `ProjectMemberService.addProjectMember()`에서 `client.getAccountByUserId(userId)`로 Account API에 먼저 조회
+# 조회한 실제 `accountId`를 받아온 뒤 `ProjectMember`에 저장하도록 로직 수정
+
+멤버 추가 시 화면에서 받은 `userId`가 실제 계정과 정확히 매칭되어 저장되도록 수정했습니다.
 
 </$reveal>
 </div>
@@ -166,20 +178,40 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-impl-5" type="match" text="yes" default="no" class="api-body" tag="div">
 
-프로젝트 생성 시 관리자를 `ProjectMember`로 자동 등록하는 로직에서 `joinedAt` 컬럼이 NOT NULL인데 생성자에서 값을 채우지 않아 저장 시점에 제약 조건 위반이 발생했다. `ProjectMember` 생성자에 `this.joinedAt = LocalDateTime.now();`를 추가해서 해결했고, 같은 김에 `ProjectService.createProject()`가 쓰지도 않는 응답 DTO를 매번 생성해서 반환하던 것도 `void`로 정리했다.
+프로젝트 생성 시 관리자를 `ProjectMember`로 자동 등록하는 로직에서 `joinedAt` 컬럼이 NOT NULL인데 생성자에서 값을 채우지 않아 저장 시점에 제약 조건 위반이 발생했습니다.
 
-`AccountApiClient`로 Account API를 내부 연동해 멤버 목록을 accountId 기준으로 일괄 조회하는 것도 함께 구현했으며, Account API 94.4% / Task API 88.2%의 라인 커버리지로 테스트를 작성했다.
+''해결 과정''
+
+# `ProjectMember` 생성자에 `this.joinedAt = LocalDateTime.now();` 추가
+# 같은 클래스를 손보면서 `ProjectService.createProject()`가 사용하지 않는 응답 DTO를 매번 생성해서 반환하던 부분도 `void`로 정리
+
+NOT NULL 제약 위반 없이 프로젝트 생성 시 관리자 등록이 정상 처리되도록 했습니다.
+
+`AccountApiClient`로 Account API를 내부 연동해 멤버 목록을 accountId 기준으로 일괄 조회하는 것도 함께 구현했으며, Account API 94.4% / Task API 88.2%의 라인 커버리지로 테스트를 작성했습니다.
 
 </$reveal>
 </div>
 
 <img src="./files/project/miniDooray/task-detail.jpg" alt="miniDooray 태스크 상세 화면" style="width:100%; max-width:640px; display:block; margin:0 auto; object-fit:cover; object-position:top; border-radius:6px;">
 
-//태스크 상세 화면 — 마일스톤 상태, 태그, 댓글이 한 화면에서 관리된다.//
+//태스크 상세 화면 — 마일스톤 상태, 태그, 댓글이 한 화면에서 관리됩니다.//
 
 ---
 
 !! 아쉬운 점 / 개선할 점
+
+<div class="api-toolbar">
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-improve-1" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-improve-2" text="yes"/>
+<$action-setfield $tiddler="$:/state/mini-improve-3" text="yes"/>
+모두 펼치기</$button>
+<$button class="api-toolbar-btn">
+<$action-setfield $tiddler="$:/state/mini-improve-1" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-improve-2" text="no"/>
+<$action-setfield $tiddler="$:/state/mini-improve-3" text="no"/>
+모두 접기</$button>
+</div>
 
 <div class="api-card">
 <$reveal state="$:/state/mini-improve-1" type="match" text="yes" default="no" tag="div">
@@ -194,7 +226,7 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-improve-1" type="match" text="yes" default="no" class="api-body" tag="div">
 
-앞서 적은 대로 마일스톤을 태스크 1개에 종속시켜 구현했다. 짧은 기간 안에 CRUD를 끝내기 위한 선택이었지만, 여러 태스크를 하나의 마일스톤으로 묶어 전체 진행률을 보는 게 원래 목적에 더 맞다.
+앞서 적은 대로 마일스톤을 태스크 1개에 종속시켜 구현했습니다. 짧은 기간 안에 CRUD를 끝내기 위한 선택이었지만, 여러 태스크를 하나의 마일스톤으로 묶어 전체 진행률을 보는 게 원래 목적에 더 맞습니다.
 
 ''개선 방향''
 
@@ -217,7 +249,7 @@ Spring Security + `BCryptPasswordEncoder`로 비밀번호를 암호화했다. �
 </$button></$reveal>
 <$reveal state="$:/state/mini-improve-2" type="match" text="yes" default="no" class="api-body" tag="div">
 
-Task API SonarQube 리포트에는 Reliability/Security는 0건인데 Maintainability(코드 스멜)가 17건 남아있다. `수정`, `수정2`, `수정3`처럼 짧은 기간에 리팩토링 커밋을 반복하면서 구조는 많이 정리했지만, 마지막에 SonarQube 지적 사항을 하나씩 훑어서 닫는 시간까지는 확보하지 못했다. 커밋 이력을 다시 보면서 이번에 처음 정리한 부분이다.
+Task API SonarQube 리포트에는 Reliability/Security는 0건인데 Maintainability(코드 스멜)가 17건 남아있습니다. `수정`, `수정2`, `수정3`처럼 짧은 기간에 리팩토링 커밋을 반복하면서 구조는 많이 정리했지만, 마지막에 SonarQube 지적 사항을 하나씩 훑어서 닫는 시간까지는 확보하지 못했습니다. 커밋 이력을 다시 보면서 이번에 처음 정리한 부분입니다.
 
 </$reveal>
 </div>
@@ -235,7 +267,7 @@ Task API SonarQube 리포트에는 Reliability/Security는 0건인데 Maintainab
 </$button></$reveal>
 <$reveal state="$:/state/mini-improve-3" type="match" text="yes" default="no" class="api-body" tag="div">
 
-멤버 추가 때마다 `AccountApiClient`로 Account API에 동기 호출을 보내 `userId → accountId`를 조회한다. 멤버 한 명 추가에 서비스 간 호출이 하나씩 더 붙는 구조라, 멤버를 여러 명 한 번에 추가하는 케이스에서는 호출 횟수가 그대로 늘어난다. accountId 조회 결과를 캐싱하거나, 멤버 추가 API 자체를 벌크(bulk)로 받는 형태로 바꾸면 줄일 수 있었을 텐데 거기까지는 손대지 못했다.
+멤버 추가 때마다 `AccountApiClient`로 Account API에 동기 호출을 보내 `userId → accountId`를 조회합니다. 멤버 한 명 추가에 서비스 간 호출이 하나씩 더 붙는 구조라, 멤버를 여러 명 한 번에 추가하는 케이스에서는 호출 횟수가 그대로 늘어납니다. accountId 조회 결과를 캐싱하거나, 멤버 추가 API 자체를 벌크(bulk)로 받는 형태로 바꾸면 줄일 수 있었을 텐데 거기까지는 손대지 못했습니다.
 
 </$reveal>
 </div>
@@ -245,4 +277,3 @@ Task API SonarQube 리포트에는 Reliability/Security는 0건인데 Maintainab
 * <$link to="Project:miniDooray-API-Doc"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> API 문서 보기</$link>
 * <$link to="Project:miniDooray-API-Schemas"><svg width="14" height="14" style="vertical-align:-1px; margin-right:4px;"><use href="#icon-schema"/></svg> 데이터 스키마 보기</$link>
 * <a href="https://github.com/AIOT3-miniDooray-team11" target="_blank">GitHub — miniDooray team11 조직</a>
-</div>

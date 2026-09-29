@@ -1,5 +1,5 @@
 created: 20260630052329342
-modified: 20260703174620446
+modified: 20260929090311119
 tags: 
 title: Index
 type: text/vnd.tiddlywiki
@@ -65,6 +65,36 @@ type: text/vnd.tiddlywiki
 <div class="project-card-links">
 <$link to="Project:daiso-book" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> 자세히 보기</$link>
 <a href="https://github.com/hetgwi01" target="_blank" class="project-link-btn">⎋ GitHub</a>
+</div>
+</div>
+
+<div class="project-list-card">
+<div class="project-list-header">
+<div>
+<span class="project-card-title">miniDooray</span>
+<span class="project-card-type">팀 프로젝트 · NHN Academy AIOT3</span>
+</div>
+<span class="project-card-period">2026.05</span>
+</div>
+<div class="project-card-desc">Dooray를 벤치마킹한 협업 툴 클론 — Gateway·Account·Task·FE 4개 서비스로 구성된 MSA</div>
+<div class="project-card-role">담당: Account API + Task API 백엔드</div>
+<ul class="project-card-bullets">
+<li>JPA Projection이 record에 매핑 안 되던 문제 → 인터페이스 프로젝션 + 별칭 지정으로 해결</li>
+<li>멤버 추가 시 userId를 accountId로 착각하던 버그 → Account API 조회 후 매핑하도록 수정</li>
+<li>joinedAt NOT NULL 제약 위반 트러블슈팅 및 응답 DTO 정리</li>
+<li>마일스톤 1:1 구조 설계, Account/Task API 테스트 커버리지 88~94%</li>
+</ul>
+<div class="tech-stack" style="margin:8px 0;">
+<span class="tech-badge backend">Java 21</span>
+<span class="tech-badge backend">Spring Boot</span>
+<span class="tech-badge backend">Spring Data JPA</span>
+<span class="tech-badge backend">Spring Security</span>
+<span class="tech-badge db">MySQL</span>
+<span class="tech-badge db">H2</span>
+</div>
+<div class="project-card-links">
+<$link to="Project:miniDooray" class="project-link-btn"><svg width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-doc"/></svg> 자세히 보기</$link>
+<a href="https://github.com/AIOT3-miniDooray-team11" target="_blank" class="project-link-btn">⎋ GitHub</a>
 </div>
 </div>
 
